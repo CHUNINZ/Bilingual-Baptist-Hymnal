@@ -254,3 +254,8 @@ button .ui-icon{pointer-events:none}
   .reader-toolbar{gap:5px}
   .round-control{width:42px;height:42px;min-width:42px}
 }
+.source-text-link{display:inline-flex;align-items:center;gap:8px;text-decoration:none;margin:0 0 14px}
+.source-text-link .ui-icon{width:14px;height:14px}
+.load-more-wrap{display:flex;justify-content:center;padding:16px;border-top:1px solid #eee9de}
+.load-more-wrap .btn{min-height:44px}
+@media(max-width:760px){.source-text-link{width:100%;justify-content:center;min-height:48px}.load-more-wrap{padding:14px}.load-more-wrap .btn{width:100%;min-height:48px}}
