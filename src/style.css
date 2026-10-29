@@ -36,3 +36,15 @@ button .ui-icon{pointer-events:none}
 .nav-item:active .ui-icon,.mobile-nav-item:active .ui-icon,.btn:active .ui-icon{transform:scale(.88)}
 @keyframes icon-arrive{0%{transform:scale(.76) translateY(2px)}65%{transform:scale(1.16) translateY(-2px)}100%{transform:scale(1) translateY(0)}}
 @media(prefers-reduced-motion:reduce){.ui-icon{transition:none}.nav-item.active .ui-icon,.mobile-nav-item.active .ui-icon{animation:none}}
+@media(max-width:760px){
+  .main{padding-bottom:100px}
+  .mobile-nav{left:16px;right:16px;bottom:max(12px,calc(env(safe-area-inset-bottom) + 8px));height:74px;padding:7px 10px;border:1px solid #ffffff55;border-radius:999px;background:#003049eF;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 12px 34px #002a3e35;align-items:center}
+  .mobile-nav-item{height:58px;justify-content:center;gap:2px;color:#fff5df}
+  .mobile-nav-item small{color:inherit}
+  .mobile-nav-item .nav-icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;transition:background .24s,transform .24s,color .24s}
+  .mobile-nav-item.active .nav-icon{background:var(--gold);color:var(--navy)}
+  .mobile-nav-item.active{color:#fff5df}
+  .dark .mobile-nav{background:#071318ed;border-color:#ffffff3d}
+  .dark .mobile-nav-item{color:#dfe8e3}
+  .dark .mobile-nav-item.active{color:#dfe8e3}
+}
