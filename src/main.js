@@ -3,7 +3,7 @@ const app = $('#app');
 const params = new URLSearchParams(location.search);
 const validViews=['hymns','search','browse','saved','order','data','reader','player'];
 const hashView=location.hash.slice(1).split('/')[0];
-const data = { rows: [], hymnalCount: null, view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
+const data = { rows: [], fullTexts: new Map(), hymnalCount: null, view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
 const player = { key:0, tempo:72, parts:{S:true,A:true,T:true,B:true}, playing:false, sources:[], timer:null, returnView:'reader' };
 const esc = (s = '') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const iconPaths = {
@@ -62,6 +62,20 @@ async function loadIndex() {
   data.searchBusy = false; render();
 }
 
+async function loadFullTexts(){
+  try{
+    const response=await fetch('/data/hymn-lyrics.json');
+    if(!response.ok)return;
+    const records=await response.json();
+    const rows=Array.isArray(records)?records:Object.values(records||{});
+    for(const record of rows){
+      const id=record?.textAuthNumber;
+      if(id&&Array.isArray(record.verses)&&record.verses.some(v=>v&&(v.english||v.tagalog||v.text)))data.fullTexts.set(id,record);
+    }
+    if(data.fullTexts.size&&['reader','player'].includes(data.view))render();
+  }catch{/* Full lyrics are an optional offline dataset. */}
+}
+
 const languages = ['All languages','English','Tagalog','Filipino','Cebuano','Ilocano'];
 const langMatch = (row, lang) => lang === 'All languages' || (row.languages || '').toLowerCase().includes(lang.toLowerCase());
 function results(query = data.query, limit = 80) {
@@ -87,11 +101,17 @@ function detail(row) {
   const authors = row.authors ? row.authors.split(/\s*;\s*/).join(' · ') : 'Author not listed';
   const language=esc(row.languages || 'Language not specified');
   const alternateLanguage=/tagalog|filipino/i.test(row.languages||'')?'English':'Tagalog';
+  const fullText=data.fullTexts.get(row.textAuthNumber);
+  const lyricLanguage=(fullText?.language||row.languages||'').toLowerCase();
+  const verseField=/tagalog|filipino/.test(lyricLanguage)?'tagalog':'english';
+  const fullVerses=Array.isArray(fullText?.verses)?fullText.verses.map((verse,i)=>({number:verse.number||i+1,text:verse[verseField]||verse.text||''})).filter(verse=>verse.text.trim()):[];
+  const hasFullText=fullVerses.length>0;
+  const lyricContent=hasFullText?`<span class="eyebrow">FULL TEXT${fullText.language?` · ${esc(fullText.language)}`:''}</span>${fullVerses.map(verse=>`<p class="reader-verse"><span>${esc(verse.number)}.</span> ${esc(verse.text)}</p>`).join('')}${fullText.refrain?`<section class="reader-refrain"><span>REFRAIN</span><p>${esc(fullText.refrain)}</p></section>`:''}`:`<span class="eyebrow">CATALOG OPENING LINE</span><p>${esc(row.firstLine || 'No opening line is available for this record.')}</p>${row.refrainFirstLine?`<section class="reader-refrain"><span>REFRAIN OPENING</span><p>${esc(row.refrainFirstLine)}</p></section>`:''}`;
   return `<section class="reader-view" style="--reader-scale:${data.readerScale}"><header class="reader-toolbar"><button class="round-control" data-back aria-label="Back to ${esc(data.returnView==='search'?'search':data.returnView==='browse'?'browse':data.returnView==='saved'?'saved hymns':'hymns')}">${icon('back')}</button><span class="reader-record-label">TEXT RECORD</span><button class="round-control ${saved.has(row.textAuthNumber)?'is-saved':''}" data-save="${esc(row.textAuthNumber)}" aria-label="${saved.has(row.textAuthNumber)?'Remove from saved':'Save text'}">${icon('heart','save-icon')}</button><button class="round-control" data-share aria-label="Share text">${icon('share')}</button><button class="round-control text-size" data-text-size aria-label="Change text size">Aa</button></header>
     <div class="reader-language"><span>SOURCE LANGUAGE</span><strong>${language}</strong><button class="reader-language-link" data-other-language="${alternateLanguage}">Find ${alternateLanguage} texts</button></div>
     <h1 class="reader-title">${esc(row.displayTitle || row.textTitle || 'Untitled text')}</h1><p class="reader-byline">${esc(authors)}${row.yearsWrote?`, ${esc(row.yearsWrote)}`:''}${row.meter?` · Meter ${esc(row.meter)}`:''}</p>
-    <article class="reader-lyrics"><span class="eyebrow">CATALOG OPENING LINE</span><p>${esc(row.firstLine || 'No opening line is available for this record.')}</p>${row.refrainFirstLine?`<section class="reader-refrain"><span>REFRAIN OPENING</span><p>${esc(row.refrainFirstLine)}</p></section>`:''}</article>
-    <aside class="reader-note"><span>${icon('info')}</span><p>This CSV record contains an opening line, not complete verses. No verified translated counterpart is linked to this record.</p></aside>
+    <article class="reader-lyrics ${hasFullText?'has-full-text':''}">${lyricContent}</article>
+    <aside class="reader-note"><span>${icon('info')}</span><p>${hasFullText?`Full verses are matched by this text’s catalog ID${fullText.source?` and attributed to ${esc(fullText.source)}`:''}. Check the linked source for edition differences.`:'This CSV record contains an opening line, not complete verses. No verified translated counterpart is linked to this record.'}</p></aside>
     <a class="btn btn-outline source-text-link" href="https://hymnary.org/text/${encodeURIComponent(row.textAuthNumber)}" target="_blank" rel="noopener noreferrer">View full text &amp; versions on Hymnary.org ${icon('stage')}</a>
     <div class="reader-actions"><button class="btn btn-dark" data-practice>${icon('music')} Open practice player</button><button class="btn btn-outline" data-add-service="${esc(row.textAuthNumber)}">${icon('plus')} Add to service</button></div></section>`;
 }
@@ -196,6 +216,6 @@ function stopPractice(){if(player.timer)clearTimeout(player.timer);player.timer=
 function showQuickDetail(row){const prev=$('.quick-detail-backdrop');prev?.remove();const wrap=document.createElement('div');wrap.className='quick-detail-backdrop';wrap.innerHTML=`<div class="quick-detail">${detail(row)}<button class="quick-close" aria-label="Close">${icon('close')}</button></div>`;document.body.append(wrap);wrap.addEventListener('click',e=>{if(e.target===wrap||e.target.closest('.quick-close'))wrap.remove()});bindQuick(wrap)}
 function bindQuick(wrap){wrap.querySelector('[data-save]')?.addEventListener('click',e=>{const id=e.currentTarget.dataset.save;saved.has(id)?saved.delete(id):saved.add(id);localStorage.setItem('bbh-saved',JSON.stringify([...saved]));wrap.remove();render()});wrap.querySelector('[data-add-service]')?.addEventListener('click',e=>{const r=data.detailRow;service.push({id:r.textAuthNumber,title:r.displayTitle||r.textTitle,firstLine:r.firstLine||'Opening line not listed',kind:'Congregational singing'});saveService();wrap.remove();announce('Added to your order of service.')})}
 function openStage(){const row=data.rows.find(r=>r.textAuthNumber===data.selected)||results('',1)[0];if(!row){announce('Load the index to open stage view.');return}const w=window.open('','_blank');if(!w)return;w.document.write(`<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stage · Bilingual Baptist Hymnal</title><style>body{margin:0;background:#003049;color:#fff7e8;font:clamp(22px,3.5vw,54px)/1.55 Georgia,serif;display:grid;place-items:center;min-height:100vh;text-align:center;padding:4rem;box-sizing:border-box}small{display:block;font:600 12px/1 sans-serif;letter-spacing:.18em;color:#ffca4b;margin:1rem}h1{font-size:1.5em;margin:.6em auto;max-width:24ch}p{max-width:42ch;margin:1em auto}.meta{font:16px sans-serif;color:#a6c7d7}</style></head><body><main><small>TEXT CATALOG · OPENING LINE</small><h1>${esc(row.displayTitle||row.textTitle)}</h1><p>${esc(row.firstLine||'No opening line is listed.')}</p><div class="meta">${esc(row.languages||'Language not specified')} · ${esc(row.authors||'Author not listed')}</div></main></body></html>`);w.document.close()}
-function init(){if(localStorage.getItem('bbh-theme')==='dark')document.documentElement.classList.add('dark');render();if(data.view!=='data')loadIndex();if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});}
+function init(){if(localStorage.getItem('bbh-theme')==='dark')document.documentElement.classList.add('dark');render();if(data.view!=='data')loadIndex();loadFullTexts();if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});}
 window.addEventListener('hashchange',()=>{const route=location.hash.slice(1).split('/')[0];if(validViews.includes(route)){data.view=route;render();if(route!=='data'&&!data.rows.length&&!data.searchBusy)loadIndex()}});
 init();

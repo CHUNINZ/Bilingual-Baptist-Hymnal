@@ -127,6 +127,9 @@ button .ui-icon{pointer-events:none}
 .reader-title,.player-page>h1{font:700 clamp(32px,6vw,48px)/1.12 var(--serif);color:var(--navy);margin:0 0 10px}
 .reader-byline,.player-byline{font-size:14px;line-height:1.55;color:#475961;margin:0 0 23px}
 .reader-lyrics{padding:0 0 8px}
+.reader-lyrics.has-full-text{max-width:70ch}
+.reader-verse{white-space:pre-line}
+.reader-verse>span{font:600 12px var(--mono);color:#967735;vertical-align:middle;margin-right:5px}
 .reader-lyrics>p,.reader-refrain>p,.player-excerpt>p{font:400 calc(clamp(23px,5.8vw,38px)*var(--reader-scale,1))/1.5 var(--serif);color:var(--navy);margin:10px 0 20px;overflow-wrap:anywhere}
 .reader-refrain{padding:19px 20px 16px;border:1px solid #ffffffd9;border-radius:24px;background:#fffdf2d9;margin:22px 0}
 .reader-refrain>span{font:700 10px var(--mono);letter-spacing:.1em;color:#45565b}
