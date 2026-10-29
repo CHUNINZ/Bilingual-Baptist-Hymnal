@@ -32,7 +32,7 @@ def load_local_csv_lookups():
     """Load supplemental data from local CSVs if present in the working directory."""
     lookups = {"texts": {}, "people": {}}
     
-    texts_path = Path("public/data/texts.csv")
+    texts_path = Path("source-data/texts.csv")
     if not texts_path.exists():
         texts_path = Path("texts.csv")
     if texts_path.exists():

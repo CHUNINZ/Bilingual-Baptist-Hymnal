@@ -3,8 +3,8 @@ import gzip
 import json
 from pathlib import Path
 
-source = Path("public/data/texts.csv")
-target = Path("public/data/texts-index.json.gz")
+source = Path("source-data/texts.csv")
+target = Path("source-data/texts-index.json.gz")
 fields = ["displayTitle", "firstLine", "textTitle", "refrainFirstLine", "textAuthNumber", "languages", "authors", "yearsWrote", "meter", "totalInstances"]
 with source.open(encoding="utf-8-sig", newline="") as f:
     rows = [{key: (row.get(key) or "") for key in fields} for row in csv.DictReader(f)]

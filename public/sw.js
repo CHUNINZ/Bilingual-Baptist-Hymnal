@@ -1,4 +1,4 @@
-const CACHE = 'bbh-shell-v7';
+const CACHE = 'bbh-shell-v8';
 const SHELL = ['/', '/src/main.js', '/src/style.css', '/manifest.webmanifest', '/hymnal-icon.svg'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -14,7 +14,7 @@ self.addEventListener('fetch', event => {
       const cached = await cache.match(event.request);
       if (cached) return cached;
       const response = await fetch(event.request);
-      if (response.ok) cache.put(event.request, response.clone());
+      if (response.ok) await cache.put(event.request, response.clone());
       return response;
     }));
     return;
