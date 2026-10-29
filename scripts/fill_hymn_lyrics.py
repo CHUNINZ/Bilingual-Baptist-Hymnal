@@ -101,6 +101,12 @@ def allowed_license(value):
     return bool(re.search(r"\b(public domain|cc0|cc-by(?:-sa)?(?:\s|[-.]|$)|creative commons attribution)\b", license_text))
 
 
+def localized_verses(verses, language):
+    lang = (language or "").lower()
+    field = "tagalog" if re.search(r"tagalog|filipino", lang) else "english" if "english" in lang else "text"
+    return [{"number": verse["number"], field: verse["text"]} for verse in verses]
+
+
 def safe_text_url(record):
     url = record.get("textLink") or f"https://hymnary.org/text/{record.get('textAuthNumber', '')}"
     parsed = urlparse(url)
@@ -157,11 +163,12 @@ def main():
         if not verses:
             print(f"{key}: no structured representative text found")
             continue
+        language = info["language"] or record.get("language", "")
         found[key] = {
             "textAuthNumber": key,
             "title": record.get("title", ""),
-            "language": info["language"] or record.get("language", ""),
-            "verses": verses,
+            "language": language,
+            "verses": localized_verses(verses, language),
             "refrain": refrain,
             "source": info["source"] or "Hymnary.org",
             "sourceUrl": url,
