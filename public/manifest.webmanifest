@@ -1,0 +1,10 @@
+{
+  "name": "Bilingual Baptist Hymnal",
+  "short_name": "Hymnal",
+  "description": "Search hymns, prepare a service and explore open hymnology data.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf0d9",
+  "theme_color": "#003049",
+  "icons": [{"src":"/hymnal-icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
