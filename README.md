@@ -20,6 +20,12 @@ Vercel uses the **Other** framework preset, `npm run build` and `public` as the 
 
 The provided text file contains catalog metadata and opening lines, not full verse transcriptions. The supplied files do not contain reliable hymn translation links, per-hymn hymnal page mappings, Scripture references, or SATB arrangements. Audio is therefore a clearly labeled synthesized chord exercise, not a hymn performance. No external search API is configured.
 
+## Supplemental full-text collection
+
+The app also loads 300 English hymns from the [Watchman collection](https://github.com/h1rdr3v2/open-hymnal-json/tree/main/hymns/watchman), distributed in `public/data/watchman-hymns.json`. Search includes title, source hymn number, and complete verse/chorus text. Selecting one opens its lyrics in the reader and Stage view, and it can be saved or added to a service order. This is a distinct collection: it is not a Baptist-only hymnal, has no Tagalog counterpart data, and its numbered records are not merged with similarly titled CSV texts. See `public/data/watchman-hymns-LICENSE.txt` for the included MIT license notice.
+
+The source repository describes the Watchman collection as English hymns; it does not make the supplied CSV catalog into a full-lyrics archive. The original CSVs remain available separately and their records continue to display only their supplied opening lines unless an exact-ID full-text overlay is present.
+
 ## Optional full-text overlay
 
 The reader can display complete verses from `public/data/hymn-lyrics.json`. This must be a JSON array whose records use the exact `textAuthNumber` from `texts.csv`. A verse may contain `english`, `tagalog`, or generic `text` fields. When both `english` and `tagalog` are present for every verse, the reader displays aligned language columns on desktop and stacked columns on mobile. Optional record fields include `language`, `refrain`, `source`, `sourceUrl`, and `license`. The app joins lyrics by that exact catalog ID; it never matches verses by title alone. If an ID has no usable lyric entry, the reader shows only the supplied opening line.
