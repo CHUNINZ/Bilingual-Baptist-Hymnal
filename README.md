@@ -12,6 +12,8 @@ python scripts/serve.py
 
 Then open `http://localhost:8000`. The service worker requires localhost or HTTPS.
 
+Vercel uses the **Other** framework preset, `npm run build` and `public` as the output directory. The build copies the root app entry points into `public/` alongside the datasets and PWA assets.
+
 ## Data
 
 `public/data/texts-index.json.gz` is a compact search index built from `public/data/texts.csv`. Rebuild it after changing the source CSV with `python scripts/build-index.py`. Original CSV files remain available from Open Data.

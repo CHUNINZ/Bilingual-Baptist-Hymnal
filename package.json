@@ -2,5 +2,5 @@
   "name": "bilingual-baptist-hymnal",
   "version": "1.0.0",
   "private": true,
-  "scripts": { "dev": "python scripts/serve.py", "build": "python scripts/build-index.py", "preview": "python scripts/serve.py" }
+  "scripts": { "dev": "python scripts/serve.py", "build": "node scripts/build.mjs", "preview": "python scripts/serve.py" }
 }
