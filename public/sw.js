@@ -1,4 +1,4 @@
-const CACHE = 'bbh-shell-v2';
+const CACHE = 'bbh-shell-v3';
 const SHELL = ['/', '/src/main.js', '/src/style.css', '/manifest.webmanifest', '/hymnal-icon.svg'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL)).then(() => self.skipWaiting()));
