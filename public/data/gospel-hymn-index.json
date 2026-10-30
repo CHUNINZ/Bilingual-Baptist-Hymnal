@@ -1,0 +1,848 @@
+{
+  "source": "Gospel Hymns & Songs",
+  "sourceUrl": "https://github.com/marvinjude/gospel-hymns/tree/master/Hymns",
+  "licenseStatus": "No redistribution license identified; metadata index only, no lyrics included.",
+  "lyricsIncluded": false,
+  "hymns": [
+    {
+      "number": "2",
+      "title": "Come Unto Me",
+      "category": "admonition"
+    },
+    {
+      "number": "3",
+      "title": "Impatient Heart Be Still",
+      "category": "admonition"
+    },
+    {
+      "number": "5",
+      "title": "Never Give Up",
+      "category": "admonition"
+    },
+    {
+      "number": "7",
+      "title": "Turn Your Eyes Unto Jesus",
+      "category": "admonition"
+    },
+    {
+      "number": "10",
+      "title": "Oh For A Thousand",
+      "category": "adoration"
+    },
+    {
+      "number": "12",
+      "title": "Praise Him Praise Him Jesus Our Blessed",
+      "category": "adoration"
+    },
+    {
+      "number": "17",
+      "title": "Nothing But The Blood",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "22",
+      "title": "Simply Trusting Everyday",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "25",
+      "title": "Now I Belong To Jesus",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "26",
+      "title": "I Know Whom I Have Believed",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "27",
+      "title": "I Am Bound For Canan",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "28",
+      "title": "I Am Living In Cannan",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "29",
+      "title": "I Know Who Holds Tomorrow",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "34",
+      "title": "Constantly Abiding",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "35",
+      "title": "A New Name In Glory",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "36",
+      "title": "My Name's Written There",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "38",
+      "title": "Have You Been To Jesus",
+      "category": "blood of jesus"
+    },
+    {
+      "number": "39",
+      "title": "Power In The Blood",
+      "category": "blood of jesus"
+    },
+    {
+      "number": "40",
+      "title": "Wash Me O Lamb Of God",
+      "category": "blood of jesus"
+    },
+    {
+      "number": "42",
+      "title": "Close To Thee",
+      "category": "christian life"
+    },
+    {
+      "number": "45",
+      "title": "Jesus My Strengh My Hope",
+      "category": "christian life"
+    },
+    {
+      "number": "46",
+      "title": "A Christian Home",
+      "category": "christian life"
+    },
+    {
+      "number": "48",
+      "title": "Tis So Sweet To Trust",
+      "category": "NOT FOUND"
+    },
+    {
+      "number": "51",
+      "title": "That Blessed Canan Land",
+      "category": "christian life"
+    },
+    {
+      "number": "52",
+      "title": "Count Me",
+      "category": "christian life"
+    },
+    {
+      "number": "54",
+      "title": "I Am Ready For Service",
+      "category": "christian service & reward"
+    },
+    {
+      "number": "56",
+      "title": "I Love My Master",
+      "category": "christian service & reward"
+    },
+    {
+      "number": "57",
+      "title": "They That Wait Upon The Lord",
+      "category": "christian service & reward"
+    },
+    {
+      "number": "58",
+      "title": "The Last Mile Of The Way",
+      "category": "christian service & reward"
+    },
+    {
+      "number": "59",
+      "title": "Little Is Much When God Is In It",
+      "category": "christian service & reward"
+    },
+    {
+      "number": "60",
+      "title": "Where Could I Go",
+      "category": "christian service & reward"
+    },
+    {
+      "number": "61",
+      "title": "Lord Speak To Me",
+      "category": "christian service & reward"
+    },
+    {
+      "number": "62",
+      "title": "Go Labor On",
+      "category": "christian service & reward"
+    },
+    {
+      "number": "65",
+      "title": "Oh How I Love Jeus",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "66",
+      "title": "Jesus Is The Sweetest",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "68",
+      "title": "Like A Shepherd Lead Us",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "69",
+      "title": "Christ Be Beside Me",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "70",
+      "title": "Have You Any Room For Jesus",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "71",
+      "title": "I Want To See Jesus Dont You",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "72",
+      "title": "The Solid Rock",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "74",
+      "title": "The Heart That Was Broken For Me",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "77",
+      "title": "I Have Decided To Follow Jesus",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "79",
+      "title": "The Way Of The Cross",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "81",
+      "title": "Lead Me To Calvary",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "85",
+      "title": "Give Of Your Best To The Master",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "86",
+      "title": "Nothing Between",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "87",
+      "title": "Take My Life",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "88",
+      "title": "Wherever He Leads I'll Go",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "90",
+      "title": "Oh Love That Will Not Let Me Go",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "91",
+      "title": "Where He Leads Me",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "93",
+      "title": "More Love To Thee",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "94",
+      "title": "Draw Me Nearer Blessed Jesus",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "95",
+      "title": "Come Saviour Jesus From Above",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "96",
+      "title": "Peace Be Still",
+      "category": "conflict & victory"
+    },
+    {
+      "number": "97",
+      "title": "Oft In Danger Oft In Woe",
+      "category": "conflict & victory"
+    },
+    {
+      "number": "98",
+      "title": "The Song Of The Solider",
+      "category": "conflict & victory"
+    },
+    {
+      "number": "99",
+      "title": "There Is Victory Within My Soul",
+      "category": "conflict & victory"
+    },
+    {
+      "number": "100",
+      "title": "Christ Our Mighty Captain",
+      "category": "conflict & victory"
+    },
+    {
+      "number": "101",
+      "title": "My Father Knows",
+      "category": "conflict & victory"
+    },
+    {
+      "number": "102",
+      "title": "The Healer",
+      "category": "divine healing"
+    },
+    {
+      "number": "103",
+      "title": "He Healed Them All",
+      "category": "divine healing"
+    },
+    {
+      "number": "104",
+      "title": "Tell Somebody",
+      "category": "evangelism"
+    },
+    {
+      "number": "105",
+      "title": "I'll Tell The World",
+      "category": "evangelism"
+    },
+    {
+      "number": "106",
+      "title": "Tell The Whole Wide",
+      "category": "evangelism"
+    },
+    {
+      "number": "107",
+      "title": "Send The Gospel Light",
+      "category": "evangelism"
+    },
+    {
+      "number": "108",
+      "title": "Must I Go And Empty Handed",
+      "category": "evangelism"
+    },
+    {
+      "number": "113",
+      "title": "Go And Tell The Story",
+      "category": "evangelism"
+    },
+    {
+      "number": "115",
+      "title": "Lift Him Up",
+      "category": "evangelism"
+    },
+    {
+      "number": "116",
+      "title": "Carry Your Bible",
+      "category": "evangelism"
+    },
+    {
+      "number": "117",
+      "title": "Show A Little Bit Of Love And Kindness",
+      "category": "evangelism"
+    },
+    {
+      "number": "119",
+      "title": "Do Something For Others",
+      "category": "evangelism"
+    },
+    {
+      "number": "120",
+      "title": "Speak A Word For Jesus",
+      "category": "evangelism"
+    },
+    {
+      "number": "121",
+      "title": "Somebody Else Needs Him Too",
+      "category": "evangelism"
+    },
+    {
+      "number": "122",
+      "title": "Somebody Needs Your Love",
+      "category": "evangelism"
+    },
+    {
+      "number": "123",
+      "title": "No One Like My Saviour",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "125",
+      "title": "Wondeful Grace Of Jesus",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "126",
+      "title": "Great God Of Wonders",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "128",
+      "title": "Vicory In Jesus",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "129",
+      "title": "Grace Greater Than Our Sin",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "134",
+      "title": "And Can It Be That I Should Gain",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "136",
+      "title": "At Calvary",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "139",
+      "title": "Beautiful Home",
+      "category": "heaven"
+    },
+    {
+      "number": "140",
+      "title": "Laying My Treasure Up There",
+      "category": "heaven"
+    },
+    {
+      "number": "141",
+      "title": "I Shall See The King",
+      "category": "heaven"
+    },
+    {
+      "number": "142",
+      "title": "Holy Holy Is What The Angels Sing",
+      "category": "heaven"
+    },
+    {
+      "number": "143",
+      "title": "The End Of The Road",
+      "category": "heaven"
+    },
+    {
+      "number": "144",
+      "title": "I Wont Have To Cross Jordan Alone",
+      "category": "heaven"
+    },
+    {
+      "number": "145",
+      "title": "When They Ring The Golden Bell",
+      "category": "heaven"
+    },
+    {
+      "number": "147",
+      "title": "Sweet By And By",
+      "category": "heaven"
+    },
+    {
+      "number": "148",
+      "title": "No Tears In Heaven",
+      "category": "heaven"
+    },
+    {
+      "number": "149",
+      "title": "Farther Along",
+      "category": "heaven"
+    },
+    {
+      "number": "150",
+      "title": "Pentecostal Power",
+      "category": "holy spirit"
+    },
+    {
+      "number": "156",
+      "title": "Room At The Cross For You",
+      "category": "invitation"
+    },
+    {
+      "number": "157",
+      "title": "Wandering Child O Come Home",
+      "category": "invitation"
+    },
+    {
+      "number": "158",
+      "title": "Come Believing",
+      "category": "invitation"
+    },
+    {
+      "number": "160",
+      "title": "The Shepherd Of Love",
+      "category": "invitation"
+    },
+    {
+      "number": "161",
+      "title": "Who'll Be The Next To Follow Jesus",
+      "category": "invitation"
+    },
+    {
+      "number": "163",
+      "title": "My God Is An Hour So Sweet",
+      "category": "prayer"
+    },
+    {
+      "number": "164",
+      "title": "Prayer Is The Soul S Sincere Desire",
+      "category": "prayer"
+    },
+    {
+      "number": "166",
+      "title": "Did You Think To Pray",
+      "category": "prayer"
+    },
+    {
+      "number": "171",
+      "title": "Pass Me Not",
+      "category": "prayer"
+    },
+    {
+      "number": "173",
+      "title": "Is It The Crowning Day",
+      "category": "rapture"
+    },
+    {
+      "number": "174",
+      "title": "Jesus Is Coming Again",
+      "category": "rapture"
+    },
+    {
+      "number": "175",
+      "title": "He Is Comimg Again",
+      "category": "rapture"
+    },
+    {
+      "number": "176",
+      "title": "Christ Returneth",
+      "category": "NOT FOUND"
+    },
+    {
+      "number": "178",
+      "title": "Fill My Cup Lord",
+      "category": "sanctification"
+    },
+    {
+      "number": "180",
+      "title": "Since The Son Hath Made Me Free",
+      "category": "sanctification"
+    },
+    {
+      "number": "182",
+      "title": "Blessed Are The Pure In Heart",
+      "category": "sanctification"
+    },
+    {
+      "number": "183",
+      "title": "Come O My God The Promise Seal",
+      "category": "sanctification"
+    },
+    {
+      "number": "184",
+      "title": "Saviour From Sin I Wait To Prove",
+      "category": "sanctification"
+    },
+    {
+      "number": "185",
+      "title": "The Thing My God Doth Hate",
+      "category": "sanctification"
+    },
+    {
+      "number": "186",
+      "title": "God Of All Power And Truth And Grace",
+      "category": "sanctification"
+    },
+    {
+      "number": "187",
+      "title": "Jesus All Atoning Lamb",
+      "category": "sanctification"
+    },
+    {
+      "number": "188",
+      "title": "O Lord How Happy Should We Be",
+      "category": "sanctification"
+    },
+    {
+      "number": "191",
+      "title": "Come Holy Ghost All Quickening Fire",
+      "category": "sanctification"
+    },
+    {
+      "number": "192",
+      "title": "O For A Heart To Praise My God",
+      "category": "sanctification"
+    },
+    {
+      "number": "193",
+      "title": "Another Year",
+      "category": "special occasions"
+    },
+    {
+      "number": "194",
+      "title": "O Day Of Rest And Gladness",
+      "category": "special occasions"
+    },
+    {
+      "number": "195",
+      "title": "Another Year Is Dawning",
+      "category": "special occasions"
+    },
+    {
+      "number": "197",
+      "title": "Love Found A Way",
+      "category": "The lord's love and care"
+    },
+    {
+      "number": "198",
+      "title": "His Love Can Never Fail",
+      "category": "The lord's love and care"
+    },
+    {
+      "number": "199",
+      "title": "Resting In His Love",
+      "category": "The lord's love and care"
+    },
+    {
+      "number": "200",
+      "title": "The Ninety And Nine",
+      "category": "The lord's love and care"
+    },
+    {
+      "number": "201",
+      "title": "Love Lifted Me",
+      "category": "The lord's love and care"
+    },
+    {
+      "number": "202",
+      "title": "Wonderful Story Of Love",
+      "category": "The lord's love and care"
+    },
+    {
+      "number": "203",
+      "title": "There Is No Love Like The Love Of Jesus",
+      "category": "The lord's love and care"
+    },
+    {
+      "number": "208",
+      "title": "The Great Judgement Morning",
+      "category": "warning & judgment"
+    },
+    {
+      "number": "209",
+      "title": "I Will Not Forget Thee",
+      "category": "The lord's love and care"
+    },
+    {
+      "number": "211",
+      "title": "Crown Him With Many Crowns",
+      "category": "adoration"
+    },
+    {
+      "number": "212",
+      "title": "Jesus Shall Reign",
+      "category": "adoration"
+    },
+    {
+      "number": "213",
+      "title": "Rejoice The Lord Is King",
+      "category": "adoration"
+    },
+    {
+      "number": "214",
+      "title": "All Hail The Power Of Jesus",
+      "category": "adoration"
+    },
+    {
+      "number": "215",
+      "title": "Ohappy Day That Fixed My Choice",
+      "category": "special occasions"
+    },
+    {
+      "number": "217",
+      "title": "O Perfect Love All Human Thought Transcending",
+      "category": "christian life"
+    },
+    {
+      "number": "218",
+      "title": "Love Divine All Loves",
+      "category": "The lord's love and care"
+    },
+    {
+      "number": "219",
+      "title": "More More Holiness Give Me",
+      "category": "sanctification"
+    },
+    {
+      "number": "220",
+      "title": "When I Saw The Cleansing Fountain",
+      "category": "blood of jesus"
+    },
+    {
+      "number": "221",
+      "title": "Lets Not Thy Hands Be Slack",
+      "category": "evangelism"
+    },
+    {
+      "number": "222",
+      "title": "Speed Thy Servants Saviour Speed Them",
+      "category": "evangelism"
+    },
+    {
+      "number": "224",
+      "title": "Oh The Bitter Shame And Sorrow",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "225",
+      "title": "Burn Fire Of God",
+      "category": "holy spirit"
+    },
+    {
+      "number": "226",
+      "title": "Thy Blessed Will Divine",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "230",
+      "title": "Bring Your Vessel Not A Few",
+      "category": "holy spirit"
+    },
+    {
+      "number": "231",
+      "title": "Send The Light",
+      "category": "evangelism"
+    },
+    {
+      "number": "232",
+      "title": "Blest Be The Tie That Binds",
+      "category": "christian life"
+    },
+    {
+      "number": "234",
+      "title": "O Lord With One Accord",
+      "category": "holy spirit"
+    },
+    {
+      "number": "235",
+      "title": "The Holy Spirit's Power",
+      "category": "holy spirit"
+    },
+    {
+      "number": "236",
+      "title": "Lord God The Holyghost",
+      "category": "holy spirit"
+    },
+    {
+      "number": "238",
+      "title": "Thou Hidden Source Of Calm Repose",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "239",
+      "title": "One There Is Above All Others",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "240",
+      "title": "Jesus Is The Same Forever",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "241",
+      "title": "I've Found The Pearl Of Greatest Peice",
+      "category": "adoration"
+    },
+    {
+      "number": "242",
+      "title": "A Good High Priest Is Come",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "243",
+      "title": "Standing On The Promises",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "246",
+      "title": "O Brother Life S Journey Beginning",
+      "category": "conflict & victory"
+    },
+    {
+      "number": "247",
+      "title": "The Finished The Messiah Dies",
+      "category": "christ our saviour"
+    },
+    {
+      "number": "248",
+      "title": "The Mercy Seat",
+      "category": "conflict & victory"
+    },
+    {
+      "number": "249",
+      "title": "Come Sing The Praise Of Jesus",
+      "category": "adoration"
+    },
+    {
+      "number": "250",
+      "title": "For My Sake And The Gospel S Go",
+      "category": "evangelism"
+    },
+    {
+      "number": "251",
+      "title": "Only Remembered",
+      "category": "christian service & reward"
+    },
+    {
+      "number": "252",
+      "title": "It Is Morning In My Heart",
+      "category": "adoration"
+    },
+    {
+      "number": "253",
+      "title": "My Portion Forever",
+      "category": "commitment & consecration"
+    },
+    {
+      "number": "254",
+      "title": "Lower And Lower",
+      "category": "assurance & confidence"
+    },
+    {
+      "number": "255",
+      "title": "Let The Fire Fall",
+      "category": "holy spirit"
+    },
+    {
+      "number": "256",
+      "title": "Redeemed",
+      "category": "grace & forgiveness"
+    },
+    {
+      "number": "257",
+      "title": "Jesus Send More Labourers",
+      "category": "evangelism"
+    },
+    {
+      "number": "259",
+      "title": "More Like The Master",
+      "category": "christian life"
+    },
+    {
+      "number": "260",
+      "title": "Gracious Spirit Dwell With Me",
+      "category": "invitation"
+    }
+  ]
+}

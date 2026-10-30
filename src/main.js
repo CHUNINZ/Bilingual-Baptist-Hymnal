@@ -3,7 +3,7 @@ const app = $('#app');
 const params = new URLSearchParams(location.search);
 const validViews=['hymns','search','browse','saved','order','data','reader','player'];
 const hashView=location.hash.slice(1).split('/')[0];
-const data = { watchmanRows: [], view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
+const data = { watchmanRows: [], metadataRows: [], view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
 const player = { key:0, tempo:72, parts:{S:true,A:true,T:true,B:true}, playing:false, sources:[], timer:null, returnView:'reader' };
 const esc = (s = '') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const iconPaths = {
@@ -78,6 +78,26 @@ async function loadWatchmanCollection(){
         fullTextData:{language:'English',source:'Open Hymnal JSON · Watchman collection',verses:lyrics}
       };
     });
+    try{
+      const indexResponse=await fetch('/data/gospel-hymn-index.json');
+      if(indexResponse.ok){
+        const index=await indexResponse.json();
+        data.metadataRows=(Array.isArray(index.hymns)?index.hymns:[]).filter(h=>h&&h.title).map(h=>({
+          textAuthNumber:`gospel_index_${h.number}`,
+          displayTitle:h.title,
+          textTitle:h.title,
+          firstLine:'',
+          languages:'English',
+          authors:'',
+          supplemental:true,
+          metadataOnly:true,
+          hymnNumber:h.number,
+          category:h.category||'',
+          sourceCollection:'Gospel Hymns & Songs index',
+          sourceUrl:index.sourceUrl
+        }));
+      }
+    }catch{}
     if(!data.watchmanRows.length)throw new Error('The full-lyrics collection is empty.');
   }catch(err){data.indexError=err.message||'The full-lyrics collection could not be loaded.'}
   data.searchBusy=false;render();
@@ -85,18 +105,18 @@ async function loadWatchmanCollection(){
 
 const languages = ['All languages','English'];
 const langMatch = (row, lang) => lang === 'All languages' || (row.languages || '').toLowerCase().includes(lang.toLowerCase());
-function allCatalogRows(){return data.watchmanRows}
-function findText(id){return data.watchmanRows.find(row=>row.textAuthNumber===id)}
+function allCatalogRows(){return [...data.watchmanRows,...data.metadataRows]}
+function findText(id){return allCatalogRows().find(row=>row.textAuthNumber===id)}
 function results(query = data.query, limit = 80) {
   const q = query.trim().toLocaleLowerCase();
   const terms = q.split(/\s+/).filter(Boolean);
-  const catalog=data.watchmanRows;
+  const catalog=allCatalogRows();
   if (!terms.length) return catalog.filter(row=>langMatch(row,data.filter)).slice(0,limit);
   const hits = [];
   for (const row of catalog) {
       if (!langMatch(row, data.filter)) continue;
       const verses=row.fullTextData?.verses?.map(verse=>verse.text||'').join(' ')||'';
-      const hay = `${row.displayTitle} ${row.textTitle} ${row.firstLine} ${row.refrainFirstLine} ${row.authors} ${row.textAuthNumber} ${row.meter} ${row.languages} ${verses}`.toLocaleLowerCase();
+      const hay = `${row.displayTitle} ${row.textTitle} ${row.firstLine} ${row.refrainFirstLine} ${row.authors} ${row.textAuthNumber} ${row.hymnNumber} ${row.category} ${row.meter} ${row.languages} ${verses}`.toLocaleLowerCase();
       if (terms.every(term => hay.includes(term))) hits.push(row);
       if (hits.length >= limit) return hits;
     }
@@ -105,10 +125,13 @@ function results(query = data.query, limit = 80) {
 function chips(label, values) { return `<div class="pills" role="group" aria-label="${esc(label)}">${values.map(v=>`<button class="pill ${data.filter===v?'active':''}" data-filter="${esc(v)}">${esc(v)}</button>`).join('')}</div>`; }
 function resultCard(row, i = 0) {
   const id = row.textAuthNumber || row.displayTitle;
-  return `<button class="result-row ${data.selected===id?'chosen':''}" data-result="${esc(id)}"><span class="result-num">${row.supplemental?esc(row.hymnNumber):icon('arrow')}</span><span class="result-copy"><strong>${esc(row.displayTitle || row.textTitle || 'Untitled text')}</strong><span>${esc(row.firstLine || row.refrainFirstLine || 'Opening line not listed')}</span></span><span class="result-lang">${esc(row.languages || 'Language not specified')}</span></button>`;
+  const summary=row.metadataOnly?[row.category,'Title and catalog details only · lyrics unavailable'].filter(Boolean).join(' · '):(row.firstLine || row.refrainFirstLine || 'Opening line not listed');
+  const status=row.metadataOnly?'Metadata only · GHS':(row.languages || 'Language not specified');
+  return `<button class="result-row ${data.selected===id?'chosen':''}" data-result="${esc(id)}"><span class="result-num">${row.supplemental?esc(row.hymnNumber):icon('arrow')}</span><span class="result-copy"><strong>${esc(row.displayTitle || row.textTitle || 'Untitled text')}</strong><span>${esc(summary)}</span></span><span class="result-lang">${esc(status)}</span></button>`;
 }
 function detail(row) {
   if (!row) return `<section class="reader-empty"><div class="empty-icon">${icon('music')}</div><h2>No hymn selected</h2><p>Choose a hymn to read its complete lyrics.</p><button class="btn btn-dark" data-view="search">${icon('search')} Find a hymn</button></section>`;
+  if(row.metadataOnly)return `<section class="reader-view metadata-record"><header class="reader-toolbar"><button class="round-control" data-back aria-label="Back to catalog">${icon('back')}</button><span class="reader-record-label">CATALOG NO. ${esc(row.hymnNumber)}</span></header><span class="eyebrow">GOSPEL HYMNS &amp; SONGS · INDEX ENTRY</span><h1 class="reader-title">${esc(row.displayTitle)}</h1>${row.category?`<p class="reader-byline">Category: ${esc(row.category)}</p>`:''}<article class="reader-lyrics"><h2>Lyrics aren’t included in this catalog entry</h2><p>This entry contains its title, source hymn number, and category only.</p><a class="btn btn-outline" href="${esc(row.sourceUrl)}" target="_blank" rel="noopener">View source index ${icon('stage')}</a></article></section>`;
   const authors = row.authors ? row.authors.split(/\s*;\s*/).join(' · ') : '';
   const bylineText=[authors,row.yearsWrote,row.meter?`Meter ${row.meter}`:''].filter(Boolean).join(' · ');
   const language=esc(row.languages || 'Language not specified');
@@ -152,7 +175,7 @@ function renderSearch(){
   const hasMore=found.length>data.searchLimit;
   const matches=found.slice(0,data.searchLimit);
   const body=data.searchBusy?'<div class="loading"><span class="spinner"></span>Preparing the full-lyrics collection…</div>':data.indexError?`<div class="notice">${esc(data.indexError)} <button class="text-button" data-retry>Try again</button></div>`:!data.query?`<div class="search-prompt"><span>${icon('search')}</span><h2>Search the hymnal</h2><p>Search hymn titles, numbers, and complete lyrics.</p></div>`:matches.length?`<div class="results-panel search-results"><div class="panel-heading"><h2>${hasMore?`Showing ${matches.length} of more hymns`:`All ${matches.length} matching hymns`} for “${esc(data.query)}”</h2></div><div class="results-list">${matches.map(resultCard).join('')}</div>${hasMore?`<div class="load-more-wrap"><button class="btn btn-outline" data-load-more>Load 80 more results</button></div>`:''}</div>`:`<div class="empty-state"><span>${icon('search')}</span><h2>No matching hymns found</h2><p>Try a title, hymn number, or lyric phrase.</p><button class="btn btn-outline" data-clear-query>Clear search</button></div>`;
-  return `<section class="search-view"><div class="search-toolbar"><button class="round-control" data-view="hymns" aria-label="Back to hymns">${icon('back')}</button><label class="search-box"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Search full-lyrics hymns" value="${esc(data.query)}" type="search" placeholder="Search titles, numbers, or lyrics" autocomplete="off"/><kbd>${icon('enter')}</kbd></label></div><header class="page-head compact"><div><span class="eyebrow">300 FULL-LYRIC HYMNS</span><h1>Search <em>the hymnal.</em></h1><p class="page-lede">Find a hymn by title, number, or any line of its lyrics.</p></div></header><div class="search-language">${chips('Filter by language',languages)}</div>${body}</section>`;
+  return `<section class="search-view"><div class="search-toolbar"><button class="round-control" data-view="hymns" aria-label="Back to hymns">${icon('back')}</button><label class="search-box"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Search hymn titles, numbers, or lyrics" value="${esc(data.query)}" type="search" placeholder="Search titles, numbers, or lyrics" autocomplete="off"/><kbd>${icon('enter')}</kbd></label></div><header class="page-head compact"><div><span class="eyebrow">${data.watchmanRows.length||300} FULL-LYRIC HYMNS · ${data.metadataRows.length} TITLE INDEX ENTRIES</span><h1>Search <em>the hymnal.</em></h1><p class="page-lede">Find full lyrics by title, number, or lyric line, or search additional title and category records.</p></div></header><div class="search-language">${chips('Filter by language',languages)}</div>${body}</section>`;
 }
 function renderBrowse() {
   const tabs=['A–Z','Number','Topic'];
@@ -161,10 +184,10 @@ function renderBrowse() {
   const catalogRows=allCatalogRows();
   const pool=data.query?results(data.query,500):catalogRows.filter(r=>langMatch(r,data.filter));
   const filtered=pool.slice().sort((a,b)=>(a[key]||'').localeCompare(b[key]||'')).slice(0,100);
-  const numbered=data.watchmanRows.slice().sort((a,b)=>Number(a.hymnNumber)-Number(b.hymnNumber)).slice(0,100);
-  const numberContent=`<section class="results-panel browse-results"><div class="results-list">${numbered.map(resultCard).join('')}</div></section><p class="data-footnote">All ${data.watchmanRows.length} full-lyrics hymns by source hymn number.</p>`;
+  const numbered=catalogRows.slice().sort((a,b)=>Number(a.hymnNumber)-Number(b.hymnNumber)).slice(0,100);
+  const numberContent=`<section class="results-panel browse-results"><div class="results-list">${numbered.map(resultCard).join('')}</div></section><p class="data-footnote">${data.watchmanRows.length} full-lyrics hymns plus ${data.metadataRows.length} title and catalog entries by source hymn number.</p>`;
   const content=data.browse==='A–Z'?`<label class="search-box browse-search"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Filter hymn titles A to Z" value="${esc(data.query)}" type="search" placeholder="Filter titles A–Z"/><kbd>${icon('enter')}</kbd></label><section class="results-panel browse-results"><div class="results-list">${filtered.map(resultCard).join('')||'<div class="no-results">No hymns to show.</div>'}</div></section><p class="data-footnote">Showing up to 100 hymns in alphabetical order.</p>`:data.browse==='Number'?numberContent:`<div class="topic-note">Choose a worship topic to search the full lyrics.</div><div class="topic-list">${topics.map(([topic,term])=>`<button class="topic-row" data-topic="${esc(term)}"><span class="topic-mark">${icon('music')}</span><span><strong>${esc(topic)}</strong><small>Search “${esc(term)}” in the full lyrics</small></span>${icon('arrow')}</button>`).join('')}</div>`;
-  return `<section class="browse-view"><header class="page-head compact"><div><span class="eyebrow">300 FULL-LYRIC HYMNS</span><h1>Browse <em>hymns.</em></h1><p class="page-lede">Explore the full-lyrics collection by title, number, or worship topic.</p></div></header><div class="browse-tabs">${tabs.map(t=>`<button class="browse-tab ${data.browse===t?'active':''}" data-browse="${t}">${t}</button>`).join('')}</div>${content}</section>`;
+  return `<section class="browse-view"><header class="page-head compact"><div><span class="eyebrow">${data.watchmanRows.length||300} FULL-LYRIC HYMNS · ${data.metadataRows.length} TITLE INDEX ENTRIES</span><h1>Browse <em>hymns.</em></h1><p class="page-lede">Explore full-lyrics hymns and additional title records by title or source number.</p></div></header><div class="browse-tabs">${tabs.map(t=>`<button class="browse-tab ${data.browse===t?'active':''}" data-browse="${t}">${t}</button>`).join('')}</div>${content}</section>`;
 }
 function renderReader(){const row=findText(data.selected);return `<section class="reader-page">${detail(row)}</section>`;}
 function renderPlayer(){
@@ -181,7 +204,7 @@ function renderSaved() {
 }
 const orderKinds=['Prelude','Opening hymn','Congregational singing','Offertory','Invitation','Closing hymn'];
 function renderOrder(){return `<div class="page-head compact"><div><span class="eyebrow">THE SERVICE, IN SONG</span><h1>Order of <em>service.</em></h1><p class="page-lede">Collect the songs and shape a thoughtful service flow.</p></div><button class="btn btn-outline" data-clear-service>Clear service</button></div><div class="order-layout"><section class="service-list" id="service-list">${service.length?service.map((s,i)=>`<div class="service-item" draggable="true" data-order="${i}"><span class="drag">${icon('grip')}</span><span class="service-number">${String(i+1).padStart(2,'0')}</span><div class="service-copy"><span class="eyebrow">${esc(s.kind || 'Congregational singing')}</span><strong>${esc(s.title)}</strong><span>${esc(s.firstLine)}</span></div><div class="service-controls"><button class="icon-button" data-move-service="${i}" data-direction="-1" aria-label="Move ${esc(s.title)} up" ${i===0?'disabled':''}>${icon('up')}</button><button class="icon-button" data-move-service="${i}" data-direction="1" aria-label="Move ${esc(s.title)} down" ${i===service.length-1?'disabled':''}>${icon('down')}</button><button class="icon-button" data-remove-service="${i}" aria-label="Remove ${esc(s.title)}">${icon('close')}</button></div></div>`).join(''):`<div class="empty-state"><span>${icon('list')}</span><h2>A service starts with a song.</h2><p>Add a text from the hymnal catalog to begin your order.</p><button class="btn btn-dark" data-view="hymns">Find a hymn ${icon('arrow')}</button></div>`}</section><aside class="order-aside"><span class="eyebrow">SERVICE FLOW</span><h2>Set the rhythm.</h2><p>Arrange the songs in your order of service. Drag any song to move it, or use the arrow controls.</p><button class="btn btn-gold" data-view="search">${icon('plus')} Add a song</button><div class="flow-list">${orderKinds.map((k,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span>${k}</div>`).join('')}</div></aside></div>`;}
-function renderData(){return `<div class="page-head compact"><div><span class="eyebrow">OPEN HYMNOLOGY</span><h1>Full-lyrics <em>collection.</em></h1><p class="page-lede">Explore and download all 300 English hymns with their complete verses.</p></div></div><div class="data-callout"><span>${icon('sparkle')}</span><div><strong>300 hymns with full lyrics.</strong><p>Search by title, source hymn number, or any lyric line. The same verses open in the reader and Stage view.</p></div></div><div class="dataset-grid"><article class="dataset-card"><div class="dataset-icon">${icon('music')}</div><span class="eyebrow">300 HYMNS · ENGLISH</span><h2>Watchman full texts</h2><p>Complete verse and chorus text from the Open Hymnal JSON Watchman collection.</p><a class="download-link" href="/data/watchman-hymns.json" download>Download JSON <span>535 KB ${icon('stage')}</span></a></article><article class="dataset-card"><div class="dataset-icon">${icon('file')}</div><span class="eyebrow">LICENSE</span><h2>MIT license</h2><p>License notice for the included Watchman collection.</p><a class="download-link" href="/data/watchman-hymns-LICENSE.txt" download>Download license <span>${icon('stage')}</span></a></article></div>`;}
+function renderData(){return `<div class="page-head compact"><div><span class="eyebrow">OPEN HYMNOLOGY</span><h1>Hymn <em>datasets.</em></h1><p class="page-lede">Full lyrics and catalog metadata are kept separate and labeled by source.</p></div></div><div class="data-callout"><span>${icon('sparkle')}</span><div><strong>${data.watchmanRows.length||300} hymns with full lyrics; ${data.metadataRows.length} additional title records.</strong><p>Search by title and source number across both indexes. Lyric search and Stage view use only the full-lyrics collection.</p></div></div><div class="dataset-grid"><article class="dataset-card"><div class="dataset-icon">${icon('music')}</div><span class="eyebrow">${data.watchmanRows.length||300} HYMNS · ENGLISH</span><h2>Watchman full texts</h2><p>Complete verse and chorus text from the Open Hymnal JSON Watchman collection.</p><a class="download-link" href="/data/watchman-hymns.json" download>Download JSON <span>535 KB ${icon('stage')}</span></a></article><article class="dataset-card"><div class="dataset-icon">${icon('database')}</div><span class="eyebrow">${data.metadataRows.length} INDEX RECORDS</span><h2>Gospel hymn metadata</h2><p>Additional title, source number, and category records. Lyrics are excluded. The source repository does not identify a redistribution license.</p><a class="download-link" href="/data/gospel-hymn-index.json" download>Download metadata JSON <span>${icon('stage')}</span></a><p><a href="https://github.com/marvinjude/gospel-hymns/tree/master/Hymns" target="_blank" rel="noopener">View source collection ${icon('stage')}</a></p></article><article class="dataset-card"><div class="dataset-icon">${icon('file')}</div><span class="eyebrow">LICENSE</span><h2>MIT license</h2><p>License notice for the included Watchman collection.</p><a class="download-link" href="/data/watchman-hymns-LICENSE.txt" download>Download license <span>${icon('stage')}</span></a></article></div>`;}
 function render() {
   const view = data.view;
   const parentView=view==='reader'||view==='player'?'hymns':view;
@@ -244,7 +267,7 @@ async function startPractice(){
 function stopPractice(){if(player.timer)clearTimeout(player.timer);player.timer=null;for(const source of player.sources){try{source.stop()}catch{}}player.sources=[];player.playing=false;$$('[data-play]').forEach(b=>{b.innerHTML=`${icon('play')} <span>Play practice</span>`;b.setAttribute('aria-pressed','false')})}
 function showQuickDetail(row){const prev=$('.quick-detail-backdrop');prev?.remove();const wrap=document.createElement('div');wrap.className='quick-detail-backdrop';wrap.innerHTML=`<div class="quick-detail">${detail(row)}<button class="quick-close" aria-label="Close">${icon('close')}</button></div>`;document.body.append(wrap);wrap.addEventListener('click',e=>{if(e.target===wrap||e.target.closest('.quick-close'))wrap.remove()});bindQuick(wrap)}
 function bindQuick(wrap){wrap.querySelector('[data-save]')?.addEventListener('click',e=>{const id=e.currentTarget.dataset.save;saved.has(id)?saved.delete(id):saved.add(id);localStorage.setItem('bbh-saved',JSON.stringify([...saved]));wrap.remove();render()});wrap.querySelector('[data-add-service]')?.addEventListener('click',e=>{const r=data.detailRow;service.push({id:r.textAuthNumber,title:r.displayTitle||r.textTitle,firstLine:r.firstLine||'Opening line not listed',kind:'Congregational singing'});saveService();wrap.remove();announce('Added to your order of service.')})}
-function openStage(){const row=findText(data.selected)||results('',1)[0];if(!row){announce('Load the full-lyrics collection to open Stage view.');return}const w=window.open('','_blank');if(!w)return;const meta=[row.languages||'English',row.authors?row.authors.split(/\s*;\s*/).join(' · '):''].filter(Boolean).map(esc).join(' · ');w.document.write(`<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stage · Bilingual Baptist Hymnal</title><style>body{margin:0;background:#003049;color:#fff7e8;font:clamp(22px,3.5vw,54px)/1.55 Georgia,serif;display:grid;place-items:center;min-height:100vh;text-align:center;padding:4rem;box-sizing:border-box}small{display:block;font:600 12px/1 sans-serif;letter-spacing:.18em;color:#ffca4b;margin:1rem}h1{font-size:1.5em;margin:.6em auto;max-width:24ch}p{max-width:42ch;margin:1em auto}.meta{font:16px sans-serif;color:#a6c7d7}</style></head><body><main><small>WATCHMAN COLLECTION · FULL LYRICS · NO. ${esc(row.hymnNumber)}</small><h1>${esc(row.displayTitle||row.textTitle)}</h1><p>${esc(row.fullTextData?.verses?.map(v=>v.text||v.english||'').join('\n\n')||row.firstLine||'Lyrics are included with this hymn.').replace(/\n/g,'<br>')}</p><div class="meta">${meta}</div></main></body></html>`);w.document.close()}
+function openStage(){const row=findText(data.selected)||results('',1)[0];if(!row){announce('Load the full-lyrics collection to open Stage view.');return}if(row.metadataOnly){announce('Stage view is available for full-lyrics hymns only.');return}const w=window.open('','_blank');if(!w)return;const meta=[row.languages||'English',row.authors?row.authors.split(/\s*;\s*/).join(' · '):''].filter(Boolean).map(esc).join(' · ');w.document.write(`<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stage · Bilingual Baptist Hymnal</title><style>body{margin:0;background:#003049;color:#fff7e8;font:clamp(22px,3.5vw,54px)/1.55 Georgia,serif;display:grid;place-items:center;min-height:100vh;text-align:center;padding:4rem;box-sizing:border-box}small{display:block;font:600 12px/1 sans-serif;letter-spacing:.18em;color:#ffca4b;margin:1rem}h1{font-size:1.5em;margin:.6em auto;max-width:24ch}p{max-width:42ch;margin:1em auto}.meta{font:16px sans-serif;color:#a6c7d7}</style></head><body><main><small>WATCHMAN COLLECTION · FULL LYRICS · NO. ${esc(row.hymnNumber)}</small><h1>${esc(row.displayTitle||row.textTitle)}</h1><p>${esc(row.fullTextData?.verses?.map(v=>v.text||v.english||'').join('\n\n')||row.firstLine||'Lyrics are included with this hymn.').replace(/\n/g,'<br>')}</p><div class="meta">${meta}</div></main></body></html>`);w.document.close()}
 function init(){if(localStorage.getItem('bbh-theme')==='dark')document.documentElement.classList.add('dark');render();loadWatchmanCollection();if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});}
 window.addEventListener('hashchange',()=>{const route=location.hash.slice(1).split('/')[0];if(validViews.includes(route)){data.view=route;render()}});
 init();
