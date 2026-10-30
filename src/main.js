@@ -3,7 +3,7 @@ const app = $('#app');
 const params = new URLSearchParams(location.search);
 const validViews=['hymns','search','browse','saved','order','data','reader','player'];
 const hashView=location.hash.slice(1).split('/')[0];
-const data = { watchmanRows: [], metadataRows: [], view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
+const data = { watchmanRows: [], metadataRows: [], view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', browseTopic:'', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
 const player = { key:0, tempo:72, parts:{S:true,A:true,T:true,B:true}, playing:false, sources:[], timer:null, returnView:'reader' };
 const esc = (s = '') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const iconPaths = {
@@ -189,14 +189,26 @@ function renderSearch(){
 }
 function renderBrowse() {
   const tabs=['A–Z','Number','Topic'];
-  const topics=[['Worship & Opening','worship'],['Believer’s Baptism','baptism'],['Lord’s Supper','supper'],['Invitation','invitation'],['Missions','missions']];
-  const key=data.browse==='A–Z'?'displayTitle':'languages';
+  const topics=[
+    {name:'Worship & Opening',key:'worship',categories:/praise and worship|adoration|hymns|jesus christ/i,terms:/praise|worship|glory|holy holy|majesty|adoration/},
+    {name:'Believer’s Baptism',key:'baptism',categories:/baptism|salvation|christian life/i,terms:/baptis|born again|new birth|buried with christ|follow jesus/},
+    {name:'Lord’s Supper',key:'supper',categories:/cross and blood|blood of jesus|the cross and blood/i,terms:/communion|lord.?s supper|bread and cup|blood of jesus|broken for me|sacrifice/},
+    {name:'Invitation',key:'invitation',categories:/invitation|salvation|grace & forgiveness|admonition|warning/i,terms:/come to jesus|come unto|invitation|whosoever|sinner|repent|receive the saviour/},
+    {name:'Missions',key:'missions',categories:/evangelism|christian service|gospel songs|commitment & consecration/i,terms:/mission|gospel|tell the story|preach|world.*know|send the light|rescue the perishing/}
+  ];
   const catalogRows=allCatalogRows();
-  const pool=data.query?results(data.query,500):catalogRows.filter(r=>langMatch(r,data.filter));
-  const filtered=pool.slice().sort((a,b)=>(a[key]||'').localeCompare(b[key]||'')).slice(0,100);
-  const numbered=catalogRows.slice().sort((a,b)=>Number(a.hymnNumber)-Number(b.hymnNumber)).slice(0,100);
-  const numberContent=`<section class="results-panel browse-results"><div class="results-list">${numbered.map(resultCard).join('')}</div></section><p class="data-footnote">${fullLyricsCount()} full-lyrics hymns by source hymn number.</p>`;
-  const content=data.browse==='A–Z'?`<label class="search-box browse-search"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Filter hymn titles A to Z" value="${esc(data.query)}" type="search" placeholder="Filter titles A–Z"/><kbd>${icon('enter')}</kbd></label><section class="results-panel browse-results"><div class="results-list">${filtered.map(resultCard).join('')||'<div class="no-results">No hymns to show.</div>'}</div></section><p class="data-footnote">Showing up to 100 hymns in alphabetical order.</p>`:data.browse==='Number'?numberContent:`<div class="topic-note">Choose a worship topic to search the full lyrics.</div><div class="topic-list">${topics.map(([topic,term])=>`<button class="topic-row" data-topic="${esc(term)}"><span class="topic-mark">${icon('music')}</span><span><strong>${esc(topic)}</strong><small>Search “${esc(term)}” in the full lyrics</small></span>${icon('arrow')}</button>`).join('')}</div>`;
+  const eligible=catalogRows.filter(r=>!r.metadataOnly&&langMatch(r,data.filter));
+  const azRows=eligible.filter(r=>!data.query.trim()||`${r.displayTitle} ${r.textTitle}`.toLocaleLowerCase().includes(data.query.trim().toLocaleLowerCase())).sort((a,b)=>(a.displayTitle||a.textTitle||'').localeCompare(b.displayTitle||b.textTitle||'',undefined,{sensitivity:'base'}));
+  const numbered=eligible.slice().sort((a,b)=>String(a.hymnNumber||'').localeCompare(String(b.hymnNumber||''),undefined,{numeric:true,sensitivity:'base'})||(a.displayTitle||'').localeCompare(b.displayTitle||'',undefined,{sensitivity:'base'}));
+  const topicMatches=topic=>eligible.filter(row=>{
+    const category=row.category||'';
+    const text=`${row.displayTitle||''} ${row.firstLine||''} ${row.fullTextData?.verses?.map(v=>v.text||v.english||v.tagalog||'').join(' ')||''}`;
+    return topic.categories.test(category)||topic.terms.test(text);
+  });
+  const selectedTopic=topics.find(topic=>topic.key===data.browseTopic);
+  const topicRows=selectedTopic?topicMatches(selectedTopic):[];
+  const topicContent=selectedTopic?`<button class="text-button topic-back" data-topic-back>All worship topics</button><div class="panel-heading"><h2>${esc(selectedTopic.name)} · ${topicRows.length} hymns</h2></div><section class="results-panel browse-results"><div class="results-list">${topicRows.map(resultCard).join('')||'<div class="no-results">No hymns are indexed for this topic yet.</div>'}</div></section>`:`<div class="topic-note">Choose a topic to see matching hymns from the full catalog.</div><div class="topic-list">${topics.map(topic=>`<button class="topic-row" data-topic="${topic.key}"><span class="topic-mark">${icon('music')}</span><span><strong>${esc(topic.name)}</strong><small>${topicMatches(topic).length} matching hymns</small></span>${icon('arrow')}</button>`).join('')}</div>`;
+  const content=data.browse==='A–Z'?`<label class="search-box browse-search"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Filter hymn titles A to Z" value="${esc(data.query)}" type="search" placeholder="Filter titles A–Z"/><kbd>${icon('enter')}</kbd></label><div class="panel-heading"><h2>${azRows.length} hymns · A–Z</h2></div><section class="results-panel browse-results"><div class="results-list">${azRows.map(resultCard).join('')||'<div class="no-results">No hymns to show.</div>'}</div></section>`:data.browse==='Number'?`<div class="panel-heading"><h2>${numbered.length} hymns · source number</h2></div><section class="results-panel browse-results"><div class="results-list">${numbered.map(resultCard).join('')}</div></section>`:topicContent;
   return `<section class="browse-view"><header class="page-head compact"><div><span class="eyebrow">${fullLyricsCount()||300} FULL-LYRIC HYMNS</span><h1>Browse <em>hymns.</em></h1><p class="page-lede">Explore the full-lyrics collection by title, source number, or worship topic.</p></div></header><div class="browse-tabs">${tabs.map(t=>`<button class="browse-tab ${data.browse===t?'active':''}" data-browse="${t}">${t}</button>`).join('')}</div>${content}</section>`;
 }
 function renderReader(){const row=findText(data.selected);return `<section class="reader-page">${detail(row)}</section>`;}
@@ -233,7 +245,8 @@ function bind(){
   $$('[data-filter]').forEach(el=>el.addEventListener('click',()=>{data.filter=el.dataset.filter;data.searchLimit=80;render()}));
   $$('[data-browse]').forEach(el=>el.addEventListener('click',()=>{data.browse=el.dataset.browse;render()}));
   $$('[data-browse-mode]').forEach(el=>el.addEventListener('click',()=>{data.browse=el.dataset.browseMode;go('browse')}));
-  $$('[data-topic]').forEach(el=>el.addEventListener('click',()=>{data.query=el.dataset.topic;go('search')}));
+  $$('[data-topic]').forEach(el=>el.addEventListener('click',()=>{data.browseTopic=el.dataset.topic;render()}));
+  $('[data-topic-back]')?.addEventListener('click',()=>{data.browseTopic='';render()});
   $('#query')?.addEventListener('input',e=>{data.query=e.target.value;data.searchLimit=80;const params=new URLSearchParams(location.search);data.query?params.set('q',data.query):params.delete('q');params.delete('export');const queryString=params.toString();history.replaceState(null,'',`${location.pathname}${queryString?`?${queryString}`:''}${location.hash}`);const pos=e.target.selectionStart;clearTimeout(searchTimer);searchTimer=setTimeout(()=>{render();const input=$('#query');input?.focus();input?.setSelectionRange(pos,pos);},150)});
   $('#query')?.addEventListener('keydown',e=>{if(e.key==='Enter'&&data.query.trim())go('search')});
   $$('[data-result]').forEach(el=>el.addEventListener('click',()=>{data.selected=el.dataset.result;localStorage.setItem('bbh-current',data.selected);data.returnView=['search','browse','saved'].includes(data.view)?data.view:'hymns';go('reader')}));
@@ -277,7 +290,21 @@ async function startPractice(){
 function stopPractice(){if(player.timer)clearTimeout(player.timer);player.timer=null;for(const source of player.sources){try{source.stop()}catch{}}player.sources=[];player.playing=false;$$('[data-play]').forEach(b=>{b.innerHTML=`${icon('play')} <span>Play practice</span>`;b.setAttribute('aria-pressed','false')})}
 function showQuickDetail(row){const prev=$('.quick-detail-backdrop');prev?.remove();const wrap=document.createElement('div');wrap.className='quick-detail-backdrop';wrap.innerHTML=`<div class="quick-detail">${detail(row)}<button class="quick-close" aria-label="Close">${icon('close')}</button></div>`;document.body.append(wrap);wrap.addEventListener('click',e=>{if(e.target===wrap||e.target.closest('.quick-close'))wrap.remove()});bindQuick(wrap)}
 function bindQuick(wrap){wrap.querySelector('[data-save]')?.addEventListener('click',e=>{const id=e.currentTarget.dataset.save;saved.has(id)?saved.delete(id):saved.add(id);localStorage.setItem('bbh-saved',JSON.stringify([...saved]));wrap.remove();render()});wrap.querySelector('[data-add-service]')?.addEventListener('click',e=>{const r=data.detailRow;service.push({id:r.textAuthNumber,title:r.displayTitle||r.textTitle,firstLine:r.firstLine||'Opening line not listed',kind:'Congregational singing'});saveService();wrap.remove();announce('Added to your order of service.')})}
-function openStage(){const row=findText(data.selected)||results('',1)[0];if(!row){announce('Load the full-lyrics collection to open Stage view.');return}if(row.metadataOnly){announce('Stage view is available for full-lyrics hymns only.');return}const w=window.open('','_blank');if(!w)return;const meta=[row.languages||'English',row.authors?row.authors.split(/\s*;\s*/).join(' · '):''].filter(Boolean).map(esc).join(' · ');const source=esc((row.sourceCollection||'Hymnal collection').toUpperCase());w.document.write(`<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stage · Bilingual Baptist Hymnal</title><style>body{margin:0;background:#003049;color:#fff7e8;font:clamp(22px,3.5vw,54px)/1.55 Georgia,serif;display:grid;place-items:center;min-height:100vh;text-align:center;padding:4rem;box-sizing:border-box}small{display:block;font:600 12px/1 sans-serif;letter-spacing:.18em;color:#ffca4b;margin:1rem}h1{font-size:1.5em;margin:.6em auto;max-width:24ch}p{max-width:42ch;margin:1em auto}.meta{font:16px sans-serif;color:#a6c7d7}</style></head><body><main><small>${source} · FULL LYRICS · NO. ${esc(row.hymnNumber)}</small><h1>${esc(row.displayTitle||row.textTitle)}</h1><p>${esc(row.fullTextData?.verses?.map(v=>v.text||v.english||'').join('\n\n')||row.firstLine||'Lyrics are included with this hymn.').replace(/\n/g,'<br>')}</p><div class="meta">${meta}</div></main></body></html>`);w.document.close()}
+function openStage(){
+  const row=findText(data.selected)||results('',1)[0];
+  if(!row){announce('Load the full-lyrics collection to open Stage view.');return}
+  if(row.metadataOnly){announce('Stage view is available for full-lyrics hymns only.');return}
+  const w=window.open('','_blank');
+  if(!w){announce('Allow pop-ups to open the full-screen Stage view.');return}
+  const verses=row.fullTextData?.verses||[];
+  const lyricHtml=verses.length?verses.map(verse=>`<p>${esc(verse.text||verse.english||verse.tagalog||'').replace(/\r?\n/g,'<br>')}</p>`).join(''): `<p>${esc(row.firstLine||'Lyrics are included with this hymn.')}</p>`;
+  const meta=[row.languages||'English',row.authors?row.authors.split(/\s*;\s*/).join(' · '):''].filter(Boolean).map(esc).join(' · ');
+  const source=esc((row.sourceCollection||'Hymnal collection').toUpperCase());
+  w.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#003049"><title>Stage · ${esc(row.displayTitle||row.textTitle)} · Bilingual Baptist Hymnal</title><style>
+    *{box-sizing:border-box}html{min-height:100%;background:#003049;scroll-behavior:smooth}body{margin:0;min-height:100vh;min-height:100dvh;overflow-y:auto;background:#003049;color:#fff7e8;text-align:center;font-family:Georgia,"Times New Roman",serif}main{width:min(100%,1600px);min-height:100vh;min-height:100dvh;margin:0 auto;padding:clamp(34px,6vh,90px) clamp(22px,7vw,120px) max(48px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;justify-content:center}small{display:block;font:700 12px/1.5 system-ui,sans-serif;letter-spacing:.18em;color:#ffca4b;margin:0 0 clamp(28px,6vh,82px);text-transform:uppercase}h1{width:100%;font-size:clamp(42px,8vw,112px);line-height:1.08;margin:0 auto clamp(30px,6vh,78px);max-width:18ch;overflow-wrap:anywhere}.lyrics{width:100%;font-size:clamp(25px,4vw,62px);line-height:1.55}.lyrics p{max-width:30ch;margin:0 auto 14px;white-space:normal;overflow-wrap:anywhere}.meta{font:15px/1.5 system-ui,sans-serif;color:#a6c7d7;margin-top:clamp(32px,7vh,90px)}@media(max-width:600px){main{justify-content:flex-start;padding-top:max(42px,8vh)}small{font-size:10px;letter-spacing:.13em;margin-bottom:42px}h1{font-size:clamp(38px,10vw,58px);margin-bottom:44px}.lyrics{font-size:clamp(24px,7vw,36px);line-height:1.5}.lyrics p{margin-bottom:24px}}
+    </style></head><body><main><small>${source} · FULL LYRICS · NO. ${esc(row.hymnNumber)}</small><h1>${esc(row.displayTitle||row.textTitle)}</h1><section class="lyrics" aria-label="Complete hymn lyrics">${lyricHtml}</section><div class="meta">${meta}</div></main></body></html>`);
+  w.document.close();
+}
 function init(){if(localStorage.getItem('bbh-theme')==='dark')document.documentElement.classList.add('dark');render();loadWatchmanCollection();if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});}
 window.addEventListener('hashchange',()=>{const route=location.hash.slice(1).split('/')[0];if(validViews.includes(route)){data.view=route;render()}});
 init();
