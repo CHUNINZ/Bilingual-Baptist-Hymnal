@@ -257,7 +257,7 @@ function bind(){
   $$('[data-move-service]').forEach(el=>el.addEventListener('click',()=>{const from=+el.dataset.moveService,to=from+Number(el.dataset.direction);if(to<0||to>=service.length)return;const [item]=service.splice(from,1);service.splice(to,0,item);saveService();render()}));
   $('[data-clear-service]')?.addEventListener('click',()=>{service=[];saveService();render()});
   $('[data-theme]')?.addEventListener('click',()=>{document.documentElement.classList.toggle('dark');localStorage.setItem('bbh-theme',document.documentElement.classList.contains('dark')?'dark':'light')});
-  $('[data-stage]')?.addEventListener('click',openStage);
+  $$('[data-stage]').forEach(el=>el.addEventListener('click',openStage));
   $('[data-back]')?.addEventListener('click',()=>go(data.view==='player'?'reader':data.returnView));
   $('[data-other-language]')?.addEventListener('click',el=>{data.filter=el.currentTarget.dataset.otherLanguage;data.query='';const params=new URLSearchParams(location.search);params.delete('q');history.replaceState(null,'',`${location.pathname}${params.toString()?`?${params}`:''}${location.hash}`);go('search')});
   $('[data-share]')?.addEventListener('click',shareCurrent);
