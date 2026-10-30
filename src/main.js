@@ -189,7 +189,7 @@ function detail(row) {
   const sourceVerses=fullVerses.filter(verse=>tagalogSource?verse.tagalog:verse.english);
   const hasFullText=hasBilingualText||sourceVerses.length>0;
   const lyricContent=hasBilingualText?`<span class="eyebrow">FULL TEXT · ALIGNED TRANSLATION</span><div class="reader-bilingual">${[['English','english'],['Tagalog','tagalog']].map(([label,key])=>`<section class="reader-language-column"><h2>${label}</h2>${fullVerses.map(verse=>renderVerse(verse,key)).join('')}${key==='english'&&fullText.refrain?`<div class="reader-refrain"><span>REFRAIN</span><p>${esc(fullText.refrain)}</p></div>`:''}</section>`).join('')}</div>`:hasFullText?`<span class="eyebrow">FULL TEXT${fullText.language?` · ${esc(fullText.language)}`:''}</span>${sourceVerses.map(verse=>renderVerse(verse,tagalogSource?'tagalog':'english')).join('')}${fullText.refrain?`<section class="reader-refrain"><span>REFRAIN</span><p>${esc(fullText.refrain)}</p></section>`:''}`:`<span class="eyebrow">CATALOG OPENING LINE</span><p>${esc(row.firstLine || 'No opening line is available for this record.')}</p>${row.refrainFirstLine?`<section class="reader-refrain"><span>REFRAIN OPENING</span><p>${esc(row.refrainFirstLine)}</p></section>`:''}`;
-  const sourceLabel=`NO. ${esc(row.catalogNumber||row.hymnNumber)}${String(row.hymnNumber||'')!==String(row.catalogNumber||row.hymnNumber)?` · SOURCE NO. ${esc(row.hymnNumber)}`:''}`;
+  const sourceLabel=`SOURCE NO. ${esc(row.hymnNumber||row.catalogNumber||'')}`;
   return `<section class="reader-view" style="--reader-scale:${data.readerScale}"><header class="reader-toolbar"><button class="round-control" data-back aria-label="Back to ${esc(data.returnView==='search'?'search':data.returnView==='browse'?'browse':data.returnView==='saved'?'saved hymns':'hymns')}">${icon('back')}</button><span class="reader-record-label">${sourceLabel}</span><button class="round-control ${saved.has(row.textAuthNumber)?'is-saved':''}" data-save="${esc(row.textAuthNumber)}" aria-label="${saved.has(row.textAuthNumber)?'Remove from saved':'Save text'}">${icon('heart','save-icon')}</button><button class="round-control" data-share aria-label="Share text">${icon('share')}</button><button class="round-control text-size" data-text-size aria-label="Change text size">Aa</button></header>
     <div class="reader-language"><span>SOURCE LANGUAGE</span><strong>${language}</strong></div>
     <h1 class="reader-title">${esc(row.displayTitle || row.textTitle || 'Untitled text')}</h1>${bylineText?`<p class="reader-byline">${esc(bylineText)}</p>`:''}
@@ -254,7 +254,13 @@ function renderBrowse() {
   ];
   const catalogRows=allCatalogRows();
   const eligible=catalogRows.filter(r=>!r.metadataOnly&&langMatch(r,data.filter));
-  const azRows=eligible.filter(r=>!data.query.trim()||`${r.displayTitle} ${r.textTitle}`.toLocaleLowerCase().includes(data.query.trim().toLocaleLowerCase())).sort((a,b)=>(a.displayTitle||a.textTitle||'').localeCompare(b.displayTitle||b.textTitle||'',undefined,{sensitivity:'base'}));
+  const azRows=eligible.filter(r=>!data.query.trim()||`${r.displayTitle} ${r.textTitle}`.toLocaleLowerCase().includes(data.query.trim().toLocaleLowerCase())).sort((a,b)=>{
+    const titleA=(a.displayTitle||a.textTitle||'').trim();
+    const titleB=(b.displayTitle||b.textTitle||'').trim();
+    const letterA=/^\p{L}/u.test(titleA),letterB=/^\p{L}/u.test(titleB);
+    if(letterA!==letterB)return letterA?-1:1;
+    return titleA.localeCompare(titleB,undefined,{sensitivity:'base',numeric:true});
+  });
   const numbered=eligible.slice().sort((a,b)=>Number(a.catalogNumber)-Number(b.catalogNumber));
   const topicMatches=topic=>eligible.filter(row=>{
     const category=row.category||'';
