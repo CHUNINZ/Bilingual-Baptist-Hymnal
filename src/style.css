@@ -196,7 +196,7 @@ button .ui-icon{pointer-events:none}
 .home-view{max-width:1440px;grid-template-columns:minmax(0,1.45fr) minmax(260px,.8fr);column-gap:24px;row-gap:20px}
 .home-heading{grid-row:1}
 .featured-hymn{grid-column:1;grid-row:2;min-height:360px}
-.home-browse{grid-column:2;grid-row:2;align-self:center}
+.home-browse{grid-column:1/-1;grid-row:4;align-self:stretch;width:100%}
 .home-search{grid-column:1/-1;grid-row:3}
 .dark .sidebar .sidebar-brand-logo,.dark .mobile-header .mobile-brand-logo{background:#fff4dc}
 
@@ -204,7 +204,7 @@ button .ui-icon{pointer-events:none}
   .home-view{grid-template-columns:minmax(0,1fr);max-width:820px}
   .home-heading,.featured-hymn,.home-search,.home-browse{grid-column:1;grid-row:auto}
   .featured-hymn{min-height:320px}
-  .home-browse{align-self:auto}
+  .home-browse{align-self:stretch;width:100%}
 }
 
 @media(max-width:760px){
@@ -217,6 +217,7 @@ button .ui-icon{pointer-events:none}
   .screen-hymns .page-content,.screen-search .page-content,.screen-browse .page-content{padding-top:18px}
   .home-view{display:flex;flex-direction:column;gap:18px;padding:0 0 28px}
   .home-heading,.featured-hymn,.home-search,.home-browse{grid-column:auto;grid-row:auto}
+  .home-browse{align-self:stretch;width:100%}
   .featured-hymn{min-height:290px}
   .mobile-header .mobile-brand-logo{padding:4px 8px;border-radius:10px}
   .home-heading h1{font-size:52px}
@@ -229,7 +230,8 @@ button .ui-icon{pointer-events:none}
   .home-browse{border:0;background:transparent;padding:0}
   .home-browse h2{font-size:16px;margin:0 0 13px}
   .home-shortcuts{gap:9px}
-  .home-shortcuts button{height:54px;border-radius:999px;background:#fffdf2cc;font-size:14px}
+  .home-shortcuts{width:100%;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .home-shortcuts button{width:100%;min-width:0;padding:0 10px;white-space:nowrap;height:54px;border-radius:999px;background:#fffdf2cc;font-size:14px}
   .search-view,.browse-view{padding:0 0 25px}
   .search-view .page-head,.browse-view .page-head{margin-bottom:18px}.browse-view .page-head{margin-top:0}.browse-view .page-head h1{margin-top:0}
   .search-view .page-head{display:none}
@@ -289,6 +291,8 @@ button .ui-icon{pointer-events:none}
   .player-play{grid-column:1/-1}
   .reader-toolbar{gap:5px}
   .round-control{width:42px;height:42px;min-width:42px}
+  .home-shortcuts{gap:7px}
+  .home-shortcuts button{padding:0 6px;font-size:13px}
 }
 .load-more-wrap{display:flex;justify-content:center;padding:16px;border-top:1px solid #eee9de}
 .load-more-wrap .btn{min-height:44px}
