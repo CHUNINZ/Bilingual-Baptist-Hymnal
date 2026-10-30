@@ -6,5 +6,8 @@
   "display": "standalone",
   "background_color": "#fbf0d9",
   "theme_color": "#003049",
-  "icons": [{"src":"/hymnal-icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+  "icons": [
+    {"src":"/hymnal-icon.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"/hymnal-icon-180.png","sizes":"180x180","type":"image/png","purpose":"any"}
+  ]
 }
