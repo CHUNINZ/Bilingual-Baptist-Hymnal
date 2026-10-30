@@ -277,3 +277,44 @@ button .ui-icon{pointer-events:none}
   .screen-search .search-toolbar{margin:4px 0 23px}
   .screen-browse header.page-head.compact{margin:4px 0 23px}
 }
+
+/* Progressive layout support for compact phones, safe areas, and dynamic browser chrome. */
+html{min-height:100%}
+body{min-height:100vh;min-height:100dvh;overflow-x:hidden}
+.app-shell,.main{min-height:100vh;min-height:100dvh}
+.main,.page-content{min-width:0}
+
+@media(max-width:920px) and (min-width:761px){
+  .content-grid{grid-template-columns:minmax(0,1fr);gap:16px}
+  .detail{position:static;grid-row:auto}
+}
+
+@media(max-width:760px){
+  .mobile-header{width:100%;max-width:353.6px;height:62px;min-height:62px;flex:0 0 62px;margin-left:auto;margin-right:auto;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+  .mobile-brand-logo{min-width:0}
+  .mobile-brand-logo img{max-width:100%;height:auto}
+  .mobile-nav{left:12px;right:12px;bottom:12px}
+  .search-box input,.search-view .search-box input,.browse-input{min-width:0;font-size:16px}
+  .pill,.browse-tab,.round-control{min-height:44px}
+  .reader-toolbar{flex-wrap:wrap}
+  .reader-record-label{min-width:0;overflow-wrap:anywhere}
+  .featured-hymn h2,.reader-title,.player-page>h1,.topic-row strong{overflow-wrap:anywhere}
+}
+
+@supports (padding:max(0px,env(safe-area-inset-left))){
+  @media(max-width:760px){
+    .mobile-nav{left:max(12px,calc(env(safe-area-inset-left) + 12px));right:max(12px,calc(env(safe-area-inset-right) + 12px));bottom:max(12px,calc(env(safe-area-inset-bottom) + 8px))}
+  }
+}
+
+@media(max-width:380px){
+  .mobile-header{max-width:100%}
+  .mobile-nav{left:8px;right:8px}
+  .featured-hymn{padding:22px}
+  .search-toolbar{gap:8px}
+  .search-box kbd{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
