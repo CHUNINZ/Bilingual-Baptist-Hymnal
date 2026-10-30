@@ -193,9 +193,9 @@ button .ui-icon{pointer-events:none}
 .sidebar .sidebar-brand-logo,.mobile-header .mobile-brand-logo{display:flex;align-items:center;justify-content:flex-start;line-height:0;background:#fff4dc;border-radius:12px;padding:7px 10px}
 .sidebar .sidebar-brand-logo img{display:block;max-height:70px}
 .mobile-header .mobile-brand-logo img{display:block}
-.home-view{max-width:1440px;grid-template-columns:minmax(0,1.45fr) minmax(260px,.8fr);column-gap:24px;row-gap:20px}
+.home-view{max-width:1440px;grid-template-columns:minmax(0,1fr);column-gap:24px;row-gap:20px}
 .home-heading{grid-row:1}
-.featured-hymn{grid-column:1;grid-row:2;min-height:360px}
+.featured-hymn{grid-column:1/-1;grid-row:2;min-height:360px;width:100%}
 .home-browse{grid-column:1/-1;grid-row:4;align-self:stretch;width:100%}
 .home-search{grid-column:1/-1;grid-row:3}
 .dark .sidebar .sidebar-brand-logo,.dark .mobile-header .mobile-brand-logo{background:#fff4dc}
@@ -346,9 +346,8 @@ body{min-height:100vh;min-height:100dvh;overflow-x:hidden}
 }
 
 @media(min-width:761px){
-  .screen-hymns .home-view{padding:22px 0 35px}
-  .screen-search .search-view{padding:22px 0 35px}
-  .screen-browse .browse-view{padding:22px 0 35px}
+  .screen-hymns .home-view,.screen-search .search-view,.screen-browse .browse-view,
+  .screen-reader .reader-page,.screen-player .player-page{padding:22px 0 35px}
   /* Match Browse's effective desktop inset: page shell (18px/20px/28px) plus section spacing (22px/35px). */
-  .screen-saved .page-content,.screen-order .page-content{padding:40px 20px 63px}
+  .screen-saved .page-content,.screen-order .page-content,.screen-data .page-content{padding:40px 20px 63px}
 }
