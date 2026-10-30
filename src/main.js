@@ -108,6 +108,7 @@ async function loadWatchmanCollection(){
       }
     }catch{}
     if(!data.watchmanRows.length)throw new Error('The full-lyrics collection is empty.');
+    allCatalogRows().forEach((row,index)=>{row.catalogNumber=index+1});
   }catch(err){data.indexError=err.message||'The full-lyrics collection could not be loaded.'}
   data.searchBusy=false;render();
 }
@@ -126,7 +127,7 @@ function results(query = data.query, limit = 80) {
   for (const row of catalog) {
       if (!langMatch(row, data.filter)) continue;
       const verses=row.fullTextData?.verses?.map(verse=>verse.text||'').join(' ')||'';
-      const hay = `${row.displayTitle} ${row.textTitle} ${row.firstLine} ${row.refrainFirstLine} ${row.authors} ${row.textAuthNumber} ${row.hymnNumber} ${row.category} ${row.meter} ${row.languages} ${verses}`.toLocaleLowerCase();
+      const hay = `${row.displayTitle} ${row.textTitle} ${row.firstLine} ${row.refrainFirstLine} ${row.authors} ${row.textAuthNumber} ${row.catalogNumber||''} ${row.hymnNumber} ${row.category} ${row.meter} ${row.languages} ${verses}`.toLocaleLowerCase();
       if (terms.every(term => hay.includes(term))) hits.push(row);
       if (hits.length >= limit) return hits;
     }
@@ -136,8 +137,11 @@ function chips(label, values) { return `<div class="pills" role="group" aria-lab
 function resultCard(row, i = 0) {
   const id = row.textAuthNumber || row.displayTitle;
   const summary=row.metadataOnly?[row.category,'Title and catalog details only · lyrics unavailable'].filter(Boolean).join(' · '):(row.firstLine || row.refrainFirstLine || 'Opening line not listed');
-  const status=row.metadataOnly?'Metadata only · GHS':(row.languages || 'Language not specified');
-  return `<button class="result-row ${data.selected===id?'chosen':''}" data-result="${esc(id)}"><span class="result-num">${row.supplemental?esc(row.hymnNumber):icon('arrow')}</span><span class="result-copy"><strong>${esc(row.displayTitle || row.textTitle || 'Untitled text')}</strong><span>${esc(summary)}</span></span><span class="result-lang">${esc(status)}</span></button>`;
+  const sourceNumber=String(row.hymnNumber||'');
+  const catalogNumber=String(row.catalogNumber||row.hymnNumber||'');
+  const hasDistinctSourceNumber=sourceNumber&&sourceNumber!==catalogNumber;
+  const status=row.metadataOnly?'Metadata only · GHS':`${row.languages || 'Language not specified'}${hasDistinctSourceNumber?` · Source #${sourceNumber}`:''}`;
+  return `<button class="result-row ${data.selected===id?'chosen':''}" data-result="${esc(id)}"><span class="result-num">${esc(catalogNumber)}</span><span class="result-copy"><strong>${esc(row.displayTitle || row.textTitle || 'Untitled text')}</strong><span>${esc(summary)}</span></span><span class="result-lang">${esc(status)}</span></button>`;
 }
 function detail(row) {
   if (!row) return `<section class="reader-empty"><div class="empty-icon">${icon('music')}</div><h2>No hymn selected</h2><p>Choose a hymn to read its complete lyrics.</p><button class="btn btn-dark" data-view="search">${icon('search')} Find a hymn</button></section>`;
@@ -154,7 +158,7 @@ function detail(row) {
   const sourceVerses=fullVerses.filter(verse=>tagalogSource?verse.tagalog:verse.english);
   const hasFullText=hasBilingualText||sourceVerses.length>0;
   const lyricContent=hasBilingualText?`<span class="eyebrow">FULL TEXT · ALIGNED TRANSLATION</span><div class="reader-bilingual">${[['English','english'],['Tagalog','tagalog']].map(([label,key])=>`<section class="reader-language-column"><h2>${label}</h2>${fullVerses.map(verse=>renderVerse(verse,key)).join('')}${key==='english'&&fullText.refrain?`<div class="reader-refrain"><span>REFRAIN</span><p>${esc(fullText.refrain)}</p></div>`:''}</section>`).join('')}</div>`:hasFullText?`<span class="eyebrow">FULL TEXT${fullText.language?` · ${esc(fullText.language)}`:''}</span>${sourceVerses.map(verse=>renderVerse(verse,tagalogSource?'tagalog':'english')).join('')}${fullText.refrain?`<section class="reader-refrain"><span>REFRAIN</span><p>${esc(fullText.refrain)}</p></section>`:''}`:`<span class="eyebrow">CATALOG OPENING LINE</span><p>${esc(row.firstLine || 'No opening line is available for this record.')}</p>${row.refrainFirstLine?`<section class="reader-refrain"><span>REFRAIN OPENING</span><p>${esc(row.refrainFirstLine)}</p></section>`:''}`;
-  const sourceLabel=`NO. ${esc(row.hymnNumber)}`;
+  const sourceLabel=`NO. ${esc(row.catalogNumber||row.hymnNumber)}${String(row.hymnNumber||'')!==String(row.catalogNumber||row.hymnNumber)?` · SOURCE NO. ${esc(row.hymnNumber)}`:''}`;
   return `<section class="reader-view" style="--reader-scale:${data.readerScale}"><header class="reader-toolbar"><button class="round-control" data-back aria-label="Back to ${esc(data.returnView==='search'?'search':data.returnView==='browse'?'browse':data.returnView==='saved'?'saved hymns':'hymns')}">${icon('back')}</button><span class="reader-record-label">${sourceLabel}</span><button class="round-control ${saved.has(row.textAuthNumber)?'is-saved':''}" data-save="${esc(row.textAuthNumber)}" aria-label="${saved.has(row.textAuthNumber)?'Remove from saved':'Save text'}">${icon('heart','save-icon')}</button><button class="round-control" data-share aria-label="Share text">${icon('share')}</button><button class="round-control text-size" data-text-size aria-label="Change text size">Aa</button></header>
     <div class="reader-language"><span>SOURCE LANGUAGE</span><strong>${language}</strong></div>
     <h1 class="reader-title">${esc(row.displayTitle || row.textTitle || 'Untitled text')}</h1>${bylineText?`<p class="reader-byline">${esc(bylineText)}</p>`:''}
@@ -190,16 +194,36 @@ function renderSearch(){
 function renderBrowse() {
   const tabs=['A–Z','Number','Topic'];
   const topics=[
-    {name:'Worship & Opening',key:'worship',categories:/praise and worship|adoration|hymns|jesus christ/i,terms:/praise|worship|glory|holy holy|majesty|adoration/},
-    {name:'Believer’s Baptism',key:'baptism',categories:/baptism|salvation|christian life/i,terms:/baptis|born again|new birth|buried with christ|follow jesus/},
-    {name:'Lord’s Supper',key:'supper',categories:/cross and blood|blood of jesus|the cross and blood/i,terms:/communion|lord.?s supper|bread and cup|blood of jesus|broken for me|sacrifice/},
-    {name:'Invitation',key:'invitation',categories:/invitation|salvation|grace & forgiveness|admonition|warning/i,terms:/come to jesus|come unto|invitation|whosoever|sinner|repent|receive the saviour/},
-    {name:'Missions',key:'missions',categories:/evangelism|christian service|gospel songs|commitment & consecration/i,terms:/mission|gospel|tell the story|preach|world.*know|send the light|rescue the perishing/}
+    {name:'Adoration (or Assurance)',key:'adoration',categories:/adoration|assurance & confidence|praise and worship/i,terms:/adore|adoration|assurance|assured|praise|worship/},
+    {name:'Baptism (or Blessing)',key:'baptism',categories:/baptism|blessing/i,terms:/baptis|baptized|born again|new birth|bless(ed|ing)?/},
+    {name:'Comfort (or Commitment)',key:'comfort',categories:/assurance & confidence|the lord's love and care|commitment & consecration/i,terms:/comfort|consol(e|ation)|care|commit|trust|rest in jesus/},
+    {name:'Dedication (or Doxology)',key:'dedication',categories:/commitment & consecration|christian service & reward|praise and worship/i,terms:/dedicat|consecrat|take my life|offer(ing)?|doxology|glory be/},
+    {name:'Eternity (or Evangelism)',key:'eternity',categories:/heaven|rapture|evangelism|warning & judgment/i,terms:/eternal|eternity|forever|heaven|coming again|judgment|gospel|evangel/},
+    {name:'Faith (or Fellowship)',key:'faith',categories:/faith and trust|trust and faith|assurance & confidence|conflict & victory/i,terms:/faith|trust|fellowship|friend|together|believ/},
+    {name:'Grace (or Guidance)',key:'grace',categories:/grace & forgiveness|faith and trust/i,terms:/grace|guid(e|ance)|lead me|shepherd|forgiv/},
+    {name:'Hope (or Holiness)',key:'hope',categories:/sanctification|heaven|advent/i,terms:/hope|holiness|holy|sanctif|pur(e|ity)|heaven/},
+    {name:'Invitation',key:'invitation',categories:/invitation|admonition|salvation/i,terms:/come unto|come to me|invitation|whosoever|sinner|repent|receive the saviour/},
+    {name:'Joy',key:'joy',categories:/praise and worship|adoration/i,terms:/joy|rejoic|glad(ness)?|happy|sing(ing)?/},
+    {name:'Kingdom',key:'kingdom',categories:/jesus christ|praise and worship/i,terms:/kingdom|king of kings|reign|throne|crown him/},
+    {name:'Love (or Light)',key:'love',categories:/love and devotion|the lord's love and care|christ our saviour/i,terms:/love|lov(e|ing)|light|shining|kindness/},
+    {name:'Missions (or Mercy)',key:'missions',categories:/evangelism|christian service & reward|gospel songs/i,terms:/mission|mercy|gospel|tell the story|preach|world.*know|send the light|rescue the perishing/},
+    {name:'Newness (or Nativity)',key:'newness',categories:/advent|special occasions|salvation/i,terms:/new life|new name|new birth|nativity|christmas|born|manger/},
+    {name:'Obedience (or Offertory)',key:'obedience',categories:/commitment & consecration|christian service & reward/i,terms:/obey|obedien|follow me|service|servant|offering|give of your best/},
+    {name:'Praise (or Peace)',key:'praise',categories:/praise and worship|adoration/i,terms:/praise|peace|well with my soul|worship|glory/},
+    {name:'Quietude (or Quicken)',key:'quietude',categories:/assurance & confidence|faith and trust|divine healing/i,terms:/quiet|still|rest|peace|quicken|revive|calm/},
+    {name:'Redemption (or Revival)',key:'redemption',categories:/blood of jesus|cross and blood|the cross and blood|salvation/i,terms:/redeem|redemption|blood|cross|calvary|revival|revive|saviour/},
+    {name:'Salvation (or Strength)',key:'salvation',categories:/salvation|christ our saviour|grace & forgiveness/i,terms:/salvation|save|strength|mighty|victory in jesus|redeem/},
+    {name:'Thanksgiving (or Trinity)',key:'thanksgiving',categories:/special occasions|adoration/i,terms:/thank(s|sgiving)|grateful|gratitude|father son and holy spirit|trinity/},
+    {name:'Unity',key:'unity',categories:/christian life|christian service & reward/i,terms:/unity|united|one body|church's one foundation|tie that binds|brethren/},
+    {name:'Victory',key:'victory',categories:/conflict & victory|faith and trust/i,terms:/victory|triumph|overcome|conquer|battle|fight the good fight/},
+    {name:'Worship (or Wisdom)',key:'worship',categories:/praise and worship|adoration/i,terms:/worship|wisdom|majesty|holy holy|great thou art/},
+    {name:'Youth',key:'youth',categories:/christian life|special occasions/i,terms:/youth|young|child(ren)?|little ones/},
+    {name:'Zeal (or Zion)',key:'zeal',categories:/evangelism|christian service & reward|praise and worship/i,terms:/zeal|zion|mission|gospel|labourers|work for jesus/}
   ];
   const catalogRows=allCatalogRows();
   const eligible=catalogRows.filter(r=>!r.metadataOnly&&langMatch(r,data.filter));
   const azRows=eligible.filter(r=>!data.query.trim()||`${r.displayTitle} ${r.textTitle}`.toLocaleLowerCase().includes(data.query.trim().toLocaleLowerCase())).sort((a,b)=>(a.displayTitle||a.textTitle||'').localeCompare(b.displayTitle||b.textTitle||'',undefined,{sensitivity:'base'}));
-  const numbered=eligible.slice().sort((a,b)=>String(a.hymnNumber||'').localeCompare(String(b.hymnNumber||''),undefined,{numeric:true,sensitivity:'base'})||(a.displayTitle||'').localeCompare(b.displayTitle||'',undefined,{sensitivity:'base'}));
+  const numbered=eligible.slice().sort((a,b)=>Number(a.hymnNumber)-Number(b.hymnNumber)||(a.displayTitle||'').localeCompare(b.displayTitle||'',undefined,{sensitivity:'base'}));
   const topicMatches=topic=>eligible.filter(row=>{
     const category=row.category||'';
     const text=`${row.displayTitle||''} ${row.firstLine||''} ${row.fullTextData?.verses?.map(v=>v.text||v.english||v.tagalog||'').join(' ')||''}`;
@@ -207,7 +231,7 @@ function renderBrowse() {
   });
   const selectedTopic=topics.find(topic=>topic.key===data.browseTopic);
   const topicRows=selectedTopic?topicMatches(selectedTopic):[];
-  const topicContent=selectedTopic?`<button class="text-button topic-back" data-topic-back>All worship topics</button><div class="panel-heading"><h2>${esc(selectedTopic.name)} · ${topicRows.length} hymns</h2></div><section class="results-panel browse-results"><div class="results-list">${topicRows.map(resultCard).join('')||'<div class="no-results">No hymns are indexed for this topic yet.</div>'}</div></section>`:`<div class="topic-note">Choose a topic to see matching hymns from the full catalog.</div><div class="topic-list">${topics.map(topic=>`<button class="topic-row" data-topic="${topic.key}"><span class="topic-mark">${icon('music')}</span><span><strong>${esc(topic.name)}</strong><small>${topicMatches(topic).length} matching hymns</small></span>${icon('arrow')}</button>`).join('')}</div>`;
+  const topicContent=selectedTopic?`<button class="text-button topic-back" data-topic-back>All topics</button><div class="panel-heading"><h2>${esc(selectedTopic.name)} · ${topicRows.length} hymns</h2></div><section class="results-panel browse-results"><div class="results-list">${topicRows.map(resultCard).join('')||'<div class="no-results">No hymns are indexed for this topic yet.</div>'}</div></section>`:`<div class="topic-note">Choose a topic to see matching hymns from the full catalog.</div><div class="topic-list">${topics.map(topic=>`<button class="topic-row" data-topic="${topic.key}"><span class="topic-mark">${icon('music')}</span><span><strong>${esc(topic.name)}</strong><small>${topicMatches(topic).length} matching hymns</small></span>${icon('arrow')}</button>`).join('')}</div>`;
   const content=data.browse==='A–Z'?`<label class="search-box browse-search"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Filter hymn titles A to Z" value="${esc(data.query)}" type="search" placeholder="Filter titles A–Z"/><kbd>${icon('enter')}</kbd></label><div class="panel-heading"><h2>${azRows.length} hymns · A–Z</h2></div><section class="results-panel browse-results"><div class="results-list">${azRows.map(resultCard).join('')||'<div class="no-results">No hymns to show.</div>'}</div></section>`:data.browse==='Number'?`<div class="panel-heading"><h2>${numbered.length} hymns · source number</h2></div><section class="results-panel browse-results"><div class="results-list">${numbered.map(resultCard).join('')}</div></section>`:topicContent;
   return `<section class="browse-view"><header class="page-head compact"><div><span class="eyebrow">${fullLyricsCount()||300} FULL-LYRIC HYMNS</span><h1>Browse <em>hymns.</em></h1><p class="page-lede">Explore the full-lyrics collection by title, source number, or worship topic.</p></div></header><div class="browse-tabs">${tabs.map(t=>`<button class="browse-tab ${data.browse===t?'active':''}" data-browse="${t}">${t}</button>`).join('')}</div>${content}</section>`;
 }
@@ -301,7 +325,7 @@ function openStage(){
   const source=esc((row.sourceCollection||'Hymnal collection').toUpperCase());
   w.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#003049"><title>Stage · ${esc(row.displayTitle||row.textTitle)} · Bilingual Baptist Hymnal</title><style>
     *{box-sizing:border-box}html{min-height:100%;background:#003049;scroll-behavior:smooth}body{margin:0;min-height:100vh;min-height:100dvh;overflow-y:auto;background:#003049;color:#fff7e8;text-align:center;font-family:Georgia,"Times New Roman",serif}main{width:min(100%,1600px);min-height:100vh;min-height:100dvh;margin:0 auto;padding:clamp(34px,6vh,90px) clamp(22px,7vw,120px) max(48px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;justify-content:center}small{display:block;font:700 12px/1.5 system-ui,sans-serif;letter-spacing:.18em;color:#ffca4b;margin:0 0 clamp(28px,6vh,82px);text-transform:uppercase}h1{width:100%;font-size:clamp(42px,8vw,112px);line-height:1.08;margin:0 auto clamp(30px,6vh,78px);max-width:18ch;overflow-wrap:anywhere}.lyrics{width:100%;font-size:clamp(25px,4vw,62px);line-height:1.55}.lyrics p{max-width:30ch;margin:0 auto 14px;white-space:normal;overflow-wrap:anywhere}.meta{font:15px/1.5 system-ui,sans-serif;color:#a6c7d7;margin-top:clamp(32px,7vh,90px)}@media(max-width:600px){main{justify-content:flex-start;padding-top:max(42px,8vh)}small{font-size:10px;letter-spacing:.13em;margin-bottom:42px}h1{font-size:clamp(38px,10vw,58px);margin-bottom:44px}.lyrics{font-size:clamp(24px,7vw,36px);line-height:1.5}.lyrics p{margin-bottom:24px}}
-    </style></head><body><main><small>${source} · FULL LYRICS · NO. ${esc(row.hymnNumber)}</small><h1>${esc(row.displayTitle||row.textTitle)}</h1><section class="lyrics" aria-label="Complete hymn lyrics">${lyricHtml}</section><div class="meta">${meta}</div></main></body></html>`);
+    </style></head><body><main><small>${source} · FULL LYRICS · NO. ${esc(row.catalogNumber||row.hymnNumber)}${String(row.hymnNumber||'')!==String(row.catalogNumber||row.hymnNumber)?` · SOURCE NO. ${esc(row.hymnNumber)}`:''}</small><h1>${esc(row.displayTitle||row.textTitle)}</h1><section class="lyrics" aria-label="Complete hymn lyrics">${lyricHtml}</section><div class="meta">${meta}</div></main></body></html>`);
   w.document.close();
 }
 function init(){if(localStorage.getItem('bbh-theme')==='dark')document.documentElement.classList.add('dark');render();loadWatchmanCollection();if('serviceWorker'in navigator)navigator.serviceWorker.register('/sw.js').catch(()=>{});}
