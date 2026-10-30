@@ -1,7 +1,7 @@
 {
   "name": "Bilingual Baptist Hymnal",
   "short_name": "Hymnal",
-  "description": "Search hymns, prepare a service and explore open hymnology data.",
+  "description": "Search 300 full-lyrics hymns and 168 additional title records, prepare a service, and explore hymn metadata offline.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fbf0d9",
