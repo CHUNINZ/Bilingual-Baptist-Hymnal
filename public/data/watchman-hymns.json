@@ -71,7 +71,8 @@
           "type": "verse"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "Joachim Neander; Catherine Winkworth"
     },
     {
       "id": 3,
@@ -106,7 +107,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "Fanny Crosby"
     },
     {
       "id": 4,
@@ -210,7 +212,8 @@
           "type": "verse"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "Fanny Crosby"
     },
     {
       "id": 7,
@@ -238,7 +241,8 @@
           "type": "verse"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "Walter C. Smith"
     },
     {
       "id": 8,
@@ -361,7 +365,8 @@
           "type": "verse"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "Robert Grant"
     },
     {
       "id": 11,
@@ -414,7 +419,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "Grail"
     },
     {
       "id": 12,
@@ -494,7 +500,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "Thomas O. Chisholm"
     },
     {
       "id": 14,
@@ -566,7 +573,8 @@
           "type": "verse"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "William Kethe"
     },
     {
       "id": 16,
@@ -729,7 +737,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Advent"
+      "category": "Advent",
+      "author": "W. A. Knox"
     },
     {
       "id": 20,
@@ -919,7 +928,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Gospel Songs"
+      "category": "Gospel Songs",
+      "author": "J. H. Tenney"
     },
     {
       "id": 25,
@@ -947,7 +957,8 @@
           "type": "verse"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "Isaac Watts"
     },
     {
       "id": 26,
@@ -1009,7 +1020,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Jesus Christ"
+      "category": "Jesus Christ",
+      "author": "Albert B. Simpson"
     },
     {
       "id": 27,
@@ -1037,7 +1049,8 @@
           "type": "verse"
         }
       ],
-      "category": "Love and Devotion"
+      "category": "Love and Devotion",
+      "author": "William R. Featherston; James H. Duffell"
     },
     {
       "id": 28,
@@ -1134,7 +1147,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Cross and Blood"
+      "category": "Cross and Blood",
+      "author": "George Bennard"
     },
     {
       "id": 30,
@@ -1178,7 +1192,8 @@
           "type": "chorus"
         }
       ],
-      "category": "The Cross and Blood"
+      "category": "The Cross and Blood",
+      "author": "Thomas Dennis"
     },
     {
       "id": 31,
@@ -1245,7 +1260,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Faith and Trust"
+      "category": "Faith and Trust",
+      "author": "Edward Mote"
     },
     {
       "id": 33,
@@ -1492,7 +1508,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Salvation"
+      "category": "Salvation",
+      "author": "John G. Foote; Elisha A. Hoffman"
     },
     {
       "id": 39,
@@ -1529,7 +1546,8 @@
           "type": "verse"
         }
       ],
-      "category": "Gospel Songs"
+      "category": "Gospel Songs",
+      "author": "Robert Lowry"
     },
     {
       "id": 40,
@@ -1573,7 +1591,8 @@
           "content": "Are you washed, in the blood,\nIn the soul cleansing blood of the Lamb?\nAre your garments spotless,\nAre they white as snow?\nAre you washed in the blood of the Lamb?",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "E. A. Hoffman"
     },
     {
       "id": 41,
@@ -1617,7 +1636,8 @@
           "content": "There is pow'r, pow'r, wonder-working pow'r\nIn the blood of the Lamb;\nThere is pow'r, pow'r, wonder-working pow'r\nIn the precious blood of the Lamb.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Lewis E. Jones"
     },
     {
       "id": 42,
@@ -1705,7 +1725,8 @@
           "content": "Give me the Bible, Holy message shining;\nThy light shall guide me in the narrow way;\nPrecept and promise, law and love combining,\nTill night shall vanish in eternal day.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Priscilla J. Owens"
     },
     {
       "id": 44,
@@ -1749,7 +1770,8 @@
           "content": "The Bible stands tho' the hills may tumble,\nIt will firmly stand when the earth shall crumble;\nI will plant my feet on its firm foundation,\nFor the Bible stands.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Haldor Lillenas"
     },
     {
       "id": 45,
@@ -1793,7 +1815,8 @@
           "content": "I know, I know, I know the Bible is true;\nDivinely inspired the whole way thro',\nI know the Bible is true.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Baylus Benjamin McKinney"
     },
     {
       "id": 46,
@@ -1828,7 +1851,8 @@
           "content": "Cling to the Bible! Cling to the Bible!\nCling to the Bible- Our Lamp and our Guide!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "M. J. Smith"
     },
     {
       "id": 47,
@@ -2048,7 +2072,8 @@
           "content": "Never lose sight of Jesus!\nNever lose sight of Jesus!\nNever lose sight of Jesus!\nDay and night He will lead you right\nNever lose sight of Jesus",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Johnson Oatman"
     },
     {
       "id": 52,
@@ -2127,7 +2152,8 @@
           "content": "Leave it there, leave it there,\nTake your burden to the Lord and leave it there;\nIf you trust and never doubt, He will surely bring you out;\nTake your burden to the Lord and leave it there.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Charles Albert Tindley"
     },
     {
       "id": 54,
@@ -2162,7 +2188,8 @@
           "content": "Just obey, just obey\nIs the way, God's way;\nWhen His message comes to you,\nThere is but one thing to do,\nJust obey, just obey.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Johnson Oatman"
     },
     {
       "id": 55,
@@ -2215,7 +2242,8 @@
           "content": "Trust and obey,\nFor there's no other way\nTo be happy in Jesus\nBut to trust and obey.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "John H. Sammis"
     },
     {
       "id": 56,
@@ -2290,7 +2318,8 @@
           "content": "Why not? Why not?\nWhy not come to Him now?\nWhy not? Why not?\nWhy not come to Him now.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "George F. Root"
     },
     {
       "id": 58,
@@ -2422,7 +2451,8 @@
           "content": "Why not now?.. why not now?..\nWhy not come to Jesus now?\nWhy not now?.. why not now?..\nWhy not come to Jesus now?",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "D. W. Whittle"
     },
     {
       "id": 61,
@@ -2489,7 +2519,8 @@
           "content": "Just now, your doubtings give o'er;\nJust now, reject Him no more;\nJust now, throw open the door;\nLet Jesus come into your heart.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Mrs. C. H. Morris"
     },
     {
       "id": 63,
@@ -2522,7 +2553,8 @@
           "content": "O, hear His tender pleading!\nCome, sinner, come!\nCome, and receive the blessing!\nCome, sinner, come!\nWhile Jesus whispers to you,\nCome, sinner, come!\nWhile we are praying for you,\nCome, sinner, come!",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "William Ellsworth Witter"
     },
     {
       "id": 64,
@@ -2557,7 +2589,8 @@
           "content": "Whosoever will, may come.\nWhosoever will! whosoever will!\nSend the proclamation over vale and hill;\n'Tis a loving Father calls the wanderer home.\nWhosoever will may come.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "P. P. Bliss"
     },
     {
       "id": 65,
@@ -2629,7 +2662,8 @@
           "content": "Careless soul, O heed the warning,\nFor your life will soon be gone,\nO how sad to face the judgment\nUnprepared to meet thy God.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "James H. Stanley"
     },
     {
       "id": 67,
@@ -2682,7 +2716,8 @@
           "content": "Is thy heart right with God,\nWashed in the crimson flood.\nCleansed and made holy, humble and lowly,\nRight in the sight of God?",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "E. A. Hoffman"
     },
     {
       "id": 68,
@@ -2717,7 +2752,8 @@
           "content": "All your anxiety, all your care,\nBring to the Mercy seat, leave it there;\nNever a burden He cannot bear,\nNever a Friend like Jesus.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Edward H. Joy"
     },
     {
       "id": 69,
@@ -2779,7 +2815,8 @@
           "content": "Coming home, coming home,\nNever more to roam,\nOpen wide Thine arms of love,\nLord, I'm coming home.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "William J. Kirkpatrick"
     },
     {
       "id": 70,
@@ -2823,7 +2860,8 @@
           "content": "Ye must be born again!\nYe must be born again!\nYe must be born again!\nI verily, verily say unto thee\nYe must be born again!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "William T. Sleeper"
     },
     {
       "id": 71,
@@ -2876,7 +2914,8 @@
           "content": "For you I am praying,\nFor you I am praying,\nFor you I am praying,\nI'm praying for you.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Samuel O'Malley Cluff"
     },
     {
       "id": 72,
@@ -2904,7 +2943,8 @@
           "content": "Out of the fear and dread of the tomb,\nJesus, I come, Jesus, I come\nInto the joy and light of Thy home,\nJesus, I come to Thee;\nOut of the depths of ruin untold,\nInto the peace of Thy sheltering fold,\nEver Thy glorious face to behold,\nJesus, I come to Thee.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "William T. Sleeper"
     },
     {
       "id": 73,
@@ -2948,7 +2988,8 @@
           "content": "Ru. . . . ning over,\nRu. . . . ning over,\nMy cup's fill'd and running over,\nSince the Lord saved me,\nI'm as happy as can be,\nMy cup's fill'd and running over.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Seth Sykes"
     },
     {
       "id": 74,
@@ -2991,7 +3032,8 @@
           "content": "Just as I am, of that free love,\nThe breadth, length, depth and height to prove,\nHere for a season, then above,\nO Lamb of God, I come! I come!",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Charlotte Elliott"
     },
     {
       "id": 75,
@@ -3044,7 +3086,8 @@
           "content": "Oh, the love that sought me!\nOh, the blood that bought me!\nOh, the grace that brought me to the fold,\nWondrous grace that brought me to the fold!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "W. Spencer Walton"
     },
     {
       "id": 76,
@@ -3079,7 +3122,8 @@
           "content": "Wonderful the matchless grace of Jesus,\nDeeper than the mighty rolling sea;\nHigher than the mountain,sparkling like a fountain,\nAll sufficient grace for even me, for even me,\nBroader than the scope of my transgressions,\nGreater far than all my sin and shame\nO magnify the precious name of Jesus,\nPraise His name!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Haldor Lillenas"
     },
     {
       "id": 77,
@@ -3093,7 +3137,7 @@
           "type": "verse"
         },
         {
-          "content":"Jesus Lord, I ask for mercy,\nLet me not implore in vain,\nAll my sins I now detest them,\nNever will I sin again",
+          "content": "Jesus Lord, I ask for mercy,\nLet me not implore in vain,\nAll my sins I now detest them,\nNever will I sin again",
           "type": "chorus"
         },
         {
@@ -3102,7 +3146,7 @@
           "type": "verse"
         },
         {
-          "content":"Jesus Lord, I ask for mercy,\nLet me not implore in vain,\nAll my sins I now detest them,\nNever will I sin again",
+          "content": "Jesus Lord, I ask for mercy,\nLet me not implore in vain,\nAll my sins I now detest them,\nNever will I sin again",
           "type": "chorus"
         },
         {
@@ -3111,7 +3155,7 @@
           "type": "verse"
         },
         {
-          "content":"Jesus Lord, I ask for mercy,\nLet me not implore in vain,\nAll my sins I now detest them,\nNever will I sin again",
+          "content": "Jesus Lord, I ask for mercy,\nLet me not implore in vain,\nAll my sins I now detest them,\nNever will I sin again",
           "type": "chorus"
         },
         {
@@ -3120,7 +3164,7 @@
           "type": "verse"
         },
         {
-          "content":"Jesus Lord, I ask for mercy,\nLet me not implore in vain,\nAll my sins I now detest them,\nNever will I sin again",
+          "content": "Jesus Lord, I ask for mercy,\nLet me not implore in vain,\nAll my sins I now detest them,\nNever will I sin again",
           "type": "chorus"
         }
       ]
@@ -3220,7 +3264,8 @@
           "content": "I lost the world and the world lost me,\nWhen I found pardon at Calvary;\nI lost all my sadness, but I found peace and gladness,\nWhen I lost the world and the world lost me.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Haldor Lillenas"
     },
     {
       "id": 80,
@@ -3273,7 +3318,8 @@
           "content": "How marvelous! How wonderful!\nAnd my song shall ever be:\nHow marvelous! How wonderful!\nIs my Savior's love for me!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Chas. H. Gabriel"
     },
     {
       "id": 81,
@@ -3331,7 +3377,8 @@
           "content": "Because He lives, I can face tomorrow\nBecause He lives all fear is gone;\nBecause I know He holds the future\nAnd life is worth the living just\nbecause He lives.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Gloria Gaither; Bill Gaither"
     },
     {
       "id": 83,
@@ -3447,7 +3494,8 @@
           "content": "He forgives and forgets,\nHe forgives and forgets,\nNot as mortals forgive one another,\nBut our Jesus forgives and forgets.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Johnson Oatman, Jr."
     },
     {
       "id": 86,
@@ -3535,7 +3583,8 @@
           "content": "That man of Calvary\nHas won my heart from me,\nAnd died to set me free,\nBlest Man of Calvary!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Manie P. Ferguson"
     },
     {
       "id": 88,
@@ -3579,7 +3628,8 @@
           "content": "Mercy there was great, and grace was free;\nPardon there was multiplied to me;\nThere my burdened soul found liberty,\nAt Calvary.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "William R. Newell"
     },
     {
       "id": 89,
@@ -3623,7 +3673,8 @@
           "content": "Grace, grace, God's grace,\nGrace that will pardon and cleanse within;\nGrace, grace, God's grace,\nGrace that is greater than all our sin.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Julia H. Johnston"
     },
     {
       "id": 90,
@@ -3658,7 +3709,8 @@
           "content": "O victory in Jesus, my Saviour, forever!\nHe sought me and bought me with His redeeming blood;\nHe loved me ere I knew Him, and all my love is due Him-\nHe plunged me to victory beneath the cleansing flood.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "E. M. Bartlett"
     },
     {
       "id": 91,
@@ -3711,7 +3763,8 @@
           "content": "Since Jesus came into my heart!\nSince Jesus came into my heart,\nFloods of joy o'er my soul like the sea billows roll,\nSince Jesus came into my heart.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Rufus H. McDaniel"
     },
     {
       "id": 92,
@@ -3779,7 +3832,8 @@
           "content": "Burdens are lifted at Calvary,\nCalvary, Calvary;\nBurdens are lifted at Calvary,\nJesus is very near.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "John M. Moore"
     },
     {
       "id": 94,
@@ -3814,7 +3868,8 @@
           "content": "Turn your eyes upon Jesus,\nLook full in His wonderful face;\nAnd the things of earth will grow strangely dim\nIn the light of His glory and grace.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Helen Howarth Lemmel"
     },
     {
       "id": 95,
@@ -3842,7 +3897,8 @@
           "content": "I long to be like Jesus,\nMeek, loving, lowly, mild,\nI long to be like Jesus,\nThe Father's holy child,\nI long to be with Jesus,\nAmid the heavenly throng,\nTo sing with saints His praises,\nTo learn the angels' song.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Horatius Bonar"
     },
     {
       "id": 96,
@@ -3974,7 +4030,8 @@
           "content": "He bro't me out of the miry clay,\nHe set my feet on the Rock to stay;\nHe puts a song in my soul today,\nA song of praise, hallelujah.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Henry J. Zelley; H. L. Gilmour"
     },
     {
       "id": 99,
@@ -4018,7 +4075,8 @@
           "content": "No other hope, no other plea;\nHe took my place, and died for me;\nO precious Lamb of Calvary!\nHe took my place, and died for me.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Eliza E. Hewitt"
     },
     {
       "id": 100,
@@ -4062,7 +4120,8 @@
           "content": "When He reached down His hand for me,\nWhen He reach'd down His hand for me;\nI was lost and undone, without God or His Son,\nWhen He reached down His hand for me.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "G. E. Wright"
     },
     {
       "id": 101,
@@ -4106,7 +4165,8 @@
           "content": "Glorious freedom, wonderful freedom,\nNo more in chains of sin I repine!\nJesus the glorious Emancipator,\nNow and forever He shall be mine.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Haldor Lillenas"
     },
     {
       "id": 102,
@@ -4200,7 +4260,8 @@
           "content": "He touched me\nOh He touched me, and\nOh the joy that floods my soul;\nSomething happened, and now I know,\nHe touched me and made me whole.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Bill Gaither"
     },
     {
       "id": 105,
@@ -4235,7 +4296,8 @@
           "content": "Under His wings, under His wings,\nWho from His love can sever?\nUnder His wings my soul shall abide,\nSafely abide for ever.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "William Cushing"
     },
     {
       "id": 106,
@@ -4279,7 +4341,8 @@
           "content": "Christ Jesus hath the pow'r,\nThe pow'r of God He wields!\nChrist Jesus hath the pow'r,\nMy heart surrender yields!\nChrist Jesus hath the pow'r,\nI trust Him ever-more!\nChrist Jesus hath the pow'r,\nI worship and adore!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "James M. Gray"
     },
     {
       "id": 107,
@@ -4332,7 +4395,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Christian Life"
+      "category": "Christian Life",
+      "author": "D. S. Warner"
     },
     {
       "id": 108,
@@ -4437,7 +4501,8 @@
           "content": "Heaven came down and glory filled my soul,\nWhen at the cross the Saviour made me whole;\nMy sins were washed away\nAnd my night was turned to day-\nHeaven came down and glory filled my soul!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "John W. Peterson"
     },
     {
       "id": 111,
@@ -4481,7 +4546,8 @@
           "content": "Sing it o'er and o'er again;\nChrist receiveth sinful men;\nMake the message clear and plain:\nChrist receiveth sinful men.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Erdmann Neumeister; Frances Bevan"
     },
     {
       "id": 112,
@@ -4516,7 +4582,8 @@
           "content": "This is my story, this is my song,\nPraising my Saviour all the day long;\nThis is my story, this is my song,\nPraising my Saviour all the day long.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Fanny Crosby"
     },
     {
       "id": 113,
@@ -4549,7 +4616,8 @@
           "content": "I would thy boundless love proclaim\nWith every fleeting breath;\nSo shall the music of Thy Name\nRefresh my soul in death.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "John Newton"
     },
     {
       "id": 114,
@@ -4602,7 +4670,8 @@
           "content": "It is well, with my soul\nIt is well, it is well with my soul.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Horatio Gates Spafford"
     },
     {
       "id": 115,
@@ -4655,7 +4724,8 @@
           "content": "Standing, standing,\nStanding on the promises of God my Saviour,\nStanding, standing,\nI'm standing on the promises of God.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Russell Kelso Carter"
     },
     {
       "id": 116,
@@ -4693,7 +4763,8 @@
           "content": "Lord, it is my chief complaint\nThat my love is weak and faint;\nYet, I love Thee and adore;\nOh for grace to love Thee more.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "William Cowper"
     },
     {
       "id": 117,
@@ -4813,7 +4884,8 @@
           "content": "Try Jesus, He never fails,\nO'er evil His love prevails,\nIn sunshine or stormy gales,\nTry Jesus, He never fails.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "J. R. Baxter"
     },
     {
       "id": 120,
@@ -4857,7 +4929,8 @@
           "content": "When Jesus comes the tempter's pow'r is broken;\nWhen Jesus comes the tears are wiped away.\nHe takes the gloom and fills the life with glory,\nFor all is changed when Jesus comes to stay.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Oswald J. Smith"
     },
     {
       "id": 121,
@@ -4910,7 +4983,8 @@
           "content": "We have an anchor that keeps the soul\nSteadfast and sure while the billows roll;\nFastened to the Rock which cannot move,\nGrounded firm and deep in the Saviour's love!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Priscilla J. Owens"
     },
     {
       "id": 122,
@@ -4998,7 +5072,8 @@
           "content": "Like the mount of God,\nLike the mount of God;\nThey stand secure like Zion's mount,\nBy many ages proved.\nThey can never be removed, removed;\nThey stand secure like Zion's mount,\nThey can never be removed.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Clarence M. Seamans"
     },
     {
       "id": 124,
@@ -5042,7 +5117,8 @@
           "content": "All that I need is in Jesus,\nHe satisfies, joy He supplies;\nLife would be worthless without Him,\nAll things in Jesus I find.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Harry Dixon Loes"
     },
     {
       "id": 125,
@@ -5086,7 +5162,8 @@
           "content": "Happy day! Happy day!\nWhen Jesus washed my sins away!\nHe taught me how to watch and pray,\nAnd live rejoicing every day;\nHappy day! Happy day!\nWhen Jesus washed my sins away!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Philip Doddridge"
     },
     {
       "id": 126,
@@ -5258,7 +5335,8 @@
           "content": "He'll never forget to keep thee,\nHe'll never forget to keep thee;\nRepent and believe and obey Him,\nAnd He'll never forget to keep thee",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "F. A. Graves"
     },
     {
       "id": 130,
@@ -5321,7 +5399,8 @@
           "content": "Saviour, come! We long to see Thee,\nLong to dwell with Thee above;\nAnd to know in full communion,\nAll the sweetness of Thy love.\nCome, Lord Jesus! (2ce)\nTake Thy waiting people home. (2ce)",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "William Williams; Peter Williams"
     },
     {
       "id": 132,
@@ -5472,7 +5551,8 @@
           "content": "If God be for us, if God be for us,\nIf God be for us, who can be against us?\nWho? Who? Who?\nWho can be against us, against us",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "James McGranahan"
     },
     {
       "id": 136,
@@ -5507,7 +5587,8 @@
           "content": "I will not forget thee or leave thee;\nIn My hands I'll hold thee, in My arms I'll fold thee;\nI will not forget thee or leave thee;\nI am thy Redeemer, I will care for thee.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Chas. Hutchinson Gabriel"
     },
     {
       "id": 137,
@@ -5551,7 +5632,8 @@
           "content": "God will take care of you,\nThro' ev'ry day,\nO'er all the way;\nHe will take care of you,\nGod will take care of you.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Civilla D. Martin"
     },
     {
       "id": 138,
@@ -5586,7 +5668,8 @@
           "content": "Got any rivers you think are uncrossable?\nGot any mountains you can't tunnel through?\nGod specializes in things thought impossible,\nHe does the things others cannot do.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Oscar C. Eliason"
     },
     {
       "id": 139,
@@ -5709,7 +5792,8 @@
           "content": "Some thro' the waters, some thro' the flood,\nSome thro' the fire, but all thro' the blood;\nSome thro' great sorrow, but God gives a song;\nIn the night season and all the day long.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "G. A. Young"
     },
     {
       "id": 142,
@@ -5767,7 +5851,8 @@
           "content": "Never! ... never! ...\nNever! Oh, never! For Thou art the way;\nNever! ... never! ...\nNever from Thee would we stray.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Sophia T. Griswold"
     },
     {
       "id": 144,
@@ -5793,7 +5878,8 @@
           "content": "He's the Alpha and Omega, the Beginning and the End.\nHe's the fairest of ten thousand to my soul.\nGod can do anything, anything, anything,\nGod can do anything but fail.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Ira F. Stanphill"
     },
     {
       "id": 145,
@@ -5855,7 +5941,8 @@
           "content": "I am so glad that Jesus loves me,\nJesus loves me, Jesus loves me,\nI am so glad that Jesus loves me,\nJesus loves even me.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Emily S. Oakey; P. P. Bliss"
     },
     {
       "id": 146,
@@ -5890,7 +5977,8 @@
           "content": "Surely goodness and mercy shall follow me\nAll the days, all the days of my life,\nSurely goodness and mercy shall follow me\nAll the days, all the days of my life,\nAnd I shall dwell in the house of the Lord forever,\nAnd I will feast at the table spread for me.\nSurely goodness and mercy shall follow me all the days, all the days of my life.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "John W. Peterson; Alfred B. Smith"
     },
     {
       "id": 147,
@@ -5925,7 +6013,8 @@
           "content": "No one ever cared for me like Jesus,\nThere's no other friend so kind as He;\nNo one else could take the sin and darkness from me,\nO how much He cared for me.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Charles F. Weigle"
     },
     {
       "id": 148,
@@ -5968,7 +6057,8 @@
           "content": "It is enough; earth's struggles soon shall cease?\nAnd Jesus call to heaven's perfect peace.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Edward Henry Bickersteth"
     },
     {
       "id": 149,
@@ -6012,7 +6102,8 @@
           "content": "O yes, He cares I know He cares!\nHis heart is touched with my grief;\nWhen the days are weary, the long night dreary,\nI know my Saviour cares.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Frank E. Graeff"
     },
     {
       "id": 150,
@@ -6047,7 +6138,8 @@
           "content": "Leaning, leaning, safe and secure from all alarms;\nLeaning, leaning, leaning on the everlasting arms.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "E. A. Hoffman"
     },
     {
       "id": 151,
@@ -6135,7 +6227,8 @@
           "content": "I trust in God, -I know He cares for me,\nOn mountain bleak or on the stormy sea;\nTho' billows roll, He keeps my soul,\nMy heav'nly Father watches over me.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "W. C. Martin"
     },
     {
       "id": 153,
@@ -6179,7 +6272,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Praise and Worship"
+      "category": "Praise and Worship",
+      "author": "Vernon J. Charlesworth"
     },
     {
       "id": 154,
@@ -6251,7 +6345,8 @@
           "content": "O Holy Ghost, revival comes from Thee;\nSend a revival–start the work in me:\nThy word declares Thou wilt supply our need;\nFor blessing now, O Lord, I humbly plead.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "J. Edwin Orr"
     },
     {
       "id": 156,
@@ -6295,7 +6390,8 @@
           "content": "Send a great revival in my soul,\nSend a great revival in my soul;\nLet the Holy Spirit come and take control,\nAnd send a great revival in my soul.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "B. B. McKinney"
     },
     {
       "id": 157,
@@ -6328,7 +6424,8 @@
           "content": "All things are possible to God;\nTo Christ, the power of God in me;\nNow shed Thy mighty Self abroad,\nLet me no longer live, but Thee;\nGive me this hour in Thee to prove\nThe sweet omnipotence of love.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Charles Wesley"
     },
     {
       "id": 158,
@@ -6425,7 +6522,8 @@
           "content": "In the old time way....\nIn the old time way....\nLord, revive and save Thy people\nIn the old time way",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Baylus Benjamin McKinney"
     },
     {
       "id": 160,
@@ -6535,7 +6633,8 @@
           "content": "Take my love; my Lord I pour\nAt Thy feet its treasure–store;\nTake myself, and I will be\nEver, only, all for Thee.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Frances Ridley Havergal"
     },
     {
       "id": 163,
@@ -6720,7 +6819,8 @@
           "content": "The way of the cross leads home,\nThe way of the cross leads home;\nIt is sweet to know, as I onward go,\nThe way of the cross leads home.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Jessie Brown Pounds"
     },
     {
       "id": 167,
@@ -6773,7 +6873,8 @@
           "content": "I surrender all,\nI surrender all;\nAll to Thee, my blessed Saviour,\nI surrender all.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Judson W. Van DeVenter"
     },
     {
       "id": 168,
@@ -6873,7 +6974,8 @@
           "content": "O deeper yet I pray...\nAnd higher every day...\nAnd wiser, blessed Lord,\nIn Thy precious, holy word.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Charles Price Jones"
     },
     {
       "id": 171,
@@ -6901,7 +7003,8 @@
           "content": "And I have brought to thee,\nDown from My home above,\nSalvation full and free,\nMy pardon and My love;\nI bring, I bring rich gifts tothee,\nI bring, I bring rich gifts tothee,\nWhat hast thou brought to me?\nWhat hast thou brought to me?",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Frances R. Havergal"
     },
     {
       "id": 172,
@@ -6945,7 +7048,8 @@
           "content": "Draw me nearer, nearer blessed Lord,\nTo the cross where Thou hast died;\nDraw me nearer, nearer, nearer, blessed Lord,\nTo Thy precious, bleeding side.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Fanny Crosby"
     },
     {
       "id": 173,
@@ -6989,7 +7093,8 @@
           "content": "Faith of our fathers, holy faith!\nWe will be true to Thee till death.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Frederick William Faber"
     },
     {
       "id": 174,
@@ -7022,7 +7127,8 @@
           "content": "Oh, let me see Thy footmarks,\nAnd in them plant mine own;\nMy hope to follow duly\nIs in Thy strength alone.\nOh, guide me, call me, draw me\nUphold me to the end,\nAnd then in heaven receive me,\nMy Saviour and my Friend!",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "John Ernest Bode"
     },
     {
       "id": 175,
@@ -7099,7 +7205,8 @@
           "content": "In the cross, in the cross\nBe my glory ever,\nTill my raptured soul shall find\nRest beyond the river.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Fanny Crosby"
     },
     {
       "id": 177,
@@ -7134,7 +7241,8 @@
           "content": "Close to Thee, Close to Thee,\nClose to Thee, Close to Thee,\nThen the gate of life eternal\nMay I enter, Lord, with Thee.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Fanny Crosby"
     },
     {
       "id": 178,
@@ -7222,7 +7330,8 @@
           "content": "Make me a channel of blessing today,\nMake me a channel of blessing, I pray:\nMy life possessing, my service blessing.\nMake me a channel of blessing today.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Harper G. Smyth"
     },
     {
       "id": 180,
@@ -7266,7 +7375,8 @@
           "content": "I am determined to hold out to the end,\nJesus is with me, on Him I can depend,\nAnd I know I have salvation, for I feel it in my soul,\nI am determined to hold out to the end.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "C. S. Hamilton; T. P. Hamilton"
     },
     {
       "id": 181,
@@ -7389,7 +7499,8 @@
           "content": "Hear we the Shepherd's voice,\nPray, brethren, pray!\nWould ye His heart rejoice?-\nPray, brethren, pray!\nSin calls for ceaseless care,\nWeakness needs the Strong One near;\nLong as ye tarry here,\nPray, brethren, pray!",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Horatius Bonar"
     },
     {
       "id": 185,
@@ -7433,7 +7544,8 @@
           "content": "I will follow where He leadeth,\nI will pasture where He feedeth\nI will follow all the way, Lord,\nI will follow Jesus ev'ry day.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Charles F. Weigle"
     },
     {
       "id": 186,
@@ -7468,7 +7580,8 @@
           "content": "Than to be the king of a vast domain\nAnd be held in sin's dread sway;\nI'd rather have Jesus than anything\nThis world affords today.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Rhea F. Miller"
     },
     {
       "id": 187,
@@ -7538,7 +7651,8 @@
           "content": "Bringing in the sheaves,\nBringing in the sheaves,\nWe shall come rejoicing, bringing in the sheaves.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Knowles Shaw"
     },
     {
       "id": 189,
@@ -7573,7 +7687,8 @@
           "content": "Bring them in, bring them in,\nBring them in from the fields of sin;\nBring them in, bring them in,\nBring the wandering ones to Jesus.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Alexcenah Thomas"
     },
     {
       "id": 190,
@@ -7617,7 +7732,8 @@
           "content": "So you bring the one next to you,\nAnd I'll bring the one next to me;\nIn all kinds of weather, we'll all work together,\nAnd see what can be done;\nIf you'll bring the one next to you,\nAnd I bring the one next to me,\nIn no time at all we'll have them all,\nSo win them, win them one by one.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "C. Austin Miles"
     },
     {
       "id": 191,
@@ -7652,7 +7768,8 @@
           "content": "Brighten the corner where you are!\nBrighten the corner where you are!\nSomeone far from harbour you may guide across the bar,\nBrighten the corner where you are.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Ina Duley Ogdon"
     },
     {
       "id": 192,
@@ -7696,7 +7813,8 @@
           "content": "Till the whole world knows,\nTill the whole world knows,\nI will shout and sing of Christ my King,\nTill the whole world knows",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "A. H. Ackley"
     },
     {
       "id": 193,
@@ -7729,7 +7847,8 @@
           "content": "Spirit of love, within us move;\nSpirit of truth, in power come down!\nSo shall they hear and find and prove\nChrist is their life, their joy, their crown.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Timothy Dudley-Smith"
     },
     {
       "id": 194,
@@ -7817,7 +7936,8 @@
           "content": "Christ hath redeemed us Praise to His name!\nPraise Him, ye angels in glory!\nChrist hath redeemed us, bearing our shame;\nTell out the wonderful story!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "D. W. Whittle"
     },
     {
       "id": 196,
@@ -7888,7 +8008,8 @@
           "content": "No word of Thine is void of power;\nNo promise, Lord, is vain.\nBe this a Pentecostal hour-\nConfirm Thy Word again!\nNor can'st Thou fail! Thou art the same\nAs when of old Thou did'st proclaim:\nThese signs shall surely follow them\nWho on My Name believe.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "L. F. W. Woodford"
     },
     {
       "id": 198,
@@ -7976,7 +8097,8 @@
           "content": "Blessed quietness, holy quietness,\nWhat assurance in my soul!\nOn the stormy sea, He speaks peace to me\nHow the billows cease to roll.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "M. P. Ferguson"
     },
     {
       "id": 200,
@@ -8054,7 +8176,8 @@
           "content": "Give me, Lord, a double portion, pour Thy Spirit on me,\nThru eyes of faith Thy wondrous works I can see;\nBut I need Thy helping hand, in this troubled, sinful land,\nGive me, Lord, a double portion from Thee.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Bobby Burnett"
     },
     {
       "id": 202,
@@ -8151,7 +8274,8 @@
           "content": "The Comforter has come, The Comforter has come!\nThe Holy Ghost from Heav'n, The Father's promise giv'n;\nO spread the tidings round, Wherever man is found-\nThe Comforter has come!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Francis Bottome"
     },
     {
       "id": 204,
@@ -8186,7 +8310,8 @@
           "content": "The power! The power!\nGives vict'ry over sin and purity within;\nThe power! The power!\nThe power they had at Pentecost.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Charles F. Weigle"
     },
     {
       "id": 205,
@@ -8258,7 +8383,8 @@
           "content": "Let it come, O Lord, we pray Thee,\nLet the shower of blessing fall;\nWe are waiting, we are waiting,\nOh, revive the hearts of all.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Fanny Crosby"
     },
     {
       "id": 207,
@@ -8284,7 +8410,8 @@
           "content": "Fill the earth, bring it to birth and blow where you will,\nBlow, blow, blow till I be but breath of the Spirit blowing in me.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Miriam Therese Winter"
     },
     {
       "id": 208,
@@ -8389,7 +8516,8 @@
           "content": "Toiling on, toiling on,\nToiling on, toiling on,\nLet us hope,\nLet us watch,\nAnd labour till the Master comes.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Fanny Crosby"
     },
     {
       "id": 211,
@@ -8433,7 +8561,8 @@
           "content": "Must I go, and empty-handed?\nMust I meet my Saviour so?\nNot one soul with which to greet Him:\nMust I empty-handed go?",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Charles C. Luther"
     },
     {
       "id": 212,
@@ -8512,7 +8641,8 @@
           "content": "I'll go,\nAnd press the fight,\nAgainst the foe;\nI'll spread the gospel light,\nI'll go, I'll go.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Elbert Kelley"
     },
     {
       "id": 214,
@@ -8584,7 +8714,8 @@
           "content": "Oh, can we say we are ready, brother?\nReady for the souls bright home?\nSay, will He find you and me still watching,\nWaiting, waiting when the Lord shall come?",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Fanny Crosby"
     },
     {
       "id": 216,
@@ -8628,7 +8759,8 @@
           "content": "Heed the call, brother dear,\nFor workers today;\nLet your eyes see the need\nOf workers, today.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Alma White"
     },
     {
       "id": 217,
@@ -8715,7 +8847,8 @@
           "content": "Oh, use me, Lord, use even me,\nJust as Thou wilt, and how, and where;\nUntil Thy blessed face I see,\nThy rest, Thy joy, Thy glory share.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Frances Ridley Havergal"
     },
     {
       "id": 219,
@@ -8803,7 +8936,8 @@
           "content": "As the Father hath sent me,\nSo send I you",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "E. Margaret Clarkson"
     },
     {
       "id": 221,
@@ -8847,7 +8981,8 @@
           "content": "Count your blessings, name them one by one,\nCount your blessings, see what God hath done;\nCount your blessings, name them one by one,\nAnd it will surprise you what the Lord hath done.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Johnson Oatman, Jr."
     },
     {
       "id": 222,
@@ -8905,7 +9040,8 @@
           "content": "I would not halve my service,\nHis only it must be!\nHis only—Who so loved me,\nAnd gave Himself for me.\nRejoicing and adoring,\nHenceforth my song shall be—\nI love, I love my Master,\nI will not go out free!",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Frances R. Havergal"
     },
     {
       "id": 224,
@@ -8949,7 +9085,8 @@
           "content": "Sound the alarm, watchman! Sound the alarm!\nFor the Lord will come with a conquering arm;\nAnd the hosts of sin, as their ranks advance,\nShall wither and fall at His glance.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Fanny J. Crosby"
     },
     {
       "id": 225,
@@ -9021,7 +9158,8 @@
           "content": "Let others see Jesus in you,\nLet others see Jesus in you;\nKeep telling the story, be faithful and true,\nLet others see Jesus in you.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "B. B. McKinney"
     },
     {
       "id": 227,
@@ -9065,7 +9203,8 @@
           "content": "Let us hear you tell it over once again, tell it over once again;\nTell the sweet and blessed story,\nIt will help you on to glory-\nLet us hear you tell it over once again.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "John M. Whyte"
     },
     {
       "id": 228,
@@ -9109,7 +9248,8 @@
           "content": "I must tell Jesus! I must tell Jesus!\nI cannot bear my burdens alone;\nI must tell Jesus! I must tell Jesus!\nJesus can help me, Jesus alone.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "E. A. Hoffman"
     },
     {
       "id": 229,
@@ -9153,7 +9293,8 @@
           "content": "Tell it to Jesus, tell it to Jesus,\nHe is a friend that's well known;\nYou have no other such a friend or brother,\nTell it to Jesus alone.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Jeremiah Eames Rankin"
     },
     {
       "id": 230,
@@ -9176,7 +9317,8 @@
           "content": "Sweet hour of prayer! Sweet hour of prayer!\nMay I thy consolation share,\nTill, from Mount Pisgah's lofty height,\nI view my home, and take my flight:\nThis robe of flesh I'll drop, and rise\nTo seize the everlasting prize;\nAnd shout, while passing through the air,\nFarewell, farewell, Sweet hour of prayer.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "William W. Walford"
     },
     {
       "id": 231,
@@ -9229,7 +9371,8 @@
           "content": "Telephone to glory, O what joy divine!\nI can feel the current moving on the line;\nBuilt by God the Father for His loved and own-\nWe may talk to Jesus through this royal telephone.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Frederick M. Lehman"
     },
     {
       "id": 232,
@@ -9262,7 +9405,8 @@
           "content": "When I'm growing old and feeble, stand by me;\nWhen I'm growing old and feeble, stand by me,\nWhen my life becomes a burden, and I'm nearing chilly Jordan,\nO thou Lily of the Valley, stand by me.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Charles Albert Tindley"
     },
     {
       "id": 233,
@@ -9417,7 +9561,8 @@
           "content": "Silently, now I wait for Thee,\nReady, my God, Thy will to see,\nOpen my way, illumine me,\nSpirit divine.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Clara H. Scott"
     },
     {
       "id": 237,
@@ -9596,7 +9741,8 @@
           "content": "Glory! Glory, hallelujah!\nGlory! Glory, hallelujah!\nGlory! Glory, hallelujah!\nWhile God is marching on.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Julia Ward Howe"
     },
     {
       "id": 242,
@@ -9649,7 +9795,8 @@
           "content": "Victory ahead! Victory ahead!\nThro' the blood of Jesus, victory ahead,\nTrusting in the Lord, I hear the conq'ror's tread,\nBy faith I see the victory ahead.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "William Grum"
     },
     {
       "id": 243,
@@ -9737,7 +9884,8 @@
           "content": "Rouse, then, soldiers! Rally round the banner!\nReady, steady, pass the word along;\nOnward! Forward! Shout aloud, Hosanna!\nChrist is Captain of the mighty throng!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "William F. Sherwin"
     },
     {
       "id": 245,
@@ -9847,7 +9995,8 @@
           "content": "Watch, as if on that alone\nHung the issue of the day;\nPray that help may be sent down:\nWatch and pray.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Charlotte Elliott"
     },
     {
       "id": 248,
@@ -9882,7 +10031,8 @@
           "content": "The winds and the waves shall obey My will!\nPeace!… be still!…\nWhether the wrath of the storm-tossed sea,\nOr demons, or men, or whatever it be,\nNo waters can swallow the ship where lies\nThe Master of ocean, and earth, and skies:\nThey all shall sweetly obey My will;\nPeace! Be still! Peace! Be still!\nThey all shall sweetly obey My will;\nPeace! Peace! Be still!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Mary Ann Baker"
     },
     {
       "id": 249,
@@ -9917,7 +10067,8 @@
           "content": "Victory! Victory! Blessed blood-bought victory,\nVictory! Victory! Vict'ry all the time.\nAs Jehovah liveth, strength divine He giveth,\nUnto those who know Him vict'ry all the time.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Mrs. C. H. Morris"
     },
     {
       "id": 250,
@@ -9961,7 +10112,8 @@
           "content": "And when the battle's over we shall\nwear a crown!\nYes, we shall wear a crown! Yes,\nwe shall wear a crown!\nAnd when the battle's over we shall\nwear a crown\nIn the new Jerusalem.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Isaac Watts"
     },
     {
       "id": 251,
@@ -10005,7 +10157,8 @@
           "content": "Just the same today, just the same today,\nAs when He led His people thro'the sea;\nHis trustful child I'll be, for in His word I see,\nThe God who doeth wonders is just the same today.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Eliza E. Hewitt"
     },
     {
       "id": 252,
@@ -10084,7 +10237,8 @@
           "content": "Till we meet, till we meet\nTill we meet at Jesus feet;\nTill we meet, till we meet,\nGod be with you till we meet again.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Jeremiah Eames Rankin"
     },
     {
       "id": 254,
@@ -10117,7 +10271,8 @@
           "content": "So be it, Lord: Thy throne shall never,\nLike earth's proud empires, pass away;\nThy kingdom stands and grows forever,\nTill all Thy creatures own Thy sway.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "John Ellerton"
     },
     {
       "id": 255,
@@ -10150,7 +10305,8 @@
           "content": "Hold Thou Thy Cross before my closing eyes;\nShine through the gloom and point me to the skies:\nHeaven's morning breaks, and earth's vain shadows flee;\nIn life, in death, O Lord, abide with me.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Henry Francis Lyte"
     },
     {
       "id": 256,
@@ -10183,7 +10339,8 @@
           "content": "Asleep in Jesus! Far from thee\nThy kindred and their graves may be:\nBut thine is still a blessed sleep,\nFrom which none ever wakes to weep.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Margaret Mackay"
     },
     {
       "id": 257,
@@ -10218,7 +10375,8 @@
           "content": "Tomorrow may mean good-by,\nWe never know when nor why,\nGod calls us away, when life seems so gay,\nOur bodies in dust to lie;\nTomorrow our souls may sigh,\nFor beauties we've let slip by,\nO soul then prepare, sweet heaven to share,\nTomorrow may mean goodby.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "J. B. Coats"
     },
     {
       "id": 258,
@@ -10253,7 +10411,8 @@
           "content": "When the roll is called up yonder,\nWhen the roll is called up yonder,\nWhen the roll is called up yonder,\nWhen the roll is called up yonder, I'll be there.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "James M. Black"
     },
     {
       "id": 259,
@@ -10578,7 +10737,8 @@
           "content": "Yes, we'll gather at the river,\nThe beautiful, the beautiful river,\nGather with the saints at the river,\nThat flows by the throne of God.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Robert Lowry"
     },
     {
       "id": 267,
@@ -10675,7 +10835,8 @@
           "content": "I am bound for the promised land,\nI am bound for the promised land;\nO who will come and go with me?\nI am bound for the promised land.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Samuel Stennett"
     },
     {
       "id": 269,
@@ -10798,7 +10959,8 @@
           "content": "How beautiful heaven must be,\nSweet home of the happy and free;\nFair heaven of rest for the weary,\nHow beautiful heaven must be.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Mrs. A. S. Bridgewater"
     },
     {
       "id": 272,
@@ -10877,7 +11039,8 @@
           "content": "Heavenly sunlight, heavenly sunlight,\nFlooding my soul with glory divine;\nHallelujah! I am rejoicing,\nSinging His praises, Jesus is mine",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Henry J. Zelley"
     },
     {
       "id": 274,
@@ -10947,7 +11110,8 @@
           "content": "Come over, come over,\nto the land of corn and wine,\nThere is nothing can compare with\nthe many holy pleasures there,\nCome over, come over,\nleave the desert plain below and come away,\nAway, come over.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "C. Austin Miles"
     },
     {
       "id": 276,
@@ -11035,7 +11199,8 @@
           "content": "Angels of Jesus, angels of light,\nSinging to welcome the pilgrims of the night!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Frederick William Faber"
     },
     {
       "id": 278,
@@ -11114,7 +11279,8 @@
           "content": "You never mentioned Him to me,\nYou helped me not the light to see;\nYou met me day by day and knew I was astray,\nYet never mentioned Him to me",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "James Rowe"
     },
     {
       "id": 280,
@@ -11158,7 +11324,8 @@
           "content": "Too late, too late, poor trembling soul!\nO will this be your fate?\nToo late, too late to be made whole!\nToo late, too late, too late!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Franklin L. Eiland"
     },
     {
       "id": 281,
@@ -11228,7 +11395,8 @@
           "content": "Are you ready? Are you ready?\nAre you ready for the judgment day?\nAre you ready?\nAre you ready for the judgment day?",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Will L. Thompson"
     },
     {
       "id": 283,
@@ -11316,7 +11484,8 @@
           "content": "And O, what a weeping and wailing,\nAs the lost were told of their fate;\nThey cried for the rocks and the mountains,\nThey prayed, but their prayer was too late.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Bert Shadduck"
     },
     {
       "id": 285,
@@ -11360,7 +11529,8 @@
           "type": "chorus"
         }
       ],
-      "category": "Warning"
+      "category": "Warning",
+      "author": "Sherman Branch"
     },
     {
       "id": 286,
@@ -11395,7 +11565,8 @@
           "content": "God help you to follow His banner,\nAnd serve Him wherever you go;\nAnd when you are tempted, my brother,\nGod give you the grace to say No!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Fanny Crosby"
     },
     {
       "id": 287,
@@ -11418,7 +11589,8 @@
           "content": "Jesus bids us shine, then; for all around,\nMany kinds of darkness in this world abound;\nSin and want and sorrow; so we must shine-\nYou in your small corner, and I in mine.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Susan Warner"
     },
     {
       "id": 288,
@@ -11462,7 +11634,8 @@
           "content": "Dare to be a Daniel!\nDare to stand alone!\nDare to make a purpose firm!\nDare to make it known!",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "P. P. Bliss"
     },
     {
       "id": 289,
@@ -11506,7 +11679,8 @@
           "content": "We may not know, we cannot tell,\nWhat pains He had to bear;\nBut we believe it was for us\nHe hung and suffered there.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "Cecil Frances Alexander"
     },
     {
       "id": 290,
@@ -11539,7 +11713,8 @@
           "content": "All things come from you, all are yours\nKingdom, glory, power, all are yours\nTake our lives and gifts, all are yours\nO Lord, hear our prayer.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "J. E. Seddon"
     },
     {
       "id": 291,
@@ -11592,7 +11767,8 @@
           "content": "All things bright and beautiful,\nAll creatures great and small,\nAll things wise and wonderful,\nThe Lord God made them all.",
           "type": "chorus"
         }
-      ]
+      ],
+      "author": "A. L. Quarles"
     },
     {
       "id": 292,
@@ -11653,7 +11829,8 @@
           "content": "There's a robe for little children,\nAbove the bright blue sky;\nAnd a harp of sweetest music,\nAnd a palm of victory,\nAll, all above is treasured,\nAnd found in Christ alone;\nOh, come, dear little children,\nThat all may be your own.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Albert Midlane"
     },
     {
       "id": 294,
@@ -11730,7 +11907,8 @@
           "content": "Where thou leadest I would go,\nWalking in thy steps below,\nTill before my Father's throne\nI shall know as I am known.",
           "type": "verse"
         }
-      ]
+      ],
+      "author": "Jane Eliza Leeson"
     },
     {
       "id": 296,
