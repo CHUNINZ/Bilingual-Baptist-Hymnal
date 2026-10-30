@@ -349,5 +349,6 @@ body{min-height:100vh;min-height:100dvh;overflow-x:hidden}
   .screen-hymns .home-view{padding:22px 0 35px}
   .screen-search .search-view{padding:22px 0 35px}
   .screen-browse .browse-view{padding:22px 0 35px}
-  .screen-saved .page-content,.screen-order .page-content{padding:22px 0 35px}
+  /* Match Browse's effective desktop inset: page shell (18px/20px/28px) plus section spacing (22px/35px). */
+  .screen-saved .page-content,.screen-order .page-content{padding:40px 20px 63px}
 }
