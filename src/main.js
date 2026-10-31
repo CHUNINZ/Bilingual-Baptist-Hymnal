@@ -42,6 +42,8 @@ const icon = (name, className='') => `<svg class="ui-icon ${className}" viewBox=
 const saved = new Set(JSON.parse(localStorage.getItem('bbh-saved') || '[]'));
 let service = JSON.parse(localStorage.getItem('bbh-service') || '[]');
 let searchTimer;
+let topicCacheKey='';
+let topicResultCache=new Map();
 let audioCtx;
 const nav = [['hymns','home','Hymns'],['search','search','Search'],['browse','library','Browse'],['saved','heart','Saved'],['order','list','Service']];
 const mobileNav = nav;
@@ -285,15 +287,19 @@ function renderBrowse() {
     return titleA.localeCompare(titleB,undefined,{sensitivity:'base',numeric:true});
   });
   const numbered=eligible.slice().sort((a,b)=>Number(a.catalogNumber)-Number(b.catalogNumber));
-  const topicMatches=topic=>eligible.filter(row=>{
-    const category=row.category||'';
-    const text=`${row.displayTitle||''} ${row.firstLine||''} ${row.fullTextData?.verses?.map(v=>v.text||v.english||v.tagalog||'').join(' ')||''}`;
-    return topic.categories.test(category)||topic.terms.test(text);
-  });
+  const nextTopicCacheKey=`${data.filter}:${eligible.length}:${eligible[0]?.textAuthNumber||''}:${eligible.at(-1)?.textAuthNumber||''}`;
+  if(topicCacheKey!==nextTopicCacheKey){
+    topicCacheKey=nextTopicCacheKey;topicResultCache=new Map();
+    const corpus=eligible.map(row=>({row,category:row.category||'',text:`${row.displayTitle||''} ${row.firstLine||''} ${row.fullTextData?.verses?.map(v=>v.text||v.english||v.tagalog||'').join(' ')||''}`}));
+    topics.forEach(topic=>topicResultCache.set(topic.key,corpus.filter(item=>topic.categories.test(item.category)||topic.terms.test(item.text)).map(item=>item.row)));
+  }
+  const topicMatches=topic=>topicResultCache.get(topic.key)||[];
+  const browsePageSize=120,browseLimit=data.browseLimit||browsePageSize;
+  const browseRows=rows=>`${rows.slice(0,browseLimit).map(resultCard).join('')}${rows.length>browseLimit?`<button class="browse-more" data-browse-more>Show ${Math.min(browsePageSize,rows.length-browseLimit)} more · ${rows.length-browseLimit} remaining</button>`:''}`;
   const selectedTopic=topics.find(topic=>topic.key===data.browseTopic);
   const topicRows=selectedTopic?topicMatches(selectedTopic):[];
-  const topicContent=selectedTopic?`<button class="text-button topic-back" data-topic-back>All topics</button><div class="panel-heading"><h2>${esc(selectedTopic.name)} · ${topicRows.length} hymns</h2></div><section class="results-panel browse-results"><div class="results-list">${topicRows.map(resultCard).join('')||'<div class="no-results">No hymns are indexed for this topic yet.</div>'}</div></section>`:`<div class="topic-note">Choose a topic to see matching hymns from the full catalog.</div><div class="topic-list">${topics.map(topic=>`<button class="topic-row" data-topic="${topic.key}"><span class="topic-mark">${icon('music')}</span><span><strong>${esc(topic.name)}</strong><small>${topicMatches(topic).length} matching hymns</small></span>${icon('arrow')}</button>`).join('')}</div>`;
-  const content=data.browse==='A–Z'?`<label class="search-box browse-search"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Filter hymn titles A to Z" value="${esc(data.query)}" type="search" placeholder="Filter titles A–Z"/><kbd>${icon('enter')}</kbd></label><div class="panel-heading"><h2>${azRows.length} hymns · A–Z</h2></div><section class="results-panel browse-results"><div class="results-list">${azRows.map(resultCard).join('')||'<div class="no-results">No hymns to show.</div>'}</div></section>`:data.browse==='Number'?`<div class="panel-heading"><h2>${numbered.length} hymns · source number</h2></div><section class="results-panel browse-results"><div class="results-list">${numbered.map(resultCard).join('')}</div></section>`:topicContent;
+  const topicContent=selectedTopic?`<button class="text-button topic-back" data-topic-back>All topics</button><div class="panel-heading"><h2>${esc(selectedTopic.name)} · ${topicRows.length} hymns</h2></div><section class="results-panel browse-results"><div class="results-list">${browseRows(topicRows)||'<div class="no-results">No hymns are indexed for this topic yet.</div>'}</div></section>`:`<div class="topic-note">Choose a topic to see matching hymns from the full catalog.</div><div class="topic-list">${topics.map(topic=>`<button class="topic-row" data-topic="${topic.key}"><span class="topic-mark">${icon('music')}</span><span><strong>${esc(topic.name)}</strong><small>${topicMatches(topic).length} matching hymns</small></span>${icon('arrow')}</button>`).join('')}</div>`;
+  const content=data.browse==='A–Z'?`<label class="search-box browse-search"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Filter hymn titles A to Z" value="${esc(data.query)}" type="search" placeholder="Filter titles A–Z"/><kbd>${icon('enter')}</kbd></label><div class="panel-heading"><h2>${azRows.length} hymns · A–Z</h2></div><section class="results-panel browse-results"><div class="results-list">${browseRows(azRows)||'<div class="no-results">No hymns to show.</div>'}</div></section>`:data.browse==='Number'?`<div class="panel-heading"><h2>${numbered.length} hymns · source number</h2></div><section class="results-panel browse-results"><div class="results-list">${browseRows(numbered)}</div></section>`:topicContent;
   return `<section class="browse-view"><header class="page-head compact"><div><span class="eyebrow">${fullLyricsCount()||300} FULL-LYRIC HYMNS</span><h1>Browse <em>hymns.</em></h1><p class="page-lede">Explore the full-lyrics collection by title, source number, or worship topic.</p></div></header><div class="browse-tabs">${tabs.map(t=>`<button class="browse-tab ${data.browse===t?'active':''}" data-browse="${t}">${t}</button>`).join('')}</div>${content}</section>`;
 }
 function renderReader(){const row=findText(data.selected);return `<section class="reader-page">${detail(row)}</section>`;}
@@ -327,7 +333,8 @@ function announce(msg){const t=$('.toast');if(!t)return;t.textContent=msg;t.clas
 function bind(){
   $$('[data-view]').forEach(el=>el.addEventListener('click',()=>go(el.dataset.view)));
   $$('[data-filter]').forEach(el=>el.addEventListener('click',()=>{data.filter=el.dataset.filter;data.searchLimit=80;render()}));
-  $$('[data-browse]').forEach(el=>el.addEventListener('click',()=>{data.browse=el.dataset.browse;render()}));
+  $$('[data-browse]').forEach(el=>el.addEventListener('click',()=>{data.browse=el.dataset.browse;data.browseLimit=120;render()}));
+  $('[data-browse-more]')?.addEventListener('click',()=>{data.browseLimit=(data.browseLimit||120)+120;render()});
   $$('[data-browse-mode]').forEach(el=>el.addEventListener('click',()=>{data.browse=el.dataset.browseMode;go('browse')}));
   $$('[data-topic]').forEach(el=>el.addEventListener('click',()=>{data.browseTopic=el.dataset.topic;render()}));
   $('[data-topic-back]')?.addEventListener('click',()=>{data.browseTopic='';render()});

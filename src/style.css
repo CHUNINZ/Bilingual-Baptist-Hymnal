@@ -375,6 +375,11 @@ button:focus-visible,.nav-item:focus-visible,.result-row:focus-visible,.topic-ro
 @media(hover:hover){.reader-toolbar .round-control:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 7px 16px #0030492b}}
 .reader-toolbar .round-control.is-saved{animation:save-pop .38s cubic-bezier(.2,1.5,.4,1)}
 @keyframes save-pop{50%{transform:scale(1.18) rotate(-8deg)}}
+.browse-tab{transition:transform .25s cubic-bezier(.2,1.7,.4,1),background-color .22s ease,color .22s ease;}
+.browse-tab:active{transform:translateX(5px) scale(.96)}
+.browse-tab.active{animation:browse-tab-select .32s cubic-bezier(.2,1.5,.4,1)}
+@keyframes browse-tab-select{0%{transform:translateX(0) scale(.94)}65%{transform:translateX(0) scale(1.045)}100%{transform:translateX(0) scale(1)}}
+.browse-more{display:block;width:calc(100% - 28px);min-height:46px;margin:14px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:#fffdf7;color:var(--navy);font-weight:700}
 
 @media(max-width:760px){
   .reader-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
