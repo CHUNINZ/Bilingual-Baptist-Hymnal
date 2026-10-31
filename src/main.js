@@ -3,7 +3,7 @@ const app = $('#app');
 const params = new URLSearchParams(location.search);
 const validViews=['hymns','search','browse','saved','order','data','reader','player'];
 const hashView=location.hash.slice(1).split('/')[0];
-const data = { watchmanRows: [], metadataRows: [], providedRows: [], view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', browseTopic:'', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
+const data = { watchmanRows: [], metadataRows: [], providedRows: [], awitRows: [], view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', browseTopic:'', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
 const player = { key:0, tempo:72, parts:{S:true,A:true,T:true,B:true}, playing:false, sources:[], timer:null, returnView:'reader' };
 const esc = (s = '') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const iconPaths = {
@@ -130,6 +130,17 @@ async function loadWatchmanCollection(){
         });
       }
     }catch{}
+    try{
+      const awitResponse=await fetch('/data/awit-hymnal.json');
+      if(awitResponse.ok){
+        const awit=await awitResponse.json();
+        data.awitRows=(Array.isArray(awit.awit)?awit.awit:[]).filter(h=>h&&typeof h.text==='string'&&h.text.trim()).map((h,index)=>{
+          const number=1279+index;
+          const lyrics=h.text.trim();
+          return {textAuthNumber:`awit_${h.id||index+1}`,displayTitle:h.title||`Awit hymn ${number}`,textTitle:h.title||'',firstLine:h.firstLine||lyrics.split(/\\r?\\n/).find(line=>line.trim())||'',languages:'Filipino',authors:h.author||'',supplemental:true,hymnNumber:String(number),category:[h.part,h.section].filter(Boolean).join(' · '),sourceCollection:'Awit Hymnal',fullTextData:{language:'Filipino',source:'Awit Hymnal',verses:[{number:1,type:'verse',text:lyrics}]}};
+        });
+      }
+    }catch{}
     if(!data.watchmanRows.length)throw new Error('The full-lyrics collection is empty.');
     const sourceOrderedRows=allCatalogRows().map((row,index)=>({row,index})).sort((a,b)=>{
       const sourceA=Number(a.row.hymnNumber),sourceB=Number(b.row.hymnNumber);
@@ -143,10 +154,10 @@ async function loadWatchmanCollection(){
   data.searchBusy=false;render();
 }
 
-const languages = ['All languages','English'];
+const languages = ['All languages','English','Filipino'];
 const langMatch = (row, lang) => lang === 'All languages' || (row.languages || '').toLowerCase().includes(lang.toLowerCase());
-function allCatalogRows(){return [...data.watchmanRows,...data.metadataRows,...data.providedRows]}
-function fullLyricsCount(){return data.watchmanRows.length+data.metadataRows.filter(row=>!row.metadataOnly).length+data.providedRows.length}
+function allCatalogRows(){return [...data.watchmanRows,...data.metadataRows,...data.providedRows,...data.awitRows]}
+function fullLyricsCount(){return data.watchmanRows.length+data.metadataRows.filter(row=>!row.metadataOnly).length+data.providedRows.length+data.awitRows.length}
 function findText(id){return allCatalogRows().find(row=>row.textAuthNumber===id)}
 function results(query = data.query, limit = 80) {
   const q = query.trim().toLocaleLowerCase();
