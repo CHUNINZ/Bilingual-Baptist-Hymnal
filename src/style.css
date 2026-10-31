@@ -354,6 +354,23 @@ body{min-height:100vh;min-height:100dvh;overflow-x:hidden}
   .screen-saved .page-content,.screen-order .page-content,.screen-data .page-content{padding:40px 20px 63px}
 }
 
+/* Clear, lightweight feedback for pointer, keyboard, and touch interactions. */
+button,.nav-item,.result-row,.topic-row,.dataset-card,.service-item,.brand,a{
+  transition:transform .18s cubic-bezier(.2,.75,.25,1),box-shadow .2s ease,background-color .2s ease,color .2s ease,border-color .2s ease,opacity .2s ease;
+}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:active,.nav-item:active,.result-row:active,.topic-row:active{transform:scale(.975)}
+button:focus-visible,.nav-item:focus-visible,.result-row:focus-visible,.topic-row:focus-visible{transform:translateY(-1px)}
+@media(hover:hover){
+  button:hover,.nav-item:hover,.topic-row:hover{transform:translateY(-2px)}
+  .result-row:hover,.dataset-card:hover,.service-item:hover{transform:translateY(-2px);box-shadow:0 8px 22px #00304914}
+  .brand:hover{transform:translateY(-1px)}
+}
+.results-list>.result-row,.topic-list>.topic-row{animation:content-enter .28s ease both}
+.results-list>.result-row:nth-child(2),.topic-list>.topic-row:nth-child(2){animation-delay:25ms}
+.results-list>.result-row:nth-child(3),.topic-list>.topic-row:nth-child(3){animation-delay:50ms}
+@keyframes content-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+
 @media(max-width:760px){
   .reader-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
   .reader-actions .btn{width:100%;min-width:0;padding-inline:10px;white-space:normal}
