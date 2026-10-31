@@ -18,8 +18,6 @@ Bilingual Baptist Hymnal is a responsive, installable app with **1,278 English h
 ## Highlights
 
 - Complete available lyrics for 1,278 English hymn records.
-- The 168 supplemental hymns retain their source numbers and categories, with verses and refrains parsed from the supplied text files.
-- The 810 imported records retain their source numbers and categories; repeated titles already represented in the catalog were skipped.
 - Responsive layouts for desktop, tablet, and mobile.
 - Saved hymns and service lists persist in the browser without an account.
 - Service worker caching supports offline use.
