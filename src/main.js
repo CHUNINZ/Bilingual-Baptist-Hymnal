@@ -143,7 +143,7 @@ async function loadWatchmanCollection(){
             const heading=lines[0].trim().replace(/[:.]+$/,'');
             const isChorus=/^(koro|refrain|chorus)$/i.test(heading);
             const numbered=lines[0].match(/^\s*(\d+)\s+(.+)$/);
-            const content=numbered?[numbered[1]+' '+numbered[2],...lines.slice(1)].join('\n'):lines.join('\n');
+            const content=numbered?[numbered[2],...lines.slice(1)].join('\n'):lines.join('\n');
             return {number:numbered?Number(numbered[1]):partIndex+1,type:isChorus?'chorus':'verse',text:isChorus?lines.slice(1).join('\n'):content};
           }).filter(part=>part.text.trim());
           return {textAuthNumber:`awit_${h.id||index+1}`,displayTitle:h.title||`Awit hymn ${number}`,textTitle:h.title||'',firstLine:h.firstLine||lyrics.split(/\r?\n/).find(line=>line.trim())||'',languages:'Filipino',authors:h.author||'',supplemental:true,hymnNumber:String(number),category:[h.part,h.section].filter(Boolean).join(' · '),sourceCollection:'Awit Hymnal',fullTextData:{language:'Filipino',source:'Awit Hymnal',verses}};
@@ -204,7 +204,7 @@ function detail(row) {
   const lyricLanguage=(fullText?.language||row.languages||'').toLowerCase();
   const tagalogSource=/tagalog|filipino/.test(lyricLanguage);
   const fullVerses=Array.isArray(fullText?.verses)?fullText.verses.map((verse,i)=>({number:verse.number||i+1,type:verse.type||'verse',english:(verse.english||(!tagalogSource?verse.text:'')||'').trim(),tagalog:(verse.tagalog||(tagalogSource?verse.text:'')||'').trim()})).filter(verse=>verse.english||verse.tagalog):[];
-  const renderVerse=(verse,key)=>`<p class="reader-verse ${verse.type==='chorus'?'chorus':''}"><span>${verse.type==='chorus'?'Chorus':`${esc(verse.number)}.`}</span> ${esc(verse[key])}</p>`;
+  const renderVerse=(verse,key)=>`<p class="reader-verse ${verse.type==='chorus'?'chorus':''}"><span>${verse.type==='chorus'&&row.sourceCollection==='Awit Hymnal'?'Koro':verse.type==='chorus'?'Chorus':`${esc(verse.number)}.`}</span> ${esc(verse[key])}</p>`;
   const hasBilingualText=fullVerses.length>0&&fullVerses.every(verse=>verse.english&&verse.tagalog);
   const sourceVerses=fullVerses.filter(verse=>tagalogSource?verse.tagalog:verse.english);
   const hasFullText=hasBilingualText||sourceVerses.length>0;
