@@ -137,7 +137,16 @@ async function loadWatchmanCollection(){
         data.awitRows=(Array.isArray(awit.awit)?awit.awit:[]).filter(h=>h&&typeof h.text==='string'&&h.text.trim()).map((h,index)=>{
           const number=1279+index;
           const lyrics=h.text.trim();
-          return {textAuthNumber:`awit_${h.id||index+1}`,displayTitle:h.title||`Awit hymn ${number}`,textTitle:h.title||'',firstLine:h.firstLine||lyrics.split(/\\r?\\n/).find(line=>line.trim())||'',languages:'Filipino',authors:h.author||'',supplemental:true,hymnNumber:String(number),category:[h.part,h.section].filter(Boolean).join(' · '),sourceCollection:'Awit Hymnal',fullTextData:{language:'Filipino',source:'Awit Hymnal',verses:[{number:1,type:'verse',text:lyrics}]}};
+          const blocks=lyrics.split(/\n\s*\n/).map(block=>block.trim()).filter(Boolean);
+          const verses=blocks.map((block,partIndex)=>{
+            const lines=block.split(/\r?\n/);
+            const heading=lines[0].trim().replace(/[:.]+$/,'');
+            const isChorus=/^(koro|refrain|chorus)$/i.test(heading);
+            const numbered=lines[0].match(/^\s*(\d+)\s+(.+)$/);
+            const content=numbered?[numbered[1]+' '+numbered[2],...lines.slice(1)].join('\n'):lines.join('\n');
+            return {number:numbered?Number(numbered[1]):partIndex+1,type:isChorus?'chorus':'verse',text:isChorus?lines.slice(1).join('\n'):content};
+          }).filter(part=>part.text.trim());
+          return {textAuthNumber:`awit_${h.id||index+1}`,displayTitle:h.title||`Awit hymn ${number}`,textTitle:h.title||'',firstLine:h.firstLine||lyrics.split(/\r?\n/).find(line=>line.trim())||'',languages:'Filipino',authors:h.author||'',supplemental:true,hymnNumber:String(number),category:[h.part,h.section].filter(Boolean).join(' · '),sourceCollection:'Awit Hymnal',fullTextData:{language:'Filipino',source:'Awit Hymnal',verses}};
         });
       }
     }catch{}
