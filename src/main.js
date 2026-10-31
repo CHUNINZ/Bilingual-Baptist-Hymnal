@@ -3,7 +3,7 @@ const app = $('#app');
 const params = new URLSearchParams(location.search);
 const validViews=['hymns','search','browse','saved','order','data','reader','player'];
 const hashView=location.hash.slice(1).split('/')[0];
-const data = { watchmanRows: [], metadataRows: [], providedRows: [], awitRows: [], view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', browseTopic:'', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
+const data = { watchmanRows: [], metadataRows: [], providedRows: [], awitRows: [], docxRows: [], view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', browseTopic:'', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
 const player = { key:0, tempo:72, parts:{S:true,A:true,T:true,B:true}, playing:false, sources:[], timer:null, returnView:'reader' };
 const esc = (s = '') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const iconPaths = {
@@ -64,7 +64,7 @@ async function loadWatchmanCollection(){
       const firstVerse=lyrics.find(part=>part.type==='verse')||lyrics[0];
       return {
         textAuthNumber:`watchman_${h.id}`,
-        displayTitle:h.title||`Watchman hymn ${h.number||h.id}`,
+        displayTitle:String(h.number)==='80'?'My Savior’s Love':(h.title||`Watchman hymn ${h.number||h.id}`),
         textTitle:h.title||'',
         firstLine:firstVerse?.text.split(/\r?\n/)[0]||'',
         refrainFirstLine:'',
@@ -150,6 +150,7 @@ async function loadWatchmanCollection(){
         });
       }
     }catch{}
+    try{const r=await fetch('/data/docx-hymns.json');if(r.ok){const d=await r.json();data.docxRows=(d.hymns||[]).map(h=>({textAuthNumber:`docx_${h.number}`,displayTitle:h.title,textTitle:h.title,firstLine:h.verses?.find(v=>v.type==='verse')?.text.split(/\r?\n/)[0]||'',languages:h.language==='Tagalog'?'Filipino':'English',authors:h.authors||'',supplemental:true,hymnNumber:String(h.number),category:'Additional hymns',sourceCollection:'Provided hymn document',fullTextData:{language:h.language,verses:h.verses}}));}}catch{}
     if(!data.watchmanRows.length)throw new Error('The full-lyrics collection is empty.');
     const sourceOrderedRows=allCatalogRows().map((row,index)=>({row,index})).sort((a,b)=>{
       const sourceA=Number(a.row.hymnNumber),sourceB=Number(b.row.hymnNumber);
@@ -165,8 +166,8 @@ async function loadWatchmanCollection(){
 
 const languages = ['All languages','English','Filipino'];
 const langMatch = (row, lang) => lang === 'All languages' || (row.languages || '').toLowerCase().includes(lang.toLowerCase());
-function allCatalogRows(){return [...data.watchmanRows,...data.metadataRows,...data.providedRows,...data.awitRows]}
-function fullLyricsCount(){return data.watchmanRows.length+data.metadataRows.filter(row=>!row.metadataOnly).length+data.providedRows.length+data.awitRows.length}
+function allCatalogRows(){return [...data.watchmanRows,...data.metadataRows,...data.providedRows,...data.awitRows,...data.docxRows]}
+function fullLyricsCount(){return data.watchmanRows.length+data.metadataRows.filter(row=>!row.metadataOnly).length+data.providedRows.length+data.awitRows.length+data.docxRows.length}
 function findText(id){return allCatalogRows().find(row=>row.textAuthNumber===id)}
 function results(query = data.query, limit = 80) {
   const q = query.trim().toLocaleLowerCase();
@@ -379,7 +380,7 @@ function openStage(){
   if(row.metadataOnly){announce('Stage view is available for full-lyrics hymns only.');return}
   const w=window.open('','_blank');
   if(!w){announce('Allow pop-ups to open the full-screen Stage view.');return}
-  const verses=row.fullTextData?.verses||[];
+  const originalVerses=row.fullTextData?.verses||[];const chorus=originalVerses.find(v=>v.type==='chorus');const verses=chorus?originalVerses.filter(v=>v.type!=='chorus').flatMap(v=>[v,chorus]):originalVerses;
   const lyricHtml=verses.length?verses.map(verse=>`<p>${esc(verse.text||verse.english||verse.tagalog||'').replace(/\r?\n/g,'<br>')}</p>`).join(''): `<p>${esc(row.firstLine||'Lyrics are included with this hymn.')}</p>`;
   const meta=[row.languages||'English',row.authors?row.authors.split(/\s*;\s*/).join(' · '):''].filter(Boolean).map(esc).join(' · ');
   const source=esc((row.sourceCollection||'Hymnal collection').toUpperCase());
