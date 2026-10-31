@@ -2,7 +2,7 @@
 
 ## Overview
 
-Bilingual Baptist Hymnal is a responsive, installable app with **1,278 English hymn records** and their available verses and choruses. The collection combines 300 full-text hymns from the Open Hymnal JSON Watchman collection, 168 texts parsed from the numbered `.txt` files supplied for this project, and 810 additional distinct-title lyric records extracted from the user-provided `hymns.json`. Search by title, catalog number, source number, category, or lyric line, then read, save, share, or project a hymn. You can also organize songs into a service list and use the practice player to adjust key, tempo, and vocal parts. After loading, the app and hymn data are available offline.
+Bilingual Baptist Hymnal is a responsive, installable app with **1,278 English hymn records** and their available verses and choruses. Search by title, catalog number, source number, category, or lyric line, then read, save, share, or project a hymn. You can also organize songs into a service list and use the practice player to adjust key, tempo, and vocal parts. After loading, the app and hymn data are available offline.
 
 ## Features
 
