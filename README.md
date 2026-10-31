@@ -2,11 +2,11 @@
 
 ## Overview
 
-Bilingual Baptist Hymnal is a responsive, installable app with **1,278 English hymn records** and their available verses and choruses. Search by title, catalog number, source number, category, or lyric line, then read, save, share, or project a hymn. You can also organize songs into a service list and use the practice player to adjust key, tempo, and vocal parts. After loading, the app and hymn data are available offline.
+Bilingual Baptist Hymnal is a responsive, installable app with **1,533 English hymn records** and their available verses and choruses. Search by title, catalog number, source number, category, or lyric line, then read, save, share, or project a hymn. You can also organize songs into a service list and use the practice player to adjust key, tempo, and vocal parts. After loading, the app and hymn data are available offline.
 
 ## Features
 
-- Search all 1,278 full-text hymn records by title, catalog number, source number, category, or lyrics.
+- Search all 1,533 full-text hymn records by title, catalog number, source number, category, or lyrics.
 - Browse alphabetically, by source number, or by worship topic.
 - Read available verses and choruses, adjust text size, save hymns, and share links.
 - Display full-text hymns in a high-contrast Stage view.
@@ -17,7 +17,7 @@ Bilingual Baptist Hymnal is a responsive, installable app with **1,278 English h
 
 ## Highlights
 
-- Complete available lyrics for 1,278 English hymn records.
+- Complete available lyrics for 1,533 English hymn records.
 - Responsive layouts for desktop, tablet, and mobile.
 - Saved hymns and service lists persist in the browser without an account.
 - Service worker caching supports offline use.
