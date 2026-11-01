@@ -12,29 +12,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "All creatures of our God and King,\nLift up your voice with us and sing:\nAlleluia! Alleluia!\nO burning sun with golden beam\nAnd silver moon with softer gleam:"
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Oh, praise Him! Oh, praise Him!\nAlleluia, alleluia, alleluia!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "All creatures of our God and King,\nLift up your voice with us and sing:\nAlleluia! Alleluia!\nO burning sun with golden beam\nAnd silver moon with softer gleam:"
+          "content": "O rushing wind and breezes soft,\nO clouds that ride the winds aloft:\nOh, praise Him! Alleluia!\nO rising morn, in praise rejoice,\nO lights of evening, find a voice."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "O rushing wind and breezes soft,\nO clouds that ride the winds aloft:\nOh, praise Him! Alleluia!\nO rising morn, in praise rejoice,\nO lights of evening, find a voice."
+          "content": "O flowing waters, pure and clear,\nMake music for your Lord to hear.\nOh, praise Him! Alleluia!\nO fire so masterful and bright,\nProviding us with warmth and light,"
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "O flowing waters, pure and clear,\nMake music for your Lord to hear.\nOh, praise Him! Alleluia!\nO fire so masterful and bright,\nProviding us with warmth and light,"
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "Let all things their Creator bless,\nAnd worship Him in humbleness,\nOh, praise Him! Alleluia!\nOh, praise the Father, praise the Son,\nAnd praise the Spirit, three in One!"
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "3",
@@ -573,34 +574,35 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Rejoice, ye pure in heart!\nRejoice, give thanks, and sing;\nYour festal banner wave on high,\nThe cross of Christ your King."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Rejoice! Rejoice!\nRejoice, give thanks, and sing!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Rejoice, ye pure in heart!\nRejoice, give thanks, and sing;\nYour festal banner wave on high,\nThe cross of Christ your King."
+          "content": "With voice as full and strong\nAs ocean's surging praise,\nSend forth the sturdy hymns of old,\nThe psalms of ancient days."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "With voice as full and strong\nAs ocean's surging praise,\nSend forth the sturdy hymns of old,\nThe psalms of ancient days."
+          "content": "With all the angel choirs,\nWith all the saints on earth\nPour out the strains of joy and bliss,\nTrue rapture, noblest mirth."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "With all the angel choirs,\nWith all the saints on earth\nPour out the strains of joy and bliss,\nTrue rapture, noblest mirth."
+          "content": "Yes, on through life's long path,\nStill chanting as ye go;\nFrom youth to age, by night and day,\nIn gladness and in woe."
         },
         {
           "number": 5,
           "type": "verse",
-          "content": "Yes, on through life's long path,\nStill chanting as ye go;\nFrom youth to age, by night and day,\nIn gladness and in woe."
-        },
-        {
-          "number": 6,
-          "type": "verse",
           "content": "Praise Him who reigns on high,\nThe Lord whom we adore\nThe Father, Son, and Holy Ghost,\nOne God forevermore."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "28",
@@ -2005,24 +2007,25 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Ye watchers and ye holy ones,\nBright seraphs, cherubim and thrones,\nRaise the glad strain, Alleluia!\nCry out, dominions, princedoms, powers,\nVirtues, archangels, angels'choirs,"
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Alleluia, Alleluia,\nAlleluia, Alleluia, Alleluia!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Ye watchers and ye holy ones,\nBright seraphs, cherubim and thrones,\nRaise the glad strain, Alleluia!\nCry out, dominions, princedoms, powers,\nVirtues, archangels, angels'choirs,"
+          "content": "O higher than the cherubim,\nMore glorious than the seraphim,\nLead their praises, Alleluia!\nThou bearer of the eternal Word,\nMost gracious, magnify the Lord."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "O higher than the cherubim,\nMore glorious than the seraphim,\nLead their praises, Alleluia!\nThou bearer of the eternal Word,\nMost gracious, magnify the Lord."
-        },
-        {
-          "number": 4,
-          "type": "verse",
           "content": "O friends, in gladness let us sing,\nSupernal anthems echoing,\nAlleluia, Alleluia!\nTo God the Father, God the Son,\nAnd God the Spirit, Three in One."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "92",
@@ -2174,29 +2177,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Be not dismayed whate'er betide,\nGod will take care of you;\nBeneath His wings of love abide,\nGod will take care of you."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "God will take care of you,\nThrough every day, o'er all the way;\nHe will take care of you,\nGod will take care of you."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Be not dismayed whate'er betide,\nGod will take care of you;\nBeneath His wings of love abide,\nGod will take care of you."
+          "content": "Through days of toil when your heart doth fail,\nGod will take care of you;\nWhen dangers fierce your path assail,\nGod will take care of you."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Through days of toil when your heart doth fail,\nGod will take care of you;\nWhen dangers fierce your path assail,\nGod will take care of you."
+          "content": "All you may need He will provide,\nGod will take care of you;\nNothing you ask will be denied,\nGod will take care of you."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "All you may need He will provide,\nGod will take care of you;\nNothing you ask will be denied,\nGod will take care of you."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "No matter what may be the test,\nGod will take care of you;\nLean, weary one, upon His breast,\nGod will take care of you."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "101",
@@ -2481,29 +2485,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Let us with a gladsome mind\nPraise the Lord, for He is kind:"
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "For His mercies shall endure,\nEver faithful, ever sure."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Let us with a gladsome mind\nPraise the Lord, for He is kind:"
+          "content": "He, with all commanding might,\nFilled the newmade world with light:"
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "He, with all commanding might,\nFilled the newmade world with light:"
+          "content": "All things living He does feed;\nHis full hand supplies their need:"
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "All things living He does feed;\nHis full hand supplies their need:"
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "Let us then with gladsome mind\nPraise the Lord, for He is kind:"
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "113",
@@ -2567,24 +2572,25 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "O come, O come, Immanuel,\nAnd ransom captive Israel\nThat mourns in lonely exile here\nUntil the Son of God appear."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Rejoice! Rejoice! Immanuel\nShall come to thee, O Israel!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "O come, O come, Immanuel,\nAnd ransom captive Israel\nThat mourns in lonely exile here\nUntil the Son of God appear."
+          "content": "O come, Thou Wisdom from on high,\nAnd order all things far and nigh;\nTo us the path of knowledge show,\nAnd cause us in her ways to go."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "O come, Thou Wisdom from on high,\nAnd order all things far and nigh;\nTo us the path of knowledge show,\nAnd cause us in her ways to go."
-        },
-        {
-          "number": 4,
-          "type": "verse",
           "content": "O come, Desire of nations, bind\nAll peoples in one heart and mind;\nBid envy, strife, and quarrels cease;\nFill the whole world with heaven's peace."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "116",
@@ -3239,29 +3245,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Angels we have heard on high,\nSinging sweetly through the night,\nAnd the mountains in reply\nEchoing their brave delight."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Gloria in excelsis Deo,\nGloria in excelsis Deo."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Angels we have heard on high,\nSinging sweetly through the night,\nAnd the mountains in reply\nEchoing their brave delight."
+          "content": "Shepherds, why this jubilee?\nWhy these songs of happy cheer?\nWhat great brightness did you see?\nWhat glad tidings did you hear?"
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Shepherds, why this jubilee?\nWhy these songs of happy cheer?\nWhat great brightness did you see?\nWhat glad tidings did you hear?"
+          "content": "Come to Bethlehem and see\nHim whose birth the angels sing;\nCome, adore on bended knee\nChrist, the Lord, the newborn King."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "Come to Bethlehem and see\nHim whose birth the angels sing;\nCome, adore on bended knee\nChrist, the Lord, the newborn King."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "See Him in a manger laid\nWhom the angels praise above;\nMary, Joseph, lend your aid,\nWhile we raise our hearts in love."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "143",
@@ -3899,29 +3906,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "The strife is o'er, the battle done;\nNow is the victor's triumph won!\nNow be the song of praise begun. Alleluia!"
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Alleluia, alleluia, alleluia!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "The strife is o'er, the battle done;\nNow is the victor's triumph won!\nNow be the song of praise begun. Alleluia!"
+          "content": "The pow'rs of death have done their worst,\nBut Christ their legions has dispersed.\nLet shouts of holy joy outburst. Alleluia!"
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "The pow'rs of death have done their worst,\nBut Christ their legions has dispersed.\nLet shouts of holy joy outburst. Alleluia!"
+          "content": "The three sad days have quickly sped,\nHe rises glorious from the dead.\nAll glory to our risen head! Alleluia!"
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "The three sad days have quickly sped,\nHe rises glorious from the dead.\nAll glory to our risen head! Alleluia!"
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "Lord, by the stripes which wounded You,\nFrom death's sting free Your servants too,\nThat we may live and sing to You. Alleluia!"
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "173",
@@ -4560,29 +4568,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "And can it be that I should gain\nAn int'rest in the Savior's blood?\nDied He for me, who caused His pain?\nFor me, who Him to death pursued?\nAmazing love! how can it be\nThat Thou, my God, shouldst die for me?"
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Amazing love! How can it be\nThat Thou, my God, shouldst die for me!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "And can it be that I should gain\nAn int'rest in the Savior's blood?\nDied He for me, who caused His pain?\nFor me, who Him to death pursued?\nAmazing love! how can it be\nThat Thou, my God, shouldst die for me?"
+          "content": "He left His Father's throne above,\nSo free, so infinite His grace.\nEmptied Himself of all but love,\nAnd bled for Adam's helpless race;\n'Tis mercy all, immense and free;\nFor, O my God, it found out me."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "He left His Father's throne above,\nSo free, so infinite His grace.\nEmptied Himself of all but love,\nAnd bled for Adam's helpless race;\n'Tis mercy all, immense and free;\nFor, O my God, it found out me."
+          "content": "Long my imprisoned spirit lay\nFast bound in sin and nature's night;\nThine eye diffused a quick'ning ray,\nI woke, the dungeon flamed with light;\nMy chains fell off, my heart was free;\nI rose, went forth and followed Thee."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "Long my imprisoned spirit lay\nFast bound in sin and nature's night;\nThine eye diffused a quick'ning ray,\nI woke, the dungeon flamed with light;\nMy chains fell off, my heart was free;\nI rose, went forth and followed Thee."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "No condemnation now I dread;\nJesus, and all in Him, is mine!\nAlive in Him, my living Head,\nAnd clothed in righteousness divine,\nBold I approach th'eternal throne,\nAnd claim the crown, through Christ my own."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "199",
@@ -4803,24 +4812,25 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "There'll be no dark valley when Jesus comes,\nThere'll be no dark valley when Jesus comes;\nThere'll be no dark valley when Jesus comes\nTo gather His loved ones home."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "To gather His loved ones home,\nTo gather His loved ones home;\nThere'll be no dark valley when Jesus comes\nTo gather His loved ones home."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "There'll be no dark valley when Jesus comes,\nThere'll be no dark valley when Jesus comes;\nThere'll be no dark valley when Jesus comes\nTo gather His loved ones home."
+          "content": "There'll be no more sorrow when Jesus comes,\nThere'll be no more sorrow when Jesus comes;\nBut a glorious morrow when Jesus comes\nTo gather His loved ones home."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "There'll be no more sorrow when Jesus comes,\nThere'll be no more sorrow when Jesus comes;\nBut a glorious morrow when Jesus comes\nTo gather His loved ones home."
-        },
-        {
-          "number": 4,
-          "type": "verse",
           "content": "There'll be songs of greeting when Jesus comes,\nThere'll be songs of greeting when Jesus comes;\nAnd a joyful meeting when Jesus comes\nTo gather His loved ones home."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "209",
@@ -4901,29 +4911,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "'Tis almost time for the Lord to come,\nI hear the people say;\nThe stars of heaven are growing dim,\nIt must be the breaking of the day."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "O it must be the breaking of the day!\nO it must be the breaking of the day!\nThe night is almost gone,\nThe day is coming on;\nO it must be the breaking of the day!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "'Tis almost time for the Lord to come,\nI hear the people say;\nThe stars of heaven are growing dim,\nIt must be the breaking of the day."
+          "content": "The signs foretold in the sun and moon,\nIn earth and sea and sky,\nAloud proclaim to all mankind,\nThe coming of the Master draweth nigh."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "The signs foretold in the sun and moon,\nIn earth and sea and sky,\nAloud proclaim to all mankind,\nThe coming of the Master draweth nigh."
+          "content": "It must be time for the waiting church\nTo cast her pride away,\nWith girded loins and burning lamps,\nTo look for the breaking of the day."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "It must be time for the waiting church\nTo cast her pride away,\nWith girded loins and burning lamps,\nTo look for the breaking of the day."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "Go quickly out in the streets and lanes\nAnd in the broad highway,\nAnd call the maimed, the halt, and blind,\nTo be ready for the breaking of the day."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "214",
@@ -5657,24 +5668,25 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Worthy, worthy is the Lamb,\nWorthy, worthy is the Lamb;\nWorthy, worthy is the Lamb\nThat was slain."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Glory, hallelujah!\nPraise Him, hallelujah!\nGlory, hallelujah\nTo the Lamb!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Worthy, worthy is the Lamb,\nWorthy, worthy is the Lamb;\nWorthy, worthy is the Lamb\nThat was slain."
+          "content": "Savior, let Thy kingdom come!\nNow the power of sin consume;\nBring Thy blest millennium,\nHoly Lamb."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Savior, let Thy kingdom come!\nNow the power of sin consume;\nBring Thy blest millennium,\nHoly Lamb."
-        },
-        {
-          "number": 4,
-          "type": "verse",
           "content": "Thus may we each moment feel,\nLove Him, serve Him, praise Him still,\nTill we all on Zion's hill\nSee the Lamb."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "247",
@@ -5964,29 +5976,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Hover o'er me, Holy Spirit,\nBathe my trembling heart and brow;\nFill me with Thy hallowed presence,\nCome, O come and fill me now."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Fill me now, fill me now,\nJesus, come and fill me now.\nFill me with Thy hallowed presence,\nCome, O come and fill me now."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Hover o'er me, Holy Spirit,\nBathe my trembling heart and brow;\nFill me with Thy hallowed presence,\nCome, O come and fill me now."
+          "content": "Thou canst fill me, gracious Spirit,\nThough I cannot tell Thee how;\nBut I need Thee, greatly need Thee;\nCome, O come and fill me now."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Thou canst fill me, gracious Spirit,\nThough I cannot tell Thee how;\nBut I need Thee, greatly need Thee;\nCome, O come and fill me now."
+          "content": "I am weakness, full of weakness;\nAt Thy sacred feet I bow;\nBlest, divine, eternal Spirit,\nFill with love, and fill me now."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "I am weakness, full of weakness;\nAt Thy sacred feet I bow;\nBlest, divine, eternal Spirit,\nFill with love, and fill me now."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "Cleanse and comfort, bless and save me;\nBathe, O, bathe my heart and brow;\nThou art comforting and saving,\nThou art sweetly filling now."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "261",
@@ -6546,29 +6559,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "I have a Savior, He's pleading in glory,\nA dear, loving Savior, though earth friends be few;\nAnd now He is watching in tenderness o'er me,\nBut oh that my Savior were your Savior, too."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "For you I am praying,\nFor you I am praying,\nFor you I am praying,\nI'm praying for you."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "I have a Savior, He's pleading in glory,\nA dear, loving Savior, though earth friends be few;\nAnd now He is watching in tenderness o'er me,\nBut oh that my Savior were your Savior, too."
+          "content": "I have a Father; to me He has given\nA hope for eternity, blessed and true;\nAnd soon He will call me to meet Him in heaven,\nBut oh that He'd let me bring you with me, too!"
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "I have a Father; to me He has given\nA hope for eternity, blessed and true;\nAnd soon He will call me to meet Him in heaven,\nBut oh that He'd let me bring you with me, too!"
+          "content": "I have a robe; 'tis resplendent in whiteness,\nAwaiting in glory my wondering view;\nOh, when I receive it, all shining in brightness,\nDear friend, could I see you receiving one, you!"
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "I have a robe; 'tis resplendent in whiteness,\nAwaiting in glory my wondering view;\nOh, when I receive it, all shining in brightness,\nDear friend, could I see you receiving one, you!"
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "When Jesus has found you, tell others the story,\nThat my loving Savior is your Savior, too;\nThen pray that your Savior will bring them to glory,\nAnd prayer will be answered; 'twas answered for you!"
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "285",
@@ -6946,29 +6960,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "In the morning when I rise,\nIn the morning when I rise,\nIn the morning when I rise,\nGive me Jesus."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Give me Jesus, Give me Jesus,\nYou may have all this world,\nGive me Jesus."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "In the morning when I rise,\nIn the morning when I rise,\nIn the morning when I rise,\nGive me Jesus."
+          "content": "Dark midnight was my cry,\nDark midnight was my cry,\nDark midnight was my cry,\nGive me Jesus."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Dark midnight was my cry,\nDark midnight was my cry,\nDark midnight was my cry,\nGive me Jesus."
+          "content": "Just about the break of day,\nJust about the break of day,\nJust about the break of day,\nGive me Jesus."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "Just about the break of day,\nJust about the break of day,\nJust about the break of day,\nGive me Jesus."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "Oh, when I come to die,\nOh, when I come to die,\nOh, when I come to die,\nGive me Jesus."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "306",
@@ -7226,29 +7241,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Lord Jesus, I long to be perfectly whole;\nI want Thee forever to live in my soul;\nBreak down every idol, cast out every foe;\nNow wash me, and I shall be whiter than snow."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Whiter than snow, yes whiter than snow;\nNow wash me, and I shall be whiter than snow."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Lord Jesus, I long to be perfectly whole;\nI want Thee forever to live in my soul;\nBreak down every idol, cast out every foe;\nNow wash me, and I shall be whiter than snow."
+          "content": "Lord Jesus, look down from Thy throne in the skies,\nAnd help me to make a complete sacrifice;\nI give up myself, and whatever I know,\nNow wash me, and I shall be whiter than snow."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Lord Jesus, look down from Thy throne in the skies,\nAnd help me to make a complete sacrifice;\nI give up myself, and whatever I know,\nNow wash me, and I shall be whiter than snow."
+          "content": "Lord Jesus, for this I most humbly entreat;\nI wait, blessed Lord, at Thy crucified feet,\nBy faith, for my cleansing; I see Thy blood flow,\nNow wash me, and I shall be whiter than snow."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "Lord Jesus, for this I most humbly entreat;\nI wait, blessed Lord, at Thy crucified feet,\nBy faith, for my cleansing; I see Thy blood flow,\nNow wash me, and I shall be whiter than snow."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "Lord Jesus, Thou seest I patiently wait;\nCome now, and within me a new heart create;\nTo those who have sought Thee, Thou never said'st No;\nNow wash me, and I shall be whiter than snow."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "319",
@@ -7474,29 +7490,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Christ has for sin atonement made,\nWhat a wonderful Savior!\nWe are redeemed! the price is paid!\nWhat a wonderful Savior!"
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "What a wonderful Savior is Jesus, my Jesus!\nWhat a wonderful Savior is Jesus, my Lord!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Christ has for sin atonement made,\nWhat a wonderful Savior!\nWe are redeemed! the price is paid!\nWhat a wonderful Savior!"
+          "content": "I praise Him for the cleansing blood,\nWhat a wonderful Savior!\nThat reconciled my soul to God;\nWhat a wonderful Savior!"
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "I praise Him for the cleansing blood,\nWhat a wonderful Savior!\nThat reconciled my soul to God;\nWhat a wonderful Savior!"
+          "content": "He walks beside me all the way,\nWhat a wonderful Savior!\nAnd keeps me faithful day by day;\nWhat a wonderful Savior!"
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "He walks beside me all the way,\nWhat a wonderful Savior!\nAnd keeps me faithful day by day;\nWhat a wonderful Savior!"
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "He gives me overcoming power,\nWhat a wonderful Savior!\nAnd triumph in each trying hour;\nWhat a wonderful Savior!"
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "336",
@@ -8110,34 +8127,35 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Come, Christians, follow where our Captain trod,\nOur King victorious, Christ, the Son of God."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Lift high the Cross, the love of Christ proclaim,\nTill all the world adore His sacred name."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Come, Christians, follow where our Captain trod,\nOur King victorious, Christ, the Son of God."
+          "content": "Led on their way by this triumphant sign,\nThe hosts of God in conqu'ring ranks combine."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Led on their way by this triumphant sign,\nThe hosts of God in conqu'ring ranks combine."
+          "content": "All newborn soldiers of the Crucified\nBear on their brows the seal of Him who died."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "All newborn soldiers of the Crucified\nBear on their brows the seal of Him who died."
+          "content": "O Lord, once lifted on the glorious tree,\nAs Thou hast promised, draw men unto Thee."
         },
         {
           "number": 5,
           "type": "verse",
-          "content": "O Lord, once lifted on the glorious tree,\nAs Thou hast promised, draw men unto Thee."
-        },
-        {
-          "number": 6,
-          "type": "verse",
           "content": "So shall our song of triumph ever be:\nPraise to the Crucified for victory!"
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "363",
@@ -8191,29 +8209,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "O Zion, haste, thy mission high fulfilling,\nTo tell to all the world that God is light;\nThat He who made all nations is not willing\nOne soul should perish, lost in shades of night."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Publish glad tidings,\nTidings of peace,\nTidings of Jesus,\nRedemption and release."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "O Zion, haste, thy mission high fulfilling,\nTo tell to all the world that God is light;\nThat He who made all nations is not willing\nOne soul should perish, lost in shades of night."
+          "content": "Proclaim to every people, tongue, and nation\nThat God, in whom they live and move, is love;\nTell how He stooped to save His lost creation,\nAnd died on earth that man might live above."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Proclaim to every people, tongue, and nation\nThat God, in whom they live and move, is love;\nTell how He stooped to save His lost creation,\nAnd died on earth that man might live above."
+          "content": "Give of thy sons to bear the message glorious;\nGive of thy wealth to speed them on their way;\nPour out thy soul for them in prayer victorious;\nAnd all thou spendest Jesus will repay."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "Give of thy sons to bear the message glorious;\nGive of thy wealth to speed them on their way;\nPour out thy soul for them in prayer victorious;\nAnd all thou spendest Jesus will repay."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "He comes again; O Zion, ere thou meet Him,\nMake known to every heart His saving grace;\nLet none whom He hath ransomed fail to greet Him,\nThrough thy neglect, unfit to see His face."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "366",
@@ -9963,12 +9982,12 @@
         {
           "number": 1,
           "type": "verse",
-          "content": "How cheering is the Christian’s hope,\nWhile toiling here below!\nIt bouys us up while this passing through\nThis wilderness of woe."
+          "content": "How cheering is the Christian’s hope,\nWhile toiling here below!\nIt buoys us up while this passing through\nThis wilderness of woe."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "It bouys us up while this passing through\nThis wilderness of woe,\nIt bouys us up while passing through\nThis wilderness of woe."
+          "content": "It buoys us up while this passing through\nThis wilderness of woe,\nIt buoys us up while passing through\nThis wilderness of woe."
         },
         {
           "number": 3,
@@ -10633,29 +10652,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "My Father is rich in houses and lands;\nHe holdeth the wealth of the world in His hands!\nOf rubies and diamonds, of silver and gold,\nHis coffers are full; He has riches untold."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "I'm a child of the King, a child of the King!\nWith Jesus, my Savior, I'm a child of the King!"
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "My Father is rich in houses and lands;\nHe holdeth the wealth of the world in His hands!\nOf rubies and diamonds, of silver and gold,\nHis coffers are full; He has riches untold."
+          "content": "My Father's own Son, the Savior of men,\nOnce wandered on earth as the poorest of them;\nBut now He is pleading for sinners on high,\nAnd will give me a home when He comes by and by."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "My Father's own Son, the Savior of men,\nOnce wandered on earth as the poorest of them;\nBut now He is pleading for sinners on high,\nAnd will give me a home when He comes by and by."
+          "content": "I once was an outcast, a stranger on earth,\nA sinner by choice, and an alien by birth!\nBut I've been adopted, my name's written down,\nAn heir to a mansion, a robe, and a crown."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "I once was an outcast, a stranger on earth,\nA sinner by choice, and an alien by birth!\nBut I've been adopted, my name's written down,\nAn heir to a mansion, a robe, and a crown."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "A tent or a cottage, O why should I care?\nThey're building a palace for me over there!\nThough exiled from home, yet still I may sing:\n\"All glory to God, I'm a child of the King.\""
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "470",
@@ -11416,29 +11436,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Just when I need Him, Jesus is near,\nJust when I falter, just when I fear;\nReady to help me, ready to cheer,\nJust when I need Him most."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Just when I need Him most,\nJust when I need Him most;\nJesus is near to comfort and cheer,\nJust when I need Him most."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Just when I need Him, Jesus is near,\nJust when I falter, just when I fear;\nReady to help me, ready to cheer,\nJust when I need Him most."
+          "content": "Just when I need Him, Jesus is true,\nNever forsaking, all the way through;\nGiving for burdens pleasures anew,\nJust when I need Him most."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Just when I need Him, Jesus is true,\nNever forsaking, all the way through;\nGiving for burdens pleasures anew,\nJust when I need Him most."
+          "content": "Just when I need Him, Jesus is strong,\nBearing my burdens all the day long;\nFor all my sorrow giving a song,\nJust when I need Him most."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "Just when I need Him, Jesus is strong,\nBearing my burdens all the day long;\nFor all my sorrow giving a song,\nJust when I need Him most."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "Just when I need Him, He is my all,\nAnswering when upon Him I call;\nTenderly watching lest I should fall,\nJust when I need Him most."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "513",
@@ -11691,24 +11712,25 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "O safe to the Rock that is higher than I,\nMy soul in its conflicts and sorrows would fly;\nSo sinful, so weary, Thine, Thine would I be;\nThou blest \"Rock of Ages,\" I'm hiding in Thee."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Hiding in Thee,\nHiding in Thee,\nThou blest \"Rock of Ages,\"\nI'm hiding in Thee."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "O safe to the Rock that is higher than I,\nMy soul in its conflicts and sorrows would fly;\nSo sinful, so weary, Thine, Thine would I be;\nThou blest \"Rock of Ages,\" I'm hiding in Thee."
+          "content": "In the calm of the noontide, in sorrow's lone hour,\nIn times when temptation casts o'er me its power;\nIn the tempests of life, on its wide, heaving sea,\nThou blest \"Rock of Ages,\" I'm hiding in Thee."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "In the calm of the noontide, in sorrow's lone hour,\nIn times when temptation casts o'er me its power;\nIn the tempests of life, on its wide, heaving sea,\nThou blest \"Rock of Ages,\" I'm hiding in Thee."
-        },
-        {
-          "number": 4,
-          "type": "verse",
           "content": "How oft in the conflict, when pressed by the foe,\nI have fled to my Refuge and breathed out my woe;\nHow often, when trials like sea billows roll,\nHave I hidden in Thee, O Thou Rock of my soul."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "527",
@@ -12460,29 +12482,30 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Pass me not, O gentle Savior,\nHear my humble cry;\nWhile on others Thou art calling,\nDo not pass me by."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Savior, Savior, hear my humble cry,\nWhile on others Thou art calling,\nDo not pass me by."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Pass me not, O gentle Savior,\nHear my humble cry;\nWhile on others Thou art calling,\nDo not pass me by."
+          "content": "Let me at Thy throne of mercy\nFind a sweet relief;\nKneeling there in deep contrition,\nHelp my unbelief."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Let me at Thy throne of mercy\nFind a sweet relief;\nKneeling there in deep contrition,\nHelp my unbelief."
+          "content": "Trusting only in Thy merit,\nWould I seek Thy face;\nHeal my wounded, broken spirit,\nSave me by Thy grace."
         },
         {
           "number": 4,
           "type": "verse",
-          "content": "Trusting only in Thy merit,\nWould I seek Thy face;\nHeal my wounded, broken spirit,\nSave me by Thy grace."
-        },
-        {
-          "number": 5,
-          "type": "verse",
           "content": "Thou the spring of all my comfort,\nMore than life for me;\nWhom have I on earth beside Thee?\nWhom in heaven but Thee?"
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "570",
@@ -13410,24 +13433,25 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "Encamped along the hills of light,\nYe Christian soldiers, rise,\nAnd press the battle ere the night\nShall veil the glowing skies.\nAgainst the foe in vales below\nLet all our strength be hurled;\nFaith is the victory, we know,\nThat overcomes the world."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Faith is the victory!\nFaith is the victory!\nO, glorious victory,\nThat overcomes the world."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "Encamped along the hills of light,\nYe Christian soldiers, rise,\nAnd press the battle ere the night\nShall veil the glowing skies.\nAgainst the foe in vales below\nLet all our strength be hurled;\nFaith is the victory, we know,\nThat overcomes the world."
+          "content": "On every hand the foe we find\nDrawn up in dread array;\nLet tents of ease be left behind,\nAnd onward to the fray;\nSalvation's helmet on each head,\nWith truth all girt about,\nThe earth shall tremble 'neath our tread,\nAnd echo with our shout."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "On every hand the foe we find\nDrawn up in dread array;\nLet tents of ease be left behind,\nAnd onward to the fray;\nSalvation's helmet on each head,\nWith truth all girt about,\nThe earth shall tremble 'neath our tread,\nAnd echo with our shout."
-        },
-        {
-          "number": 4,
-          "type": "verse",
           "content": "To him that overcomes the foe,\nWhite raiment shall be giv'n;\nBefore the angels he shall know\nHis name confessed in heav'n.\nThen onward from the hills of light,\nOur hearts with love aflame,\nWe'll vanquish all the hosts of night\nIn Jesus' conquering name."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "609",
@@ -13761,19 +13785,20 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "In my trials Lord, walk with me.\r\nIn my trials Lord, walk with me.\r\nWhen the shades of life are falling,\r\nI want Jesus to walk with me."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "I want Jesus to walk with me.\r\nI want Jesus to walk with me.\r\nAll along my pilgrim journey,\r\nI want Jesus to walk with me."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "In my trials Lord, walk with me.\r\nIn my trials Lord, walk with me.\r\nWhen the shades of life are falling,\r\nI want Jesus to walk with me."
-        },
-        {
-          "number": 3,
-          "type": "verse",
           "content": "In my sorrows, Lord, walk with me.\r\nIn my sorrows, Lord, walk with me.\r\nWhen my heart within is aching,\r\nI want Jesus to walk with me."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "626",
@@ -14408,24 +14433,25 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "There is beauty all around,\nWhen there's love at home;\nThere is joy in every sound,\nWhen there's love at home.\nPeace and plenty here abide,\nSmiling fair on every side;\nTime doth softly, sweetly glide,\nWhen there's love at home."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Love at home, love at home;\nTime doth softly, sweetly glide,\nWhen there's love at home."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "There is beauty all around,\nWhen there's love at home;\nThere is joy in every sound,\nWhen there's love at home.\nPeace and plenty here abide,\nSmiling fair on every side;\nTime doth softly, sweetly glide,\nWhen there's love at home."
+          "content": "Kindly heaven smiles above,\nWhen there's love at home;\nAll the earth is fill'd with love,\nWhen there's love at home.\nSweeter sings the brooklet by,\nBrighter beams the azure sky;\nO, there's One who smiles on high\nWhen there's love at home."
         },
         {
           "number": 3,
           "type": "verse",
-          "content": "Kindly heaven smiles above,\nWhen there's love at home;\nAll the earth is fill'd with love,\nWhen there's love at home.\nSweeter sings the brooklet by,\nBrighter beams the azure sky;\nO, there's One who smiles on high\nWhen there's love at home."
-        },
-        {
-          "number": 4,
-          "type": "verse",
           "content": "Jesus, make me wholly Thine,\nThen there's love at home;\nMay Thy sacrifice be mine,\nThen there's love at home.\nSafely from all harm I'll rest,\nWith no sinful care distress'd,\nThro' Thy tender mercy blessed,\nWhen there's love at home."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "653",
@@ -14765,19 +14791,20 @@
         {
           "number": 1,
           "type": "verse",
+          "content": "May blessings attend you, angels defend,\nShalom, shalom.\nGod’s mercies befriend you unto the end.\nShalom, shalom."
+        },
+        {
+          "number": 1,
+          "type": "chorus",
           "content": "Shalom, my friends, shalom, my friends\nShalom, shalom.\nMay peace be with you, God’s peace be with you.\nShalom, shalom."
         },
         {
           "number": 2,
           "type": "verse",
-          "content": "May blessings attend you, angels defend,\nShalom, shalom.\nGod’s mercies befriend you unto the end.\nShalom, shalom."
-        },
-        {
-          "number": 3,
-          "type": "verse",
           "content": "Till we meet again, till we meet again,\nShalom, shalom.\nMay God be with you, His peace be with you.\nShalom, shalom."
         }
-      ]
+      ],
+      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "675",

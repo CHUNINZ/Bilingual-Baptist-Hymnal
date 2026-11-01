@@ -8420,6 +8420,11 @@
       "category": "Hymns",
       "lyrics": [
         {
+          "verse": 1,
+          "content": "Spirit divine, attend our prayer,\nAnd make this house your home;\nDescend with all your gracious power;\nO come, great Spirit, come!",
+          "type": "verse"
+        },
+        {
           "verse": 2,
           "content": "Come as the light- to us reveal\nOur emptiness and woe;\nAnd lead us in those paths of life\nWhere all the righteous go.",
           "type": "verse"

@@ -117,7 +117,7 @@ async function loadWatchmanCollection(){
       if(providedResponse.ok){
         const provided=await providedResponse.json();
         data.providedRows=(Array.isArray(provided.hymns)?provided.hymns:[]).map((h,index)=>{
-          const lyrics=(Array.isArray(h.lyrics)?h.lyrics:[]).filter(part=>part&&typeof part.content==='string'&&part.content.trim()).map((part,i)=>({number:part.number||i+1,type:'verse',text:part.content.trim()}));
+          const lyrics=(Array.isArray(h.lyrics)?h.lyrics:[]).filter(part=>part&&typeof part.content==='string'&&part.content.trim()).map((part,i)=>({number:part.type==='chorus'?null:(part.number||i+1),type:part.type==='chorus'?'chorus':'verse',text:part.content.trim()}));
           const firstVerse=lyrics[0];
           return {
             textAuthNumber:`provided_hymn_${h.number}_${index}`,
