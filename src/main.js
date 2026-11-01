@@ -6,6 +6,10 @@ const hashView=location.hash.slice(1).split('/')[0];
 const data = { watchmanRows: [], metadataRows: [], providedRows: [], awitRows: [], docxRows: [], view: validViews.includes(hashView)?hashView:'hymns', query: params.get('q') || '', filter: 'All languages', browse:'A–Z', browseTopic:'', selected: params.get('id') || localStorage.getItem('bbh-current') || null, returnView:'hymns', readerScale:1, searchLimit:80, searchBusy: false };
 const player = { key:0, tempo:72, parts:{S:true,A:true,T:true,B:true}, playing:false, sources:[], timer:null, returnView:'reader' };
 const esc = (s = '') => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const orderLyricParts = parts => {
+  const chorus=parts.find(part=>part.type==='chorus');
+  return chorus?parts.filter(part=>part.type!=='chorus').flatMap(part=>[part,chorus]):parts;
+};
 const iconPaths = {
   home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
   grid:'<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/>',
@@ -211,7 +215,7 @@ function detail(row) {
   const tagalogSource=/tagalog|filipino/.test(lyricLanguage);
   const fullVerses=Array.isArray(fullText?.verses)?fullText.verses.map((verse,i)=>({number:verse.number||i+1,type:verse.type||'verse',english:(verse.english||(!tagalogSource?verse.text:'')||'').trim(),tagalog:(verse.tagalog||(tagalogSource?verse.text:'')||'').trim()})).filter(verse=>verse.english||verse.tagalog):[];
   const chorus=fullVerses.find(verse=>verse.type==='chorus');
-  const orderedVerses=chorus?fullVerses.filter(verse=>verse.type!=='chorus').flatMap(verse=>[verse,chorus]):fullVerses;
+  const orderedVerses=orderLyricParts(fullVerses);
   const renderVerse=(verse,key)=>`<p class="reader-verse ${verse.type==='chorus'?'chorus':''}"><span>${verse.type==='chorus'&&row.sourceCollection==='Awit Hymnal'?'Koro':verse.type==='chorus'?'Chorus':`${esc(verse.number)}.`}</span> ${esc(verse[key])}</p>`;
   const hasBilingualText=orderedVerses.length>0&&orderedVerses.every(verse=>verse.english&&verse.tagalog);
   const sourceVerses=orderedVerses.filter(verse=>tagalogSource?verse.tagalog:verse.english);
@@ -411,14 +415,24 @@ function openStage(){
   if(row.metadataOnly){announce('Stage view is available for full-lyrics hymns only.');return}
   const w=window.open('','_blank');
   if(!w){announce('Allow pop-ups to open the full-screen Stage view.');return}
-  const originalVerses=row.fullTextData?.verses||[];const chorus=originalVerses.find(v=>v.type==='chorus');const verses=chorus?originalVerses.filter(v=>v.type!=='chorus').flatMap(v=>[v,chorus]):originalVerses;
-  const lyricHtml=verses.length?verses.map(verse=>`<p>${esc(verse.text||verse.english||verse.tagalog||'').replace(/\r?\n/g,'<br>')}</p>`).join(''): `<p>${esc(row.firstLine||'Lyrics are included with this hymn.')}</p>`;
+  const originalVerses=row.fullTextData?.verses||[];
+  const normalizedVerses=originalVerses.map((verse,index)=>({
+    ...verse,
+    number:verse.number||index+1,
+    type:verse.type||'verse',
+    text:(verse.text||verse.english||verse.tagalog||'').trim()
+  })).filter(verse=>verse.text);
+  const verses=orderLyricParts(normalizedVerses);
+  const lyricHtml=verses.length?verses.map(verse=>{
+    const label=verse.type==='chorus'?(row.sourceCollection==='Awit Hymnal'?'Koro':'Chorus'):`${esc(verse.number)}.`;
+    return `<p><span class="verse-label">${label}</span> ${esc(verse.text).replace(/\r?\n/g,'<br>')}</p>`;
+  }).join(''): `<p>${esc(row.firstLine||'Lyrics are included with this hymn.')}</p>`;
   const meta=[row.languages||'English',row.authors?row.authors.split(/\s*;\s*/).join(' · '):''].filter(Boolean).map(esc).join(' · ');
   const source=esc((row.sourceCollection||'Hymnal collection').toUpperCase());
   const topic=row.category&&!/^(hymns|not found)$/i.test(row.category)?`TOPIC: ${esc(row.category)} · `:'';
   const sourceNumber=esc(row.hymnNumber||row.catalogNumber||'');
   w.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#003049"><title>Stage · ${esc(row.displayTitle||row.textTitle)} · Bilingual Baptist Hymnal</title><style>
-    *{box-sizing:border-box}html{min-height:100%;background:#003049;scroll-behavior:smooth}body{margin:0;min-height:100vh;min-height:100dvh;overflow-y:auto;background:#003049;color:#fff7e8;text-align:center;font-family:Georgia,"Times New Roman",serif}main{width:min(100%,1600px);min-height:100vh;min-height:100dvh;margin:0 auto;padding:clamp(34px,6vh,90px) clamp(22px,7vw,120px) max(48px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;justify-content:center}small{display:block;max-width:100%;font:700 12px/1.6 system-ui,sans-serif;letter-spacing:.12em;color:#ffca4b;margin:0 0 clamp(28px,6vh,82px);text-transform:uppercase;overflow-wrap:anywhere}h1{width:100%;font-size:clamp(42px,8vw,112px);line-height:1.08;margin:0 auto clamp(20px,4vh,48px);max-width:18ch;overflow-wrap:anywhere}.lyrics{width:100%;font-size:clamp(25px,4vw,62px);line-height:1.55}.lyrics p{max-width:30ch;margin:0 auto clamp(52px,6vh,68px);padding:10px 0 16px;white-space:normal;overflow-wrap:anywhere}.meta{font:15px/1.5 system-ui,sans-serif;color:#a6c7d7;margin-top:clamp(32px,7vh,90px)}@media(max-width:600px){main{justify-content:flex-start;padding-top:max(42px,8vh)}small{font-size:10px;letter-spacing:.08em;margin-bottom:42px}h1{font-size:clamp(38px,10vw,58px);margin-bottom:23px}.lyrics{font-size:clamp(24px,7vw,36px);line-height:1.5}.lyrics p{margin-bottom:52px;padding:10px 0 16px}}
+    *{box-sizing:border-box}html{min-height:100%;background:#003049;scroll-behavior:smooth}body{margin:0;min-height:100vh;min-height:100dvh;overflow-y:auto;background:#003049;color:#fff7e8;text-align:center;font-family:Georgia,"Times New Roman",serif}main{width:min(100%,1600px);min-height:100vh;min-height:100dvh;margin:0 auto;padding:clamp(34px,6vh,90px) clamp(22px,7vw,120px) max(48px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;justify-content:center}small{display:block;max-width:100%;font:700 12px/1.6 system-ui,sans-serif;letter-spacing:.12em;color:#ffca4b;margin:0 0 clamp(28px,6vh,82px);text-transform:uppercase;overflow-wrap:anywhere}h1{width:100%;font-size:clamp(42px,8vw,112px);line-height:1.08;margin:0 auto clamp(20px,4vh,48px);max-width:18ch;overflow-wrap:anywhere}.lyrics{width:100%;font-size:clamp(25px,4vw,62px);line-height:1.55}.lyrics p{max-width:30ch;margin:0 auto clamp(52px,6vh,68px);padding:10px 0 16px;white-space:normal;overflow-wrap:anywhere}.verse-label{display:inline-block;margin-right:.3em;color:#ffca4b;font:700 .36em/1.4 system-ui,sans-serif;letter-spacing:.04em;vertical-align:middle}.meta{font:15px/1.5 system-ui,sans-serif;color:#a6c7d7;margin-top:clamp(32px,7vh,90px)}@media(max-width:600px){main{justify-content:flex-start;padding-top:max(42px,8vh)}small{font-size:10px;letter-spacing:.08em;margin-bottom:42px}h1{font-size:clamp(38px,10vw,58px);margin-bottom:23px}.lyrics{font-size:clamp(24px,7vw,36px);line-height:1.5}.lyrics p{margin-bottom:52px;padding:10px 0 16px}}
     </style></head><body><main><small>${topic}SOURCE NO. ${sourceNumber}</small><h1>${esc(row.displayTitle||row.textTitle)}</h1><section class="lyrics" aria-label="Complete hymn lyrics">${lyricHtml}</section><div class="meta">${meta}</div></main></body></html>`);
   w.document.close();
 }
