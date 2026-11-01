@@ -2,7 +2,7 @@
   "source": "User-provided hymns.json",
   "sourceCount": 920,
   "excludedExistingTitles": 109,
-  "importedCount": 810,
+  "importedCount": 808,
   "hymns": [
     {
       "number": "2",
@@ -3236,39 +3236,6 @@
           "content": "So bring Him incense, gold, and myrrh,\nCome, peasant, king, to own Him,\nThe King of kings salvation brings\nLet loving hearts enthrone Him."
         }
       ]
-    },
-    {
-      "number": "142",
-      "title": "Angels We Have Heard On High",
-      "category": "Birth",
-      "lyrics": [
-        {
-          "number": 1,
-          "type": "verse",
-          "content": "Angels we have heard on high,\nSinging sweetly through the night,\nAnd the mountains in reply\nEchoing their brave delight."
-        },
-        {
-          "number": 1,
-          "type": "chorus",
-          "content": "Gloria in excelsis Deo,\nGloria in excelsis Deo."
-        },
-        {
-          "number": 2,
-          "type": "verse",
-          "content": "Shepherds, why this jubilee?\nWhy these songs of happy cheer?\nWhat great brightness did you see?\nWhat glad tidings did you hear?"
-        },
-        {
-          "number": 3,
-          "type": "verse",
-          "content": "Come to Bethlehem and see\nHim whose birth the angels sing;\nCome, adore on bended knee\nChrist, the Lord, the newborn King."
-        },
-        {
-          "number": 4,
-          "type": "verse",
-          "content": "See Him in a manger laid\nWhom the angels praise above;\nMary, Joseph, lend your aid,\nWhile we raise our hearts in love."
-        }
-      ],
-      "lyricsSource": "User-provided hymn text; stanza roles checked against Hymnary.org"
     },
     {
       "number": "143",
@@ -10998,33 +10965,6 @@
           "number": 6,
           "type": "verse",
           "content": "I do believe, I now believe\nThat Jesus died for me,\nAnd that He shed His precious blood\nFrom sin to set me free."
-        }
-      ]
-    },
-    {
-      "number": "487",
-      "title": "In the Garden",
-      "category": "Meditation and Prayer",
-      "lyrics": [
-        {
-          "number": 1,
-          "type": "verse",
-          "content": "And He walks with me, and He talks with me,\nAnd He tells me I am His own;\nAnd the joy we share as we tarry there,\nNone other has ever known."
-        },
-        {
-          "number": 2,
-          "type": "verse",
-          "content": "I come to the garden alone,\nWhile the dew is still on the roses;\nAnd the voice I hear, falling on my ear,\nThe Son of God discloses."
-        },
-        {
-          "number": 3,
-          "type": "verse",
-          "content": "He speaks, and the sound of His voice\nIs so sweet the birds hush their singing,\nAnd the melody that He gave to me\nWithin my heart is ringing."
-        },
-        {
-          "number": 4,
-          "type": "verse",
-          "content": "I'd stay in the garden with Him\nThough the night around me be falling,\nBut He bids me go; through the voice of woe,\nHis voice to me is calling."
         }
       ]
     },
