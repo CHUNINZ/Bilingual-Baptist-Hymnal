@@ -43,6 +43,8 @@ const icon = (name, className='') => `<svg class="ui-icon ${className}" viewBox=
 const saved = new Set(JSON.parse(localStorage.getItem('bbh-saved') || '[]'));
 let service = JSON.parse(localStorage.getItem('bbh-service') || '[]');
 let searchTimer;
+let browseSearchFrame=0;
+let browseAzIndex=[];
 let topicCacheKey='';
 let topicResultCache=new Map();
 let audioCtx;
@@ -280,13 +282,16 @@ function renderBrowse() {
   ];
   const catalogRows=allCatalogRows();
   const eligible=catalogRows.filter(r=>!r.metadataOnly&&langMatch(r,data.filter));
-  const azRows=eligible.filter(r=>!data.query.trim()||`${r.displayTitle} ${r.textTitle}`.toLocaleLowerCase().includes(data.query.trim().toLocaleLowerCase())).sort((a,b)=>{
+  const sortedAzRows=eligible.slice().sort((a,b)=>{
     const titleA=(a.displayTitle||a.textTitle||'').trim();
     const titleB=(b.displayTitle||b.textTitle||'').trim();
     const letterA=/^\p{L}/u.test(titleA),letterB=/^\p{L}/u.test(titleB);
     if(letterA!==letterB)return letterA?-1:1;
     return titleA.localeCompare(titleB,undefined,{sensitivity:'base',numeric:true});
   });
+  browseAzIndex=sortedAzRows.map(row=>({row,searchText:`${row.displayTitle||''} ${row.textTitle||''}`.toLocaleLowerCase()}));
+  const queryText=data.query.trim().toLocaleLowerCase();
+  const azRows=queryText?browseAzIndex.filter(item=>item.searchText.includes(queryText)).map(item=>item.row):sortedAzRows;
   const numbered=eligible.slice().sort((a,b)=>Number(a.catalogNumber)-Number(b.catalogNumber));
   const nextTopicCacheKey=`${data.filter}:${eligible.length}:${eligible[0]?.textAuthNumber||''}:${eligible.at(-1)?.textAuthNumber||''}`;
   if(topicCacheKey!==nextTopicCacheKey){
@@ -300,7 +305,7 @@ function renderBrowse() {
   const selectedTopic=topics.find(topic=>topic.key===data.browseTopic);
   const topicRows=selectedTopic?topicMatches(selectedTopic):[];
   const topicContent=selectedTopic?`<button class="text-button topic-back" data-topic-back>All topics</button><div class="panel-heading"><h2>${esc(selectedTopic.name)} · ${topicRows.length} hymns</h2></div><section class="results-panel browse-results"><div class="results-list">${browseRows(topicRows)||'<div class="no-results">No hymns are indexed for this topic yet.</div>'}</div></section>`:`<div class="topic-note">Choose a topic to see matching hymns from the full catalog.</div><div class="topic-list">${topics.map(topic=>`<button class="topic-row" data-topic="${topic.key}"><span class="topic-mark">${icon('music')}</span><span><strong>${esc(topic.name)}</strong><small>${topicMatches(topic).length} matching hymns</small></span>${icon('arrow')}</button>`).join('')}</div>`;
-  const content=data.browse==='A–Z'?`<label class="search-box browse-search"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Filter hymn titles A to Z" value="${esc(data.query)}" type="search" placeholder="Filter titles A–Z"/><kbd>${icon('enter')}</kbd></label><div class="panel-heading"><h2>${azRows.length} hymns · A–Z</h2></div><section class="results-panel browse-results"><div class="results-list">${browseRows(azRows)||'<div class="no-results">No hymns to show.</div>'}</div></section>`:data.browse==='Number'?`<div class="panel-heading"><h2>${numbered.length} hymns · source number</h2></div><section class="results-panel browse-results"><div class="results-list">${browseRows(numbered)}</div></section>`:topicContent;
+  const content=data.browse==='A–Z'?`<label class="search-box browse-search"><span class="search-glyph">${icon('search')}</span><input id="query" aria-label="Filter hymn titles A to Z" value="${esc(data.query)}" type="search" placeholder="Filter titles A–Z" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"/><kbd>${icon('enter')}</kbd></label><div class="panel-heading"><h2>${azRows.length} hymns · A–Z</h2></div><section class="results-panel browse-results"><div class="results-list">${browseRows(azRows)||'<div class="no-results">No hymns to show.</div>'}</div></section>`:data.browse==='Number'?`<div class="panel-heading"><h2>${numbered.length} hymns · source number</h2></div><section class="results-panel browse-results"><div class="results-list">${browseRows(numbered)}</div></section>`:topicContent;
   return `<section class="browse-view"><header class="page-head compact"><div><span class="eyebrow">${fullLyricsCount()||300} FULL-LYRIC HYMNS</span><h1>Browse <em>hymns.</em></h1><p class="page-lede">Explore the full-lyrics collection by title, source number, or worship topic.</p></div></header><div class="browse-tabs">${tabs.map(t=>`<button class="browse-tab ${data.browse===t?'active':''}" data-browse="${t}">${t}</button>`).join('')}</div>${content}</section>`;
 }
 function renderReader(){const row=findText(data.selected);return `<section class="reader-page">${detail(row)}</section>`;}
@@ -340,7 +345,7 @@ function bind(){
   $$('[data-browse-mode]').forEach(el=>el.addEventListener('click',()=>{data.browse=el.dataset.browseMode;go('browse')}));
   $$('[data-topic]').forEach(el=>el.addEventListener('click',()=>{data.browseTopic=el.dataset.topic;render()}));
   $('[data-topic-back]')?.addEventListener('click',()=>{data.browseTopic='';render()});
-  $('#query')?.addEventListener('input',e=>{data.query=e.target.value;data.searchLimit=80;const params=new URLSearchParams(location.search);data.query?params.set('q',data.query):params.delete('q');params.delete('export');const queryString=params.toString();history.replaceState(null,'',`${location.pathname}${queryString?`?${queryString}`:''}${location.hash}`);const pos=e.target.selectionStart;clearTimeout(searchTimer);searchTimer=setTimeout(()=>{render();const input=$('#query');input?.focus();input?.setSelectionRange(pos,pos);},150)});
+  $('#query')?.addEventListener('input',e=>{data.query=e.target.value;data.searchLimit=80;const params=new URLSearchParams(location.search);data.query?params.set('q',data.query):params.delete('q');params.delete('export');const queryString=params.toString();history.replaceState(null,'',`${location.pathname}${queryString?`?${queryString}`:''}${location.hash}`);if(e.target.closest('.browse-search')){scheduleBrowseSearchUpdate();return}const pos=e.target.selectionStart;clearTimeout(searchTimer);searchTimer=setTimeout(()=>{render();const input=$('#query');input?.focus();input?.setSelectionRange(pos,pos);},150)});
   $('#query')?.addEventListener('keydown',e=>{if(e.key==='Enter'&&data.query.trim())go('search')});
   $$('[data-result]').forEach(el=>el.addEventListener('click',()=>{data.selected=el.dataset.result;localStorage.setItem('bbh-current',data.selected);data.returnView=['search','browse','saved'].includes(data.view)?data.view:'hymns';go('reader')}));
   $$('[data-open-record]').forEach(el=>el.addEventListener('click',()=>{data.selected=el.dataset.openRecord;localStorage.setItem('bbh-current',data.selected);data.returnView='hymns';go('reader')}));
@@ -363,6 +368,23 @@ function bind(){
   $('[data-retry]')?.addEventListener('click',()=>{data.indexError='';data.watchmanRows=[];loadWatchmanCollection()});
   $('[data-load-more]')?.addEventListener('click',()=>{data.searchLimit+=80;render()});
   $$('[data-order]').forEach(el=>{el.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain',el.dataset.order));el.addEventListener('dragover',e=>e.preventDefault());el.addEventListener('drop',e=>{e.preventDefault();const from=+e.dataTransfer.getData('text/plain'),to=+el.dataset.order;const [item]=service.splice(from,1);service.splice(to,0,item);saveService();render()})});
+}
+function scheduleBrowseSearchUpdate(){
+  if(browseSearchFrame)return;
+  browseSearchFrame=requestAnimationFrame(()=>{
+    browseSearchFrame=0;
+    const query=data.query.trim().toLocaleLowerCase();
+    const matches=query?browseAzIndex.filter(item=>item.searchText.includes(query)).map(item=>item.row):browseAzIndex.map(item=>item.row);
+    const limit=data.browseLimit||120;
+    const rows=matches.slice(0,limit);
+    const heading=$('.browse-view > .panel-heading h2');
+    const list=$('.browse-view .browse-results .results-list');
+    if(!heading||!list)return;
+    heading.textContent=`${matches.length} hymns · A–Z`;
+    list.innerHTML=`${rows.map(resultCard).join('')||'<div class="no-results">No hymns to show.</div>'}${matches.length>limit?`<button class="browse-more" data-browse-more>Show ${Math.min(120,matches.length-limit)} more · ${matches.length-limit} remaining</button>`:''}`;
+    list.querySelectorAll('[data-result]').forEach(el=>el.addEventListener('click',()=>{data.selected=el.dataset.result;localStorage.setItem('bbh-current',data.selected);data.returnView='browse';go('reader')}));
+    list.querySelector('[data-browse-more]')?.addEventListener('click',()=>{data.browseLimit=(data.browseLimit||120)+120;scheduleBrowseSearchUpdate()});
+  });
 }
 function $$(s,root=document){return [...root.querySelectorAll(s)]}
 function saveService(){localStorage.setItem('bbh-service',JSON.stringify(service))}
