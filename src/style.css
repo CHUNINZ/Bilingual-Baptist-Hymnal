@@ -375,6 +375,9 @@ button:focus-visible,.nav-item:focus-visible,.result-row:focus-visible,.topic-ro
 @media(hover:hover){.reader-toolbar .round-control:hover{transform:translateY(-3px) scale(1.08);box-shadow:0 7px 16px #0030492b}}
 .reader-toolbar .round-control.is-saved{animation:save-pop .38s cubic-bezier(.2,1.5,.4,1)}
 @keyframes save-pop{50%{transform:scale(1.18) rotate(-8deg)}}
+.dark .btn-outline{color:#f4eee0;border-color:#89979a;background:#182327}
+.reader-toolbar .round-control:active{animation:reader-control-tap .32s cubic-bezier(.2,1.5,.4,1);transform:scale(.78) rotate(-6deg);box-shadow:0 0 0 6px #f9c74f66}
+@keyframes reader-control-tap{0%{transform:scale(1)}45%{transform:scale(.76) rotate(-7deg)}100%{transform:scale(.9) rotate(0)}}
 .browse-tab{transition:transform .25s cubic-bezier(.2,1.7,.4,1),background-color .22s ease,color .22s ease;}
 .browse-tab:active{transform:translateX(5px) scale(.96)}
 .browse-tab.active{animation:browse-tab-select .32s cubic-bezier(.2,1.5,.4,1)}
